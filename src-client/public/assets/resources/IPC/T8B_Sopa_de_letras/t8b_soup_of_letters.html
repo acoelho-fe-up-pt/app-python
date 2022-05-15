@@ -1,0 +1,1096 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;
+	font-weight:normal;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=EN-GB style='color:black'>The game &quot;Soup
+of letters&quot;</span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=EN-GB>The game &quot;soup of letters&quot; is a
+pastime that is based on a tray of letters placed at random, where words are
+inscribed. The objective of the game is to find and surround the words hidden
+on the board. The words can be hidden vertically, horizontally or diagonally on
+the board, both in normal and inverted sequence.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Note the following example.</span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=197
+ style='width:147.8pt;border-collapse:collapse'>
+ <tr style='height:16.0pt'>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border-top:solid windowtext 1.0pt;
+  border-left:solid windowtext 1.0pt;border-bottom:none;border-right:none;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>Y</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:solid red 1.0pt;border-right:solid red 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>L</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border:solid red 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>C</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:solid red 1.0pt;border-right:none;padding:
+  0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>Q</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:solid red 1.0pt;border-right:none;padding:
+  0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>T</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:solid red 1.0pt;border-right:none;padding:
+  0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>S</span></p>
+  </td>
+  <td width=29 nowrap valign=bottom style='width:21.5pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>T</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.0pt'>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border-top:none;
+  border-left:solid windowtext 1.0pt;border-bottom:none;border-right:solid red 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>Y</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border-top:none;
+  border-left:none;border-bottom:solid red 1.0pt;border-right:solid red 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>P</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border-top:none;
+  border-left:none;border-bottom:solid red 1.0pt;border-right:solid red 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>O</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:none;border-bottom:
+  solid red 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>R</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:none;border-bottom:
+  solid red 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>T</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border-top:none;
+  border-left:none;border-bottom:solid red 1.0pt;border-right:solid red 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>O</span></p>
+  </td>
+  <td width=29 nowrap valign=bottom style='width:21.5pt;border:none;border-right:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>O</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.0pt'>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border:none;border-left:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>M</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:none;border-right:
+  solid red 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>L</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border-top:none;
+  border-left:none;border-bottom:solid red 1.0pt;border-right:solid red 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>I</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:none;border-bottom:
+  solid red 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>P</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:none;border-bottom:
+  solid red 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>X</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border:none;border-bottom:
+  solid red 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>O</span></p>
+  </td>
+  <td width=29 nowrap valign=bottom style='width:21.5pt;border:none;border-right:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>X</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.0pt'>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border:none;border-left:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>Z</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:none;border-right:
+  solid red 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>R</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border:none;border-bottom:
+  solid red 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>M</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:solid red 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>A</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:none;border-bottom:
+  solid red 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>I</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border-top:none;
+  border-left:none;border-bottom:solid red 1.0pt;border-right:solid red 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>A</span></p>
+  </td>
+  <td width=29 nowrap valign=bottom style='width:21.5pt;border:none;border-right:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>X</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.0pt'>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border:none;border-left:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>S</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:none;border-right:
+  solid red 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>S</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>B</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border-top:none;
+  border-left:solid red 1.0pt;border-bottom:none;border-right:solid red 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>G</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>X</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>M</span></p>
+  </td>
+  <td width=29 nowrap valign=bottom style='width:21.5pt;border:none;border-right:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>L</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.0pt'>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border:none;border-left:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>T</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:none;border-right:
+  solid red 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>B</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>R</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border-top:none;
+  border-left:solid red 1.0pt;border-bottom:none;border-right:solid red 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>A</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>Z</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>V</span></p>
+  </td>
+  <td width=29 nowrap valign=bottom style='width:21.5pt;border:none;border-right:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>N</span></p>
+  </td>
+ </tr>
+ <tr style='height:16.0pt'>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border:none;border-left:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>D</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:solid red 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>F</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border-top:solid red 1.0pt;
+  border-left:none;border-bottom:solid red 1.0pt;border-right:none;padding:
+  0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>A</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:solid red 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>R</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:solid red 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>O</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>F</span></p>
+  </td>
+  <td width=29 nowrap valign=bottom style='width:21.5pt;border:none;border-right:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>W</span></p>
+  </td>
+ </tr>
+ <tr style='height:17.0pt'>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border-top:none;
+  border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:17.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>R</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:none;border-bottom:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>F</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border:none;border-bottom:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>R</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:solid red 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:17.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>B</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.0pt;border:none;border-bottom:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>E</span></p>
+  </td>
+  <td width=28 nowrap valign=bottom style='width:21.1pt;border:none;border-bottom:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>A</span></p>
+  </td>
+  <td width=29 nowrap valign=bottom style='width:21.5pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:17.0pt'>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+  lang=EN-GB style='font-size:12.0pt;color:black'>H</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal><span lang=EN-GB style='color:white'>In this tutorial we
+will develop a simpler version, in which words are </span><span lang=EN-GB>placed
+only horizontally.</span></p>
+
+<h1><span lang=EN-GB>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Game structure</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>This game already has some complexity, so
+it will be useful to use the problem decomposition to better structure the game
+into subproblems:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Create the board: in this subproblem, a matrix
+is constructed, where, at random, the words of a given predefined list are
+placed. In this case, we will only place the words horizontally, and they may
+be randomly placed normally or inverted. At the end of placing the words, it is
+necessary to fill in the vacant spaces with letters, at random.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Show the board: In this subproblem, the letter
+soup matrix is displayed.</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-GB>Play: This subproblem will focus on the game loop, iterating over
+several moves until the player guesses all the words.</span></p>
+
+<h1><span lang=EN-GB>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Create the board</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>The board consists of a matrix, which is
+typically formed by a vector of vectors. In Python, we chose to implement it
+through a list of lines, each line being a string of characters, since it is a
+game of letters. </span></p>
+
+<p class=MsoNormal><span lang=PT>Function </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>cria_tabuleiro(linhas,
+colunas, lista_palavras)</span><span lang=PT> has three parameters:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>linhas</span></b><span
+lang=EN-GB>, the number of lines on the board (integer);</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>colunas</span></b><span
+lang=EN-GB>, the number of columns on the board (integer);</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>lista_palavras</span></b><span
+lang=EN-GB>, a list of strings with the words of the game.</span></p>
+
+<span lang=EN-GB style='font-size:10.0pt;font-family:"Calibri",sans-serif'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The algorithm consists of 3 steps:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Create an empty board;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Place the words on the board;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-GB>Fill in the blanks on the board with random letters.</span></p>
+
+<h2><span lang=EN-GB>2.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Create an empty board</span></h2>
+
+<p class=MsoNormal><span lang=EN-GB>In this step of the algorithm, an empty
+list is created that is filled with character strings, which in turn are filled
+with spaces, equal to the number of columns.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+cria_tabuleiro(linhas, colunas, lista_palavras):</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>#
+criar tabuleiro vazio</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+tabuleiro = []</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+for i in range(linhas):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+linha = &quot;&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+for j in range (colunas):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+linha += &quot; &quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+tabuleiro += [linha]</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img width=36 height=36 id="Graphic 3"
+  src="t8b_soup_of_letters.fld/image001.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-US>In this code the operator </span><span lang=EN-US
+  style='font-size:9.0pt;font-family:"Courier New"'>+=</span><span lang=EN-US> does
+  the concatenation of strings, joining spaces. It also concatenates lists, in
+  order to add a new line in each iteration of the</span><span lang=EN-US> </span><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>for</span><span
+  lang=EN-GB> loop with the variable </span><span lang=EN-GB style='font-size:
+  9.0pt;font-family:"Courier New"'>i</span><span lang=EN-GB>.</span></p>
+  </td>
+ </tr>
+</table>
+
+<h2><span lang=EN-GB>2.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Place the words on the board;</span></h2>
+
+<p class=MsoNormal><span lang=EN-GB>In this step of the algorithm, being random,
+it may not be possible to put all the words on the board, as it depends on the
+“arrangement” of them. For this placement we will have a maximum of 50
+attempts. If it is not possible to create the board, the function returns </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>False</span><span
+lang=EN-GB>.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+# coloca palavras de forma aleatória</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+i = 0</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+tentativas = 50 # pode não haver solução possível...</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'> </span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+# ciclo de preenchimento do tabuleiro com a lista_palavras de palavras</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+while i &lt; len(lista_palavras):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+# palavra a colocar na sopa de letras: em maiusculas e pode ser invertida</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>lista_palavras[i]
+= lista_palavras[i].upper()</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>palavra
+= lista_palavras[i]</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+# aleatoriamente a palavra poderá ser invertida</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+if random.choice([True, False]):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+palavra = palavra[::-1] # inverte palavra</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+# determina localização horizontal aleatória</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+l = random.randint(0, linhas-1)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+linha = tabuleiro[l] # linha aleatoria</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>col =
+random.randint(0, colunas-len(palavra)) # o comprimento da palavra limita o início
+da coluna</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>#
+verifica se tem espaço para a palavra</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+if linha.count(&quot; &quot;, col, col+len(palavra)) == len(palavra):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+# coloca palavra</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>tabuleiro[l]
+= linha[:col] + palavra + linha[col+len(palavra):]</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>i +=
+1</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+else:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+#procura outra posicao para a palavra</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+if tentativas &gt; 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+tentativas -= 1</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+else:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>print(&quot;Nao
+foi possivel construir tabuleiro&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>               
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>return
+False</span></p>
+
+<h2><span lang=EN-GB>2.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Fill in the blanks on the board with random
+letters</span></h2>
+
+<p class=MsoNormal><span lang=EN-GB>In this final step, the entire board is
+covered and, if a space is found, a random letter is placed.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+# preencher o resto do tabuleiro com letras aleatorias</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+for i in range(linhas):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+for j in range(colunas):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+if tabuleiro[i][j] == &quot; &quot;:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>tabuleiro[i]
+= tabuleiro[i][:j] \</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>                              
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>+
+random.choice(&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;) \</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>                              
++ tabuleiro[i][j+1:]</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>  
+ return tabuleiro</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img width=36 height=36 id="Graphic 2"
+  src="t8b_soup_of_letters.fld/image001.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Note that the fourth line of instructions (if) is divided into
+  three lines using the &quot;\&quot; character.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>This allows for greater code readability.</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Display the board</span></h1>
+
+<p class=MsoNormal><span lang=EN-US>Function </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>mostra_tabuleiro(tabuleiro)</span><span
+lang=EN-US> traverses the various lines on the board and prints the line's
+string.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def
+mostra_tabuleiro(tabuleiro):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+for linha in tabuleiro:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+print(linha)</span></p>
+
+<span lang=EN-GB style='font-size:10.0pt;font-family:"Calibri",sans-serif'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><b><span
+lang=EN-GB style='font-size:12.0pt;font-family:"Calibri Light",sans-serif'>&nbsp;</span></b></p>
+
+<h1><span lang=EN-GB>4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Iterating through moves  - the game loop</span></h1>
+
+<p class=MsoNormal><span lang=EN-US>Function </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>sopa_de_letras()</span><span
+lang=EN-US>implements the game loop and has the following parameters:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>linhas</span><span
+lang=EN-GB> - the number of lines on the board;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>colunas</span><span
+lang=EN-GB> - the number of columns on the board;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>lista_palavras</span><span
+lang=EN-GB> - the list with the words to put on the board;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>tentativas</span><span
+lang=PT> - o número máximo de tentativas erradas.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>This function starts with the generation of
+the board:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+sopa_letras(linhas, colunas, lista_palavras, tentativas):</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>#
+criacao do tabuleiro</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>tabuleiro
+= cria_tabuleiro(linhas, colunas, lista_palavras)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>if
+type(tabuleiro) != list:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Nao foi possivel construir o tabuleiro...&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+return</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+# numero de palavras a adivinhar </span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+palavras_adivinhar = len(lista_palavras)</span></p>
+
+<p class=MsoNormal><span lang=EN-US>The game loop is executed through a
+conditional loop (</span><span lang=EN-US style='font-size:9.0pt;font-family:
+"Courier New"'>while</span><span lang=EN-US>) whose condition evaluates whether
+the player still has words to guess, and whether still has attempts to play.</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>while
+tentativas &gt; 0 and palavras_adivinhar &gt; 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The algorithm for each move is as follows:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:35.45pt;text-indent:-20.7pt'><span
+lang=EN-GB>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Interaction with the player: show board and ask
+for a word. </span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:35.45pt'><i><span
+lang=EN-GB>Obs.: the word is converted to capital letters so that comparison is
+simpler.</span></i></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+# Jogada do jogador</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+mostra_tabuleiro(tabuleiro)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+palavra = input(&quot;Palavra: &quot;).upper()</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:35.45pt;text-indent:-18.0pt'><span
+lang=EN-US>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Check if the word is correct (it belongs to the list
+of words).</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:35.45pt'><span
+lang=EN-US>If the word is correct, it is removed from the list of words so that
+is not validated again in a next move.</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:35.45pt'><span lang=EN-US>If
+the word is wrong, the number of remaining attempts is decreased.</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+verificar se a palavra esta correta</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>if
+palavra in lista_palavras:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+# palavra certa</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+palavras_adivinhar -= 1</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+print(&quot;Certo! Palavras a encontrar: &quot; + str(palavras_adivinhar))</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+if palavras_adivinhar &gt;= 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+#apaga palavra da lista_palavras</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+for i in range (len(lista_palavras)):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>                   
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>if 
+palavra == lista_palavras[i]:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>                       
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>lista_palavras[i]
+= &quot;&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+else:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+# palavra errada</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+print(&quot;Errado!&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+tentativas -= 1</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>After the end of the game loop, it is
+checked whether the player won or lost... </span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+# fim do jogo    </span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+if tentativas == 0 and palavras_adivinhar &gt; 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Perdeu. Faltaram &quot; + str(palavras_adivinhar) +
+&quot;palavras&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+else:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Parabens! Encontrou todas as palavras.&quot;)</span></p>
+
+<p class=MsoNormal style='margin-right:-14.55pt'><b><span lang=EN-GB
+style='font-size:8.0pt;font-family:"Courier New"'>&nbsp;</span></b></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img width=36 height=36 id="Graphic 10"
+  src="t8b_soup_of_letters.fld/image002.jpg" alt="Balloon animal"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US>Test the game with the following list:</span></p>
+  <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+  margin-left:9.35pt;margin-right:0cm'>
+  <p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-GB
+  style='font-size:9.0pt;font-family:"Courier New"'>cidades =
+  [&quot;Porto&quot;, &quot;Lisboa&quot;, &quot;Braga&quot;, &quot;Faro&quot;,
+  &quot;Bragança&quot;]</span></p>
+  <p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-GB
+  style='font-size:9.0pt;font-family:"Courier New"'>sopa_letras(10,30, cidades,
+  5)</span></p>
+  </div>
+  <p class=MsoNormal><span lang=EN-GB>Experiment later with multiple word lists
+  for different topics.</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB>5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Final challenge</span></h1>
+
+<p class=MsoNormal><span lang=EN-US>In the solution presented, the words were
+restricted to being only horizontal. Add the possibility that the board has
+words vertically, or even diagonally</span><span lang=EN-GB>.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img width=36 height=36 id="Graphic 1"
+  src="t8b_soup_of_letters.fld/image003.jpg" alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><b><span
+  lang=EN-GB>Share</span></b><span lang=EN-GB> your game!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=EN-GB>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

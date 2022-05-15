@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .botao {
+          background-color: rgb(51, 101, 192);
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>        
+</head>
+<body>
+
+<h2>The game "rock, paper, scissors"</h2>
+<p>It is a game with two players in which each one selects one of the three symbols, and then they confront each other.<br>
+The rules are:<ul>
+<li>Rock wins against Scissors;</li>
+<li>Scissors wins against Paper;</li>
+<li>Paper wins against Rock.</li></ul></p>
+
+<p>Select one of the three symbols and press the button:</p>
+<form>
+    <input type="radio" id="pedra" name="simbolo" value="pedra">
+    <label for="pedra">rock</label><br>
+    <input type="radio" id="papel" name="simbolo" value="papel">
+    <label for="papel">paper</label><br>
+    <input type="radio" id="tesoura" name="simbolo" value="tesoura">
+    <label for="tesoura">scissors</label>
+</form>
+
+
+<p><button type="button" onclick="jogo()">Play</button></p>
+
+<p id="demo">>></p>
+
+<p><br>After playing the game, you can proceed to the tutorial.</p>
+
+<a href = "t5b_rps.html" class="botao" title='Tutorial'>Tutorial</a>
+<script>
+    function jogo() {
+        var valores = ["pedra", "papel", "tesoura"];
+        var jogadaPC = valores[Math.floor(Math.random()*3)];
+
+        var jogadaHumano = "";
+        if (document.getElementById("pedra").checked == true)
+            jogadaHumano = "pedra";
+        if (document.getElementById("papel").checked == true)
+            jogadaHumano = "papel";
+        if (document.getElementById("tesoura").checked == true)
+            jogadaHumano = "tesoura";
+                
+        var resultado = "We tie.";
+        if (jogadaPC == "pedra" && jogadaHumano == "tesoura" || jogadaPC == "tesoura" && jogadaHumano == "papel" || jogadaPC == "papel" && jogadaHumano == "pedra")
+            resultado = "You lose.";
+        if (jogadaPC == "tesoura" && jogadaHumano == "pedra" || jogadaPC == "papel" && jogadaHumano == "tesoura" || jogadaPC == "pedra" && jogadaHumano == "papel")
+            resultado = "You won.";
+ 
+        // translate
+        if (jogadaPC == "pedra")
+            jogadaPC = "rock";
+        else if (jogadaPC == "papel")
+                jogadaPC = "paper";
+            else
+                jogadaPC = "scissors";
+
+        // output
+        if (jogadaHumano == "")
+            document.getElementById("demo").innerHTML = ">> You have to choose one of the three symbols...";
+        else
+           document.getElementById("demo").innerHTML = ">> I chose <b>" + jogadaPC + "<br>" + resultado;
+    }
+</script>
+    
+</body>
+</html> 

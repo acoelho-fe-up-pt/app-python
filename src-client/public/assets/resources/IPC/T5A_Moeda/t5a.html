@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style>
+        .botao {
+          background-color: rgb(51, 101, 192);
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>        
+</head>
+<body>
+
+<h2>O jogo da moeda</h2>
+<p>Vamos começar por um jogo muito simples.
+Trata-se do jogo em que se atira uma moeda ao ar e se tenta adivinhar se é cara ou coroa – o Jogo da Moeda.</p>
+<p>Atire uma moeda ao ar e prima o botão seguinte...</p>
+
+
+<button type="button" onclick="jogo()"> Cara ou coroa?</button>
+
+<p id="demo">>></p>
+
+<p><br>Após jogar o jogo, pode passar ao tutorial.</p>
+
+<a href = "t5a_moeda.html" class="botao" title='Tutorial'>Tutorial</a>
+<script>
+    function jogo() {
+        var valores = ["cara", "coroa"];
+        document.getElementById("demo").innerHTML = ">> Eu joguei <b>" + valores[Math.round(Math.random())] + "</b>. E você?";
+    }
+</script>
+    
+</body>
+</html> 

@@ -1,0 +1,1489 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;
+	font-weight:normal;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=EN-GB style='color:black'>The
+&quot;cupcakes&quot; game</span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=EN-GB>The cupcake game is a simplification of the
+Naval Battle game. Now, instead of ships, we have trays made up of a set of 4
+plates of 1 muffin, 3 plates of 2 muffins, 2 plates of 3 muffins and 1 plate of
+4 muffins. These are only arranged horizontally.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Observe the following example.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-GB><img
+width=203 height=201 id="Picture 2" src="t9b_cupcakes.fld/image001.jpg"
+alt="A picture containing food, game&#10;&#10;Description automatically generated"></span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The board has a dimension of 10 x 10.</span></p>
+
+<h1><span lang=EN-GB>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Game structure</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>This game already has some complexity, so
+it will be useful to use decomposition to better structure the game into
+sub-problems:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Create the game board: The board is created as a
+matrix of 10x10 values (not changeable). Values are generated randomly,
+representing the cupcake dishes with the following numbers:</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>0, empty;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>1 a 4 - cupcake belonging to a plate with 1, 2,
+3 or 4 muffins.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Drqwing the UI: In this sub-problem, the UI
+(User Interface) is designed. This consists of two boards: </span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The player's board (the one on the left in the
+figure below), where his cupcakes and opponent's &quot;shots&quot; are
+displayed;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The opponent's board, in this case will be the
+computer, (the one on the right in the figure below), where the cupcakes are
+displayed as they are discovered and the &quot;shots&quot; missed by the player.</span></p>
+
+<p class=MsoNormal align=center style='margin-left:54.0pt;text-align:center'><span
+lang=EN-GB><img width=250 height=135 id="Picture 19"
+src="t9b_cupcakes.fld/image002.jpg"></span></p>
+
+<p class=MsoNormal><span lang=EN-GB>And of course, the logic of the p5 module:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>setup()</span><span
+lang=EN-GB>: This sub-problem will focus on creating the two boards and
+deciding the player who starts the game.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>draw()</span><span
+lang=EN-GB>: The game loop. Checks who plays, executes the play using game
+logic and validates if the game is over and who is the winner.</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>mouse_pressed():</span><span
+lang=EN-GB> The player will interact through the mouse, pressing on the
+corresponding grid. </span></p>
+
+<h1><span lang=EN-GB>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Global definitions</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>To keep the game configurable, the
+following constants were defined, right after the import of the p5 and random
+modules:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>from p5 import *</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>import random</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'># definicoes</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>LARGURA = 800    #
+largura da janela grafica</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>ALTURA = 400     #
+altura da janela grafica</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>LINHAS = 10      #
+numero de linhas de cada um dos tabuleiros</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>COLUNAS = 10     #
+numero de colunas de cada um dos tabuleiros</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>FORNADA = ((1,4),
+(2, 3), (3,2), (4, 1)) # 1 de 4, 2 de 3, ...</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>MAX_TENTATIVAS =
+50 # numero máximo de tentativas para colocar, aleatoriamente, os queques em
+cada um dos tabuleiros</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img width=36 height=36 id="Graphic 10"
+  src="t9b_cupcakes.fld/image003.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>Notice how
+  the literal </span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>FORNADA</span><span
+  lang=EN-GB> is created.</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>It is a tuple
+  with 4 elements. And each of these elements is also a tuple with two values.</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>We can
+  actually visualize this structure as follows:</span></p>
+  <div align=center>
+  <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+   style='border-collapse:collapse;border:none'>
+   <tr>
+    <td width=38 valign=top style='width:28.5pt;border:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal align=center style='text-align:center;text-autospace:
+    none'><span lang=EN-GB>1</span></p>
+    </td>
+    <td width=38 valign=top style='width:1.0cm;border:solid windowtext 1.0pt;
+    border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal align=center style='text-align:center;text-autospace:
+    none'><span lang=EN-GB>4</span></p>
+    </td>
+   </tr>
+   <tr>
+    <td width=38 valign=top style='width:28.5pt;border:solid windowtext 1.0pt;
+    border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal align=center style='text-align:center;text-autospace:
+    none'><span lang=EN-GB>2</span></p>
+    </td>
+    <td width=38 valign=top style='width:1.0cm;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal align=center style='text-align:center;text-autospace:
+    none'><span lang=EN-GB>3</span></p>
+    </td>
+   </tr>
+   <tr>
+    <td width=38 valign=top style='width:28.5pt;border:solid windowtext 1.0pt;
+    border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal align=center style='text-align:center;text-autospace:
+    none'><span lang=EN-GB>3</span></p>
+    </td>
+    <td width=38 valign=top style='width:1.0cm;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal align=center style='text-align:center;text-autospace:
+    none'><span lang=EN-GB>2</span></p>
+    </td>
+   </tr>
+   <tr>
+    <td width=38 valign=top style='width:28.5pt;border:solid windowtext 1.0pt;
+    border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal align=center style='text-align:center;text-autospace:
+    none'><span lang=EN-GB>4</span></p>
+    </td>
+    <td width=38 valign=top style='width:1.0cm;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal align=center style='text-align:center;text-autospace:
+    none'><span lang=EN-GB>1</span></p>
+    </td>
+   </tr>
+  </table>
+  </div>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>It is a
+  constant matrix.</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>How to access
+  a particular element directly?</span></p>
+  <p class=MsoNormal align=center style='text-align:center;text-autospace:none'><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>FORNADA [2][1]</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>What is the
+  value returned by this expression?</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>These settings make it possible to make the
+size of the window and the game board more flexible, as well as the number and
+type of cupcake plates on the board.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>In p5, it is usually necessary to also
+create some global variables...</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'># variáveis
+globais</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>agora_joga = 0</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB>The player who plays each turn (0 - computer; 1 - human).</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB>And then the board, the list of shots and the number of muffins not
+yet eaten / found, either by the human player or the computer:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'># tabuleiro, lista
+de tiros e queques não comidos - do jogador humano</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>tab_humano = None</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>lista_humano_tiros
+= []</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>quequesH_nao_comidos
+= 0</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'># tabuleiro, lista
+de tiros e queques não comidos - do computador</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>tab_computador =
+None</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>lista_computador_tiros
+= []</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>quequesC_nao_comidos
+= 0</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Variables </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>quequesC_nao_comidos</span><span
+lang=EN-GB> and </span><span lang=EN-GB style='font-size:9.0pt;font-family:
+"Courier New"'>quequesH_nao_comidos</span><span lang=EN-GB> determine the
+number of cupcakes left to finish the game.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img width=36 height=36 id="Graphic 16"
+  src="t9b_cupcakes.fld/image003.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>Why is it
+  that in p5 it is necessary to create all these global variables?</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='color:white'>Creating the board</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>The board consists of a matrix, which is
+typically formed by a vector of vectors. In Pyhon it is implemented through a
+tuple with 10 lines, each line being a tuple of 10 values. Since tuples are
+immutable, they define a tray of constant values. For this reason, shots will
+not be able to directly change the board, being stored in a list for later
+being displayed.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Function </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>cria_tabuleiro(lin, col,
+fornada)</span><span lang=EN-GB> has 3 parameters:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>lin</span><span
+lang=EN-GB>, the number of lines on the board (integer);</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>colunas</span><span
+lang=EN-GB>, the number of columns on the board (integer);</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>fornada</span><span
+lang=EN-GB>, a matrix with the configuration of the cupcake plates to be placed
+on the tray.</span></p>
+
+<p class=MsoNormal style='margin-left:18.0pt'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:18.0pt'><span lang=EN-GB>The algorithm
+consists of 2 steps:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Create an empty board;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-GB>Place the plates with the muffins on the board at random.</span></p>
+
+<h2><span lang=EN-GB>3.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Create an empty board</span></h2>
+
+<p class=MsoNormal><span lang=EN-GB>In this step of the algorithm, a list of 10
+tuples is created, each with 10 zeros.</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'># construtor -
+cria tabuleiro com dimensão lin x col</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def
+cria_tabuleiro(lin, col, fornada):</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    # cria um
+tabuleiro inicial como uma lista de linhas de 0s (vazio)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    tab = []</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    for i in
+range(lin):</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        tab.append((0,)*col)
+# coloca linha de 0s </span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img width=36 height=36 id="Graphic 18"
+  src="t9b_cupcakes.fld/image003.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>Also, in the
+  previous section we mentioned that our board is a tuple ... But although the
+  goal is to have a final board that is a tuple, for its construction it is
+  convenient to use a list first, because it is changeable.</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>What does the
+  following statement?</span></p>
+  <p class=MsoNormal align=center style='text-align:center;text-autospace:none'><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>(0,)*col</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>Creates a
+  tuple with as many 0 as the </span><span lang=EN-GB style='font-size:9.0pt;
+  font-family:"Courier New"'>col</span><span lang=EN-GB> variable. That is, if </span><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>col</span><span
+  lang=EN-GB> is 10, it creates the tuple:</span></p>
+  <p class=MsoNormal align=center style='text-align:center;text-autospace:none'><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>(0,0,0,0,0,0,0,0,0,0)</span></p>
+  <p class=MsoNormal align=center style='text-align:center;text-autospace:none'><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img width=36 height=36 id="Graphic 22"
+  src="t9b_cupcakes.fld/image004.jpg" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB
+  style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>Something to
+  think about ...</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>A tuple with
+  only one element is represented with a comma:</span></p>
+  <p class=MsoNormal align=center style='text-align:center;text-autospace:none'><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>(0,)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>Because if
+  you use the following expression you get, not a tuple, but an integer (the
+  number zero).</span></p>
+  <p class=MsoNormal align=center style='text-align:center;text-autospace:none'><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>(0)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>In reality,
+  it is not even necessary to place the parentheses. Just define the sequence
+  of tuple values separated only by commas:</span></p>
+  <p class=MsoNormal align=center style='text-align:center;text-autospace:none'><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>tuplo = 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0</span></p>
+  <p class=MsoNormal align=center style='text-align:center;text-autospace:none'><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<h2><span lang=EN-US>3.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US style='color:white'>Place the muffin plates on
+the tray</span></h2>
+
+<p class=MsoNormal><span lang=EN-US>The algorithm goes through the tuple that
+defines the types of dishes to be placed (the </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>FORNADA</span><span
+lang=EN-US>) and, for each dish of that type, tries to place it on the board in
+a random position.</span></p>
+
+<p class=MsoNormal><span lang=EN-US>In this step of the algorithm, which is
+random, it may not be possible to place all the dishes on the board. It depends
+a little on the &quot;arrangement&quot; of these. For that, a maximum of 50
+attempts was defined. If it is not possible to place any of the dishes, the
+function returns</span><span lang=EN-US style='font-size:9.0pt;font-family:
+"Courier New"'> </span><span lang=EN-GB style='font-size:9.0pt;font-family:
+"Courier New"'>False</span><span lang=EN-GB>.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    # para cada
+tipo de prato</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    for n, comp in
+fornada:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        # para
+cada numero de pratos</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        for i in
+range(n): # lado esquerdo do par e' a quantidade</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            #
+coloca os queques no tabuleiro</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            for i
+in range(MAX_TENTATIVAS):</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>                #
+determina coordenadas aleatorias</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>                l
+= random.randint(0, lin-1)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>                c
+= random.randint(0, col-comp-1)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+linha = tab[l]</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>                #
+verifica se há espaço livre na linha</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>                if
+linha[c:c+comp].count(0) == comp:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>                   
+tab[l] = linha[:c] + (comp, )*comp + linha[c+comp:]</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>                   
+break</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            else:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>                #
+nao e' possivel criar o prato no tabuleiro</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+return False</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    return
+tuple(tab)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img width=36 height=36 id="Graphic 3"
+  src="t9b_cupcakes.fld/image003.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>The tuple
+  conversion function (</span><span lang=EN-GB style='font-size:9.0pt;
+  font-family:"Courier New"'>tuple</span><span lang=EN-GB>) converts the board
+  from a list to a tuple.</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>From this
+  conversion, the board is immutable.</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>What
+  advantages could creating the board with lists only?</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>Something to
+  think about as you read the next chapter.</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB>4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='color:white'>User interface</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>The user interface is graphical,
+representing two boards, side by side.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-GB><img
+width=351 height=185 id="Picture 17" src="t9b_cupcakes.fld/image005.jpg"
+alt="A picture containing drawing&#10;&#10;Description automatically generated"></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-GB>The board on the
+left is that of the human player, where he visualizes the placement of his
+cupcakes and the shots taken by the opponent.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-GB>The board on the
+right side shows the cupcakes guessed by the human player and the false shots.</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Function </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>desenhaUI()</span><span
+lang=EN-US> draws in the graphical window p5, following the following algorithm:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>def desenhaUI():</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>    global tab_humano,
+lista_humano_tiros</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-US>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Definition of grid dimensions and origins of the
+boards in the window: (ox1, oy) and (ox2, oy) draw squares of the two boards;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>    </span><span
+lang=PT style='font-size:9.0pt;font-family:"Courier New"'>quadricula = min(
+(LARGURA-40) // COLUNAS // 2, (ALTURA -50) // LINHAS )</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>    ox1 = (LARGURA - 2 *
+COLUNAS * quadricula) // 2 -20</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>    ox2 = LARGURA // 2 + 20</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>    </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>oy = (ALTURA - LINHAS *
+quadricula) // 2</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-GB>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Draw the squares of the two boards;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    fill(&quot;white&quot;)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    rect((ox1,
+oy), quadricula * COLUNAS, quadricula* LINHAS)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    rect((ox2,
+oy), quadricula * COLUNAS, quadricula* LINHAS)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    for i in
+range(1,LINHAS):</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+line((ox1+i*quadricula, oy), \</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+(ox1+i*quadricula, oy + LINHAS * quadricula))</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+line((ox2+i*quadricula, oy), \</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            (ox2+i*quadricula,
+oy + LINHAS * quadricula))</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    for i in
+range(1,COLUNAS):</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        line((ox1,
+oy + i * quadricula), \</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            (ox1 +
+COLUNAS * quadricula, oy + i * quadricula))</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        line((ox2,
+oy + i * quadricula), \</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            (ox2 +
+COLUNAS * quadricula, oy + i * quadricula))</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-GB>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Draw the player's muffins as yellow circles on
+the left board;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    # desenha os
+queques do jogador</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    ponto = (ox1 +
+quadricula//2, oy + quadricula//2)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    for lin in
+tab_humano:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        for queque
+in lin:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            if
+queque &gt; 0:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+fill(&quot;yellow&quot;)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+circle(ponto, quadricula//2)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            ponto
+= move_ponto(ponto, quadricula, 0)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        ponto =
+move_ponto(ponto, -COLUNAS*quadricula, quadricula)</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-GB>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Draw the player's shots on the right board as
+red dots if he hits, or red crosses if he misses;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>  # desenha os
+tiros do jogador</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    for lin, col,
+tiro in lista_humano_tiros:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        if tiro
+&gt; 0:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            ponto
+= (ox2 + quadricula//2 + col*quadricula, \</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>                    
+oy + quadricula//2 + lin*quadricula)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+fill(&quot;red&quot;)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+circle(ponto, quadricula//2)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        else:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            ponto
+= (ox2 + col*quadricula, oy + lin*quadricula)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+stroke(&quot;red&quot;)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+line(ponto, move_ponto(ponto,quadricula, quadricula))</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+line(move_ponto(ponto, 0, quadricula), \</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+move_ponto(ponto,quadricula, 0))</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+stroke(&quot;black&quot;)</span></p>
+
+<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-GB>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Draw computer shots as red crosses on the left
+board.</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'># desenha os tiros
+do computador</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    for lin, col,
+tiro in lista_computador_tiros:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        ponto =
+(ox1 + lin*quadricula, oy + col*quadricula)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+stroke(&quot;red&quot;)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+line(ponto, move_ponto(ponto,quadricula, quadricula))</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+line(move_ponto(ponto, 0, quadricula), move_ponto(ponto,quadricula, 0))</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+stroke(&quot;black&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>An auxiliary function was used to calculate
+the displacement of points:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'># desloca um ponto</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def
+move_ponto(ponto, x, y):</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    return
+(ponto[0]+x, ponto[1]+y)</span></p>
+
+<h1><span lang=EN-GB>5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Game setup</span></h1>
+
+<p class=MsoNormal><span lang=EN-US>Function </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>setup() </span><span
+lang=EN-GB>creates the graphic window with the two trays and updates the number
+of cupcakes present on these trays, using the auxiliary function</span><span
+lang=EN-GB> </span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>soma_queques(</span><span
+lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>)</span><span
+lang=EN-US>.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>At the end, it determines, randomly, who
+should start the game, using the global variable </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>agora_joga</span><span
+lang=EN-GB>.</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'># inicialização do
+jogo</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def setup():</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    global
+tab_computador, tab_humano, \</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:36.0pt'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    quequesC_nao_comidos,
+quequesH_nao_comidos</span><span lang=EN-GB style='font-size:9.0pt;font-family:
+"Courier New"'>, jogador</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    # dimensão da
+janela</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    size(LARGURA,
+ALTURA)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+title(&quot;Jogo dos queques&quot;)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    # cria os
+tabuleiros com os queques</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    tab_humano =
+cria_tabuleiro(LINHAS, COLUNAS, TABULEIRO)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    tab_computador
+= cria_tabuleiro(LINHAS, COLUNAS, TABULEIRO)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    if not
+tab_computador or not tab_humano:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+print(&quot;Não foi possível criar o tabuleiro&quot;)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        exit()</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    else:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        quequesH_nao_comidos
+= quequesC_nao_comidos = soma_queques(FORNADA)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    # determina
+quem joga primeiro (computador - 0 / humano - 1)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    jogador =
+random.randint(0,1)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>The auxiliary function </span><span
+lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>soma_queques()</span><span
+lang=EN-US> </span><span lang=EN-US>returns the sum of the products between the
+number of plates (n) and the number of muffins (q) in each of these plates. The
+value of this sum is, after all, the total number of cupcakes contained in
+FORNADA:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def soma_queques(fornada):</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    soma = 0</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    for n, q in fornada:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        soma += n*q</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    return soma</span></p>
+
+<h1><span lang=EN-GB>6<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The game loop</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>The game loop is implemented in p5 with the
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>draw()</span><span
+lang=EN-GB> function, following the algorithm:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-GB>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Draw the player's UI;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-GB>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>If the computer is playing, it determines a random
+&quot;shoot&quot; (the human player plays in the event of the mouse);</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>If the computer fails the shoot, the turn changes
+to the human player;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:18.0pt;text-indent:-18.0pt'><span
+lang=EN-GB>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Checks if any player has won.</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'># ciclo de jogo</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def draw():</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    global
+tab_computador, tab_humano, quequesC, quequesH, jogador, \</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>lista_humano_tiros,
+lista_computador_tiros</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    # desenha o
+interface do jogador</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    desenhaUI()</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    # jogada do
+computador</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    if jogador ==
+0:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        # tiro
+aleatório</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        l =
+random.randint(0, LINHAS-1)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        c =
+random.randint(0, COLUNAS-1)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        </span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        tiro =
+tab_humano[l][c]</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+lista_computador_tiros.append((l, c, tiro))</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+#print('Jogada do computador: '+ str(l) + &quot; : &quot; + str(c))</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        # se
+falhou muda de jogador </span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        if tiro ==
+0: </span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+jogador = 1 # passa para o jogador humano</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        else:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+quequesH -= 1</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    # verifica se
+alguem ganhou</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    if quequesC ==
+0:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+print(&quot;Parabens! É o vencedor.&quot;)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        exit()</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    elif quequesH
+== 0:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+print(&quot;Perdeu... O computador venceu.&quot;)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        exit() </span></p>
+
+<h1><span lang=EN-GB>7<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Mouse interaction</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>In this game, we chose to use the mouse to
+directly select the grid in order to make the interaction more intuitive. In p5
+the function that receives the events of pressing the mouse is </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>mouse_pressed().</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The algorithm is simple:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>If the human player is playing, determines the square
+selected using the mouse coordinates </span><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>(mouse_x, mouse_y)</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Perform the player's shot and check if he hit
+any cupcake ...</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>If you didn't get it right, then switch to the
+other player;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-GB>If you got it right, then decrease the number of muffins left to
+guess.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+evento do rato - jogada do jogador humano</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def
+mouse_pressed():</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    global
+tab_computador, lista_humano_tiros, jogador, quequesC</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    # jogada do
+humano</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    if jogador ==
+1:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        tiro =
+get_rato(mouse_x, mouse_y)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        if tiro:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            l =
+tiro[0]</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            c =
+tiro[1]</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            alvo =
+tab_computador[l][c]</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+lista_humano_tiros.append((l,c, alvo))</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            # se
+falhou muda de jogador</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            if alvo
+== 0: </span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+jogador = 0 # passa para o jogador computador</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>            else:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+quequesC -= 1</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>An auxiliary function was used to determine
+the square selected with the mouse coordinates</span><span lang=EN-GB>. </span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def get_rato(x,
+y):</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    quadricula =
+min( (LARGURA-40) // COLUNAS // 2, (ALTURA -50) // LINHAS )</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    ox2 = LARGURA
+// 2 + 20</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    oy = (ALTURA -
+LINHAS * quadricula) // 2</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    c = (x-ox2) //
+quadricula</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    l = (y-oy) //
+quadricula</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    if l&gt;=0 and
+l&lt;LINHAS and c&gt;=0 and c&lt;COLUNAS:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        return (l,
+c)</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    else:</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>        return
+False</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The function returns a pair of coordinates </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>(row, column)</span><span
+lang=EN-GB> if the mouse was pressed inside the right grid, or </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>False</span><span
+lang=EN-GB> otherwise.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Don't forget to add the instruction that
+executes p5 at the end.</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>if __name__ ==
+'__main__':</span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>    run()</span></p>
+
+<h1><span lang=EN-GB>8<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Final Challenge</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>In this solution, the restriction was made
+that the trays were only horizontal. Add the possibility that the tray also has
+vertical trays. And the impossibility of the boards being together, forcing at
+least one square to separate each two boards.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img width=36 height=36 id="Graphic 1"
+  src="t9b_cupcakes.fld/image006.jpg" alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><b><span lang=EN-GB>Share</span></b><span
+  lang=EN-GB> your game!</span></p>
+  <p class=MsoNormal style='text-autospace:none'><i><span lang=EN-GB>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

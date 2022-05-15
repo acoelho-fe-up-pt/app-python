@@ -1,0 +1,859 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.codigo, li.codigo, div.codigo
+	{mso-style-name:codigo;
+	mso-style-link:"codigo Char";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:17.85pt;
+	page-break-after:avoid;
+	font-size:9.0pt;
+	font-family:"Courier New";}
+span.codigoChar
+	{mso-style-name:"codigo Char";
+	mso-style-link:codigo;
+	font-family:"Courier New";
+	font-weight:normal;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=EN-GB style='color:black'>O jogo das cartas</span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=EN-GB>It is a card game for two players (one
+human and the computer), which takes place in 10 moves with a 40-card deck of
+cards for the computer and a 40-card deck of paper cards for the human player. </span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Similar to the so-called &quot;battle
+game&quot;, the rules for each move are quite simple:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Each player takes a card from his deck and the
+two cards are confronted;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The player with the highest card wins 2 points
+(1 point per card);</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>If the cards have the same figure, there is a
+tie, and each player draws one more card. Whoever wins gets 4 points (2 points
+for each card).</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>And in the event of consecutive draws, 2 more
+points will always be added for every two cards that face each other.</span></p>
+
+<h1><span lang=EN-GB>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>First version of the game </span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>To create the game, we need to define some
+global variables and literals. </span></p>
+
+<p class=codigo><span lang=EN-GB>import random</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB>BARALHO = &quot;23456QJK7A&quot;</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB># score for the two players</span></p>
+
+<p class=codigo><span lang=EN-GB>scoreComputer = 0</span></p>
+
+<p class=codigo><span lang=EN-GB>scoreHuman = 0</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB># maximum number of moves</span></p>
+
+<p class=codigo><span lang=EN-GB>moves = 10</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB># conta as cartas em caso de empate</span></p>
+
+<p class=codigo><span lang=EN-GB>tie = 0</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The literal </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>BARALHO</span><span
+lang=EN-GB> contains the sequence of figures of the cards in the digital deck,
+ordered in ascending value, therefore, from the lowest value (2) to the highest
+(A). </span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img width=36 height=36 id="Graphic 2"
+  src="t6b_jcards.fld/image001.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Observe the position of card 7. It does not appear immediately
+  after card 6!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>This is a special card that is only beaten by the ace.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB style='color:white'>Then, the score
+variables of the human player and the computer are set, initialized to zero.
+Finally the maximum number of moves (10). There is also an additional variable
+(</span><span lang=EN-GB>tie) that allows counting the score to be awarded in
+the event of a tie or consecutive ties.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>We will define a function </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>jogada</span><span
+lang=EN-GB> to interact with the human player. The player takes a card from his
+deck (on paper) and the function played </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>jogada</span><span
+lang=EN-GB> is called with the card's figure as an argument.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The algorithm for each move can be as
+follows:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The computer takes out a card;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The cards of both players are presented;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span lang=EN-GB>Sub-problem</span></b><span lang=EN-GB> logic
+of the game;</span></p>
+
+<p class=MsoListParagraphCxSpLast align=left style='text-align:left;text-indent:
+-18.0pt'><span lang=EN-GB>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>If the 10 moves are over then:<br>
+<b>Subproblem</b> presenting the winner</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>To simplify, we leave as subproblems: 1)
+logic of the game, which consists of the application of the rules of the game
+and determination of the scores, which are global variables; 2) present the
+winner.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Analise carefully, the implementation of
+the function </span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>jogada</span><span
+lang=EN-GB>:</span></p>
+
+<p class=codigo><span lang=EN-GB>def jogada(cardHuman):    </span></p>
+
+<p class=codigo><span lang=EN-GB>    print(&quot;*** Move of the game ***&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB>    # 1. The computer takes out a card</span></p>
+
+<p class=codigo><span lang=EN-GB>    cardComputer = random.choice(BARALHO)</span></p>
+
+<p class=codigo><span lang=EN-GB>                </span></p>
+
+<p class=codigo><span lang=EN-GB>    # 2. The cards of both players are
+presented</span></p>
+
+<p class=codigo><span lang=EN-GB>    print(&quot;Computer:&quot;, cardComputer)</span></p>
+
+<p class=codigo><span lang=EN-GB>    print(&quot;Human:&quot;, cardHuman)</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB>    # 3. Sub-problem logic of the game</span></p>
+
+<p class=codigo><span lang=EN-GB>    logica_jogo(cardComputer, cardHuman)</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB>    # 4. If game is over</span></p>
+
+<p class=codigo><span lang=EN-GB>    if moves == 0:</span></p>
+
+<p class=codigo><span lang=EN-GB>        print(&quot;O jogo terminou...&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>        # Subproblem presenting the winner</span></p>
+
+<p class=codigo><span lang=EN-GB>        vencedor()</span></p>
+
+<p class=codigo><span lang=EN-GB>    else:</span></p>
+
+<p class=codigo><span lang=EN-GB>        print(&quot;You have &quot;, moves,
+&quot;moves.&quot;)</span></p>
+
+<p class=MsoNormal style='margin-top:0cm'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img width=36 height=36 id="Graphic 6"
+  src="t6b_jcards.fld/image002.png" alt=Eye></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>The figure of the computer's card is obtained through the function
+  </span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>random.choice()</span><span
+  lang=EN-GB style='font-size:9.0pt'>with the string </span><span lang=EN-GB
+  style='font-size:9.0pt;font-family:"Courier New"'>BARALHO</span><span
+  lang=EN-GB style='font-size:9.0pt'>.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB style='font-size:9.0pt'>But this function does not guarantee that
+  the same figure will not come out repeatedly...</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB style='color:white'>Before starting the
+game logic, it is convenient to d</span><span lang=EN-GB>efine a simple
+function that determines the value of the figure of the card. </span></p>
+
+<p class=codigo><span lang=EN-GB># returns the value of the figure</span></p>
+
+<p class=codigo><span lang=EN-GB>def valor(figure):</span></p>
+
+<p class=codigo><span lang=EN-GB>    return BARALHO.index(figure)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Since the literal </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>BARALHO</span><span
+lang=EN-GB> have the card figures in sequence, we use the method <a
+href="https://www.w3schools.com/python/ref_list_index.asp"><span
+style='font-size:9.0pt;font-family:"Courier New"'>index()</span></a> to
+determine the sequence number.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The game logic algorithm will be a multiple
+selection structure with the following conditions:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>If the computer card &gt; human card then:</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Give points to the human player</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-GB>decrement the moves</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>If not, If the computer card &lt; human card then</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Give points to the computer</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=EN-GB>decrement the moves</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>If not... Tie.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Notice that the scoring of points to the winner
+includes not only the 2 cards in confrontation, but also the previous cards, in
+case of previous ties. In the event of a tie, the same move remains until a
+tiebreak occurs.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The game logic code is as follows.</span></p>
+
+<p class=codigo><span lang=EN-GB>def logica_jogo(comp, hum):</span></p>
+
+<p class=codigo><span lang=EN-GB>    global scoreComputer, scoreHuman, tie, moves</span></p>
+
+<p class=codigo><span lang=EN-GB>   </span></p>
+
+<p class=codigo><span lang=EN-GB>    if valor(comp) &gt; valor(hum):</span></p>
+
+<p class=codigo><span lang=EN-GB>        print(2 + tie * 2, &quot;points for
+the computer.&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>        scoreComputer += 2 + tie * 2</span></p>
+
+<p class=codigo><span lang=EN-GB>        moves -= 1</span></p>
+
+<p class=codigo><span lang=EN-GB>        tie = 0</span></p>
+
+<p class=codigo><span lang=EN-GB>    elif valor(comp) &lt; valor(hum):</span></p>
+
+<p class=codigo><span lang=EN-GB>        scoreHuman += 2 + tie * 2</span></p>
+
+<p class=codigo><span lang=EN-GB>        print(2 + tie * 2, &quot;points to the
+human player.&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>        moves -= 1</span></p>
+
+<p class=codigo><span lang=EN-GB>        tie = 0</span></p>
+
+<p class=codigo><span lang=EN-GB>    else:</span></p>
+
+<p class=codigo><span lang=EN-GB>        tie += 1</span></p>
+
+<p class=codigo><span lang=EN-GB>        print(&quot;Tie... Play again...&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB>    # score </span></p>
+
+<p class=codigo><span lang=EN-GB>    print(&quot;Computer&quot;, scoreComputer,
+&quot;vs&quot;, scoreHuman, &quot;Human&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='height:18.35pt'>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><b><span lang=EN-GB><img border=0 width=36 height=36
+  id="Graphic 7" src="t6b_jcards.fld/image003.png" alt="Balloon animal"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=EN-GB>Try this first version of the game,
+  through the command line.</span></p>
+  <p class=MsoNormal><i><span lang=EN-GB>For each move, call the function </span></i><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>jogada()</span><i><span
+  lang=EN-GB> with the figure of the card obtained by you:</span></i></p>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&gt;&gt;&gt;
+  jogada (&quot;7&quot;)</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB style='color:black'>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='color:black'>An improved version!</span></h1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 8"
+  src="t6b_jcards.fld/image001.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB>You certainly felt that the need to call
+  the function </span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>jogada()</span><span
+  lang=EN-GB> at each move somewhat broke the feeling of &quot;immersion&quot;
+  in the game. Would it be possible for the computer itself to iterate between
+  moves, automatically? </span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>The answer is yes... We can use a cicle - <a
+  href="https://www.w3schools.com/python/python_while_loops.asp">while</a>. We
+  will cover this control structure in the next chapter. For now, keep in mind
+  that this structure always repeats your block of code while the conditional
+  expression is evaluated as </span><span lang=EN-GB style='font-size:9.0pt;
+  font-family:"Courier New"'>True</span><span lang=EN-GB>.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=EN-GB>Notice the fact that the use of global variables complicates the
+reading of the algorithm. In this new version, we will only use local
+variables, as a principle of good programming. Only the literal </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>BARALHO</span><span
+lang=EN-GB> will remain.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Function </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>jogo()</span><span
+lang=EN-GB> that we're going to create, encompasses all the game variables and
+also the game logic.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Before steping into function </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>jogo()</span><span
+lang=EN-GB> , we will remember function </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>valor()</span><span
+lang=EN-GB>and introduce function</span><span lang=EN-GB style='font-size:9.0pt;
+font-family:"Courier New"'> vencedor().</span></p>
+
+<p class=MsoNormal style='margin-left:18.0pt'><span lang=EN-GB>The winning
+function follows the following algorithm:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Header indicating the end of the game</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Multiple selection structure to determine the
+game's final result:</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-GB>a.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Victory of the human player;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-GB>b.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Computer victory;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=EN-GB>c.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>A tie.</span></p>
+
+<p class=codigo><span lang=EN-GB>import random</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB>BARALHO = &quot;23456QJK7A&quot;</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB># returns the serial number of the card in the
+deck</span></p>
+
+<p class=codigo><span lang=EN-GB>def valor(figure):</span></p>
+
+<p class=codigo><span lang=EN-GB>    return BARALHO.index(figure)</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB># shows the winner</span></p>
+
+<p class=codigo><span lang=EN-GB>def vencedor(pontosComputador, pontosHumano):</span></p>
+
+<p class=codigo><span lang=EN-GB>    print(&quot;&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>    print(&quot;Game Over...&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>    </span><span lang=PT>print(&quot;----
+Final Result ----&quot;)</span></p>
+
+<p class=codigo><span lang=PT>    print(&quot;Computer&quot;, pontosComputador,
+&quot;vs&quot;, pontosHumano, &quot;Human&quot;)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>    if pontosHumano &gt; pontosComputador:</span></p>
+
+<p class=codigo><span lang=PT>        print (&quot;You won!&quot;)</span></p>
+
+<p class=codigo><span lang=PT>    elif pontosHumano &lt; pontosComputador:</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;You lost.&quot;)</span></p>
+
+<p class=codigo><span lang=PT>    else:</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;Tie...&quot;)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>def jogo(jogadas):</span></p>
+
+<p class=codigo><span lang=PT>    </span><span lang=EN-GB># score of both
+players</span></p>
+
+<p class=codigo><span lang=EN-GB>    pontosComputador = 0</span></p>
+
+<p class=codigo><span lang=EN-GB>    </span><span lang=PT>pontosHumano = 0</span></p>
+
+<p class=codigo><span lang=PT>    pontos = 2</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>    while jogadas&gt;0:</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;*** Move ***&quot;)</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;Computer&quot;,
+pontosComputador, &quot;vs&quot;, pontosHumano, &quot;Human&quot;)        </span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>        # input - jogada do computador e do
+jogador humano</span></p>
+
+<p class=codigo><span lang=PT>        cartaHumano = input(&quot;Human: &quot;)</span></p>
+
+<p class=codigo><span lang=PT>        cartacomputador = random.choice(BARALHO)</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;Computer:&quot;,
+cartacomputador)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>        # game logic</span></p>
+
+<p class=codigo><span lang=PT>        if valor(cartacomputador) ==
+valor(cartaHumano):</span></p>
+
+<p class=codigo><span lang=PT>            </span><span lang=EN-GB># tie</span></p>
+
+<p class=codigo><span lang=EN-GB>            print(&quot;Tie... Play
+again...&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>            </span><span lang=PT>pontos += 2</span></p>
+
+<p class=codigo><span lang=PT>        elif valor(cartacomputador) &gt; valor(cartaHumano):</span></p>
+
+<p class=codigo><span lang=PT>            </span><span lang=EN-GB>print(pontos,
+&quot;points to the computer.&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>            </span><span lang=PT>pontosComputador
++= pontos</span></p>
+
+<p class=codigo><span lang=PT>            jogadas -= 1</span></p>
+
+<p class=codigo><span lang=PT>            pontos = 2</span></p>
+
+<p class=codigo><span lang=PT>        else:</span></p>
+
+<p class=codigo><span lang=PT>            </span><span lang=EN-GB>print(pontos,
+&quot;points to the human player.&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>            </span><span lang=PT>pontosHumano
++= pontos</span></p>
+
+<p class=codigo><span lang=PT>            jogadas -= 1</span></p>
+
+<p class=codigo><span lang=PT>            pontos = 2</span></p>
+
+<p class=codigo><span lang=PT> </span></p>
+
+<p class=codigo><span lang=PT>        # end of the move</span></p>
+
+<p class=codigo><span lang=PT>        </span><span lang=EN-GB>print(&quot;You
+have&quot;, jogadas, &quot;moves.&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB>    </span><span lang=PT># end of the game</span></p>
+
+<p class=codigo><span lang=PT>    vencedor(pontosComputador, pontosHumano)</span></p>
+
+<p class=codigo style='margin-left:0cm'><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 4"
+  src="t6b_jcards.fld/image001.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Look at function </span><span lang=EN-GB style='font-size:9.0pt;
+  font-family:"Courier New"'>jogo </span><span lang=EN-GB>and determine the
+  main changes compared to the previous version of the game.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=EN-GB>Check out the main changes that occurred:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The global variables </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>scoreComputer</span><span
+lang=EN-US> </span><span lang=EN-GB>and </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>scoreHuman</span><span
+lang=EN-GB> became local variables </span><span lang=EN-US style='font-size:
+9.0pt;font-family:"Courier New"'>pontosComputador</span><span lang=EN-US> and </span><span
+lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>pontosHumano</span><span
+lang=EN-US> </span><span lang=EN-GB>of the function </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>jogo</span><span lang=EN-GB>;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The global variable </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>moves</span><span lang=EN-GB>
+has become a parameter of function </span><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>jogo</span><span lang=EN-GB>. This allows you
+to configure the game according to the number of moves you prefer to play;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The global variable </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>tie</span><span lang=EN-GB>
+was replaced by the local variable </span><span lang=EN-US style='font-size:
+9.0pt;font-family:"Courier New"'>pontos</span><span lang=EN-GB>;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The interaction with the player started to be
+done with the function </span><span lang=EN-US style='font-size:9.0pt;
+font-family:"Courier New"'>input()</span><span lang=EN-GB>.</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The game end condition has passed to the </span><span
+lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>while</span><span
+lang=EN-US> </span><span lang=EN-GB>cycle, which repeats the moves indefinitely
+until the variable </span><span lang=EN-US style='font-size:9.0pt;font-family:
+"Courier New"'>jogadas</span><span lang=EN-GB> reaches the value </span><span
+lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>0</span><span
+lang=EN-GB>. </span></p>
+
+<h1><span lang=EN-GB>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Final challenge</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>Change the game so that it does not end
+after a certain number of moves, but when one of the players reaches a certain score
+value (10 points, for example, that would be defined as a function parameter).</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 1"
+  src="t6b_jcards.fld/image004.png" alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Share <b>your</b> game!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=EN-GB>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

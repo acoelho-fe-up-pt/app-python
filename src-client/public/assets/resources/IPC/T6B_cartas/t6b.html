@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style>
+        .botao {
+          background-color: rgb(51, 101, 192);
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>        
+</head>
+<body>
+
+<h2>O jogo das cartas</h2>
+<p id = "score">Humano: 0 vs Computador: 0</p>
+<p><button type="button" onclick="jogo()">Jogar</button></p>
+<p><button type="button" onclick="reset()">Reset</button></p>
+
+<p><br>Após jogar o jogo, pode passar ao tutorial.</p>
+
+<a href = "t6b_jcartas.html" class="botao" title='Tutorial'>Tutorial</a>
+<script>
+    const BARALHO = "23456QJK7A"
+
+    var pontosComputador = 0
+    var pontosHumano = 0
+    var empate = 0
+    var jogada = 1
+
+    function da_carta()
+    {
+      return Math.floor(Math.random() * BARALHO.length)
+    }
+
+    function jogo()
+    {
+      var cartaComputador = da_carta()
+      var cartaHumano = da_carta()
+      var textoJogada = ""
+
+      // compoe mensagem da jogada
+      pontos = 2 + 2 * empate
+      textoJogada += "Jogada " + jogada + ":\n"
+      textoJogada += "Carta do jogador humano:  " + BARALHO[cartaHumano] + ":\n"
+      textoJogada += "Carta do computador:  " + BARALHO[cartaComputador] + ":\n"
+
+      if (cartaHumano > cartaComputador)
+      {
+        textoJogada +="Ganhou o Humano.\n" 
+        pontosHumano += pontos
+        jogada++
+        empate = 0
+      }else if (cartaHumano < cartaComputador)
+      {
+        textoJogada +="Ganhou o computador.\n" 
+        pontosComputador += pontos
+        jogada++
+        empate = 0
+      }else{
+        textoJogada +="Empate. Jogue novamente.\n" 
+        empate++
+      } 
+
+      // output
+      window.alert(textoJogada);
+      document.getElementById("score").innerHTML = "Humano: " + pontosHumano.toString() + " vs Computador: " + pontosComputador.toString();
+    }
+
+    function reset()
+    {
+      pontosComputador = 0
+      pontosHumano = 0
+      empate = 0
+      jogada = 0
+
+      document.getElementById("score").innerHTML = "Humano: " + pontosHumano.toString() + " vs Computador: " + pontosComputador.toString();
+    }
+
+</script>
+    
+</body>
+</html> 

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style>
+        .botao {
+          background-color: rgb(51, 101, 192);
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>        
+</head>
+<body>
+
+<h2>Guess the Word</h2>
+<p>List of words: <input type="text" id="lista" name="lista" value="Porto, Lisboa, Braga, Faro, Bragança"></p>
+<p><button type="button" onclick="jogo(5)">Play</button></p>
+
+<p><br>After playing the game, you can proceed to the tutorial.</p>
+
+<a href = "t8a_guess_word.html" class="botao" title='Tutorial'>Tutorial</a>
+<script>
+function jogo(tentativas){
+    lista = document.getElementById("lista").value;
+    palavras = lista.split(", ");
+
+    // seleção da chave da lista de palavras
+    var chave = palavras[Math.floor(Math.random()* palavras.length)];
+    var palavra = "";
+    for (c=0; c<chave.length; c++){
+        palavra+= "*";
+    }
+
+    // inicialização das variaveis
+    var jogada = 1;
+    var letras_erradas = "";
+
+    // ciclo de jogo
+    while (chave != palavra && tentativas > 0)
+    {
+        var texto = "Move " + jogada + " (" + tentativas + " tries): " + palavra + "\nwrong letters: " + letras_erradas + "\n";
+        letra = window.prompt(texto + "Guess a letter: ");
+        if (letra == null)
+            return;
+    
+        // desvendar a palavra
+        var npalavra = "";
+        for (i=0;  i<chave.length; i++)
+            if (chave[i].toLowerCase() == letra.toLowerCase())
+                npalavra += chave[i];
+            else
+                npalavra += palavra[i];
+        
+        if (palavra == npalavra)
+        {
+            letras_erradas += letra;
+            tentativas -= 1;
+        }
+
+        jogada += 1;
+        palavra = npalavra;
+    }            
+    if (tentativas == 0)
+        window.alert("You lost. No more tries... The word was: " + chave);
+    else if(chave == palavra)
+        window.alert("Parabéns!")
+}
+</script>
+    
+</body>
+</html> 

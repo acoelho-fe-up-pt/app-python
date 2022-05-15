@@ -1,0 +1,869 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.codigo, li.codigo, div.codigo
+	{mso-style-name:codigo;
+	mso-style-link:"codigo Char";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:17.85pt;
+	page-break-after:avoid;
+	font-size:9.0pt;
+	font-family:"Courier New";}
+span.codigoChar
+	{mso-style-name:"codigo Char";
+	mso-style-link:codigo;
+	font-family:"Courier New";
+	font-weight:normal;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=EN-GB style='color:black'>The game &quot;Guess
+the number I'm thinking of&quot;</span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=EN-GB>The player is challenged to guess a random
+number from 1 to 100, generated by the computer. The rules are simple:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Each round, the player plays a number;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The computer responds if this number is greater
+or less than the correct number;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB>•<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-GB>In an iterative way, the player makes attempts / moves until guessing
+the number, in which case wins, or exceeds the maximum number of attempts,
+losing the game.</span></p>
+
+<h1><span lang=EN-GB>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The first version of the game</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>Let's start with a simplified version of
+the game. The first part of the program consists of randomly selecting the
+number to guess and, additionally, reading the number of the human player. </span></p>
+
+<p class=MsoNormal><span lang=EN-GB>In Python, the code that implements this
+initialization phase is as follows:</span></p>
+
+<p class=codigo><span lang=EN-GB>import random</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB># numero aleatorio a adivinhar</span></p>
+
+<p class=codigo><span lang=EN-GB>numero = random.randint(1,100)</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB># ler numero do jogador humano</span></p>
+
+<p class=codigo><span lang=EN-GB>jogada = int (input(&quot;Adivinhe o numero (1
+a 100): &quot;))</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Function <a
+href="https://docs.python.org/3/library/random.html#functions-for-sequences">random.randint()</a>
+generates a random number from 1 to 100.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The reading of the number by the human
+player is performed through the function <a
+href="https://www.w3schools.com/python/ref_func_input.asp">input()</a>. As this
+function reads a string of characters, it is necessary to make a type
+conversion, in this case, through the function <a
+href="https://www.w3resource.com/python/built-in-function/int.php">int()</a> to
+obtain an integer number.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Now just check if the player guessed, using
+an alternative decision structure:</span></p>
+
+<p class=codigo><span lang=EN-GB># verifica se venceu</span></p>
+
+<p class=codigo><span lang=EN-GB>if numero == jogada:</span></p>
+
+<p class=codigo><span lang=EN-GB>    print (&quot;Parabens!&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>else:</span></p>
+
+<p class=codigo><span lang=EN-GB>    print (&quot;Perdeu... Era o numero
+&quot;, numero)</span></p>
+
+<p class=MsoNormal style='margin-top:0cm'><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='height:18.35pt'>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><b><span lang=EN-GB><img border=0 width=36 height=36
+  id="Graphic 7" src="t7a_guess.fld/image001.png" alt="Balloon animal"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=EN-GB>Try this first version of the game.</span></p>
+  <p class=MsoNormal><i><span lang=EN-GB>You will certainly find it too
+  difficult to guess the number at first try! </span></i><i><span lang=EN-GB
+  style='font-family:Wingdings'></span></i></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB style='color:black'>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='color:black'>Iterating through plays -
+the game loop</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>You certainly found it frustrating to play
+this game where you only had one chance to guess...</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>A good game has to be fair and balanced. In
+this case, the player must have a set of attempts to guess and, if possible,
+some feedback from the computer so that s/he can devise a strategy to win. We
+will then modify this game to allow 7 attempts and indicate to the player, in
+the case that the player did not guessed the number, and then indicate whether
+the number to be guessed is greater or smaller.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>So this game is not only
+&quot;interactive&quot;, it is &quot;iterative&quot;!</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 8"
+  src="t7a_guess.fld/image002.png" alt=Eye></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>“<i>A game is a form of <b>interactive entertainment</b> where
+  players must <b>overcome challenges</b>, taking <b>actions that are governed
+  by rules</b>, in order to meet a <b>winning condition</b></i>.”</span></p>
+  <p class=MsoNormal align=right style='margin-top:0cm;text-align:right;
+  text-autospace:none'><span lang=EN-GB>Rollings &amp; Adams “on Game Design”</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>In addition to interactivity, this game also has a winning
+  condition: hit the number in a number of attempts not exceeding the
+  established. </span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB style='color:white'>In this new version of
+the game, the </span><span lang=EN-GB>turns are repeated while:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=EN-GB>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The player doesn't guess the number;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=EN-GB>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>the number of attempts does not reach zero.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The combination of the two conditions is
+accomplished through a conjunction, with the logical operator <a
+href="https://www.w3schools.com/python/python_operators.asp">and</a>:</span></p>
+
+<p class=codigo><span lang=EN-GB>                  jogada != numero and
+tentativas &gt; 0</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>This iterative process is implemented
+through the conditional cycle – while:</span></p>
+
+<p class=codigo><span lang=EN-GB> while jogada != numero and tentativas &gt; 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>For each move it is necessary to read the
+number chosen by the player and validate if that number is correct, if it is
+greater or if it is less.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>We will use a multiple selection structure -
+the </span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>if...
+elif... else</span><span lang=EN-GB>.</span></p>
+
+<p class=codigo><span lang=EN-GB>    if numero == jogada:</span></p>
+
+<p class=codigo><span lang=EN-GB>        print (&quot;Parabens!&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>    elif jogada &gt; numero:</span></p>
+
+<p class=codigo><span lang=EN-GB>        print (&quot;Numero muito
+grande...&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>        tentativas = tentativas - 1</span></p>
+
+<p class=codigo><span lang=EN-GB>    else:</span></p>
+
+<p class=codigo><span lang=EN-GB>        print(&quot;Numero muito
+pequeno...&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>        tentativas = tentativas -1</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=EN-GB>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The first conditional expression checks the
+victory condition - guess the number.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=EN-GB>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The second conditional expression checks whether
+the player has failed because his number is greater than the number to guess.
+If so, write a message to the player.</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=EN-GB>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>The last step in the decision structure
+indicates that the number is very small, the other condition.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>In both cases where the player does not
+hit, a reduction of an attempt is made.</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 10"
+  src="t7a_guess.fld/image002.png" alt=Eye></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>One of the foundational principles of games is to provide an
+  immediate feedback to the players about their actions. In this way, the
+  players can improve their play on the next attempt.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>This is also one of the reasons why games are important in
+  learning.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 13"
+  src="t7a_guess.fld/image003.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>The multiple selection structure includes the win condition and
+  two conditions if the player doesn't get it right ...</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>But where is the condition of defeat?</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=EN-GB>The game loop is the basic structure of a game, which allows you to
+make several moves until the victory condition is reached ... Or the player
+runs out of resources (moves, lives, energy, etc.).</span></p>
+
+<span lang=EN-GB style='font-size:10.0pt;font-family:"Calibri",sans-serif'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The game loop is preceded by the
+initialization of the game state.</span></p>
+
+<p class=codigo><span lang=EN-GB>import random</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB># número aleatório a adivinhar e máximo de
+tentativas possíveis</span></p>
+
+<p class=codigo><span lang=EN-GB>numero = random.randint(1,100)</span></p>
+
+<p class=codigo><span lang=EN-GB>tentativas = 7</span></p>
+
+<p class=codigo style='margin-left:0cm'><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 14"
+  src="t7a_guess.fld/image003.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Why was a maximum of 7 attempts defined?</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>The most effective strategy for playing this game is to divide the
+  solution interval into two parts and, considering the answer (&quot;bigger&quot;
+  / &quot;less&quot;), to consecutively divide the resulting interval always by
+  2.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Following this strategy, the maximum number of attempts can be
+  calculated using the expression:  </span><span
+  lang=PT style='font-size:10.0pt;font-family:"Calibri",sans-serif;position:
+  relative;top:2.0pt'><img width=56 height=18 src="t7a_guess.fld/image004.png"></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB style='color:white'>In Python, the code
+that implements the game cycle is, therefor</span><span lang=EN-GB>e, the
+following:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>#
+ciclo de jogo</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>jogada
+= 0 # inicializar a variável</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>while
+jogada != numero and tentativas &gt; 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+jogada = int (input(&quot;Adivinhe o numero (1 a 100): &quot;))</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+tentativas = tentativas - 1</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+# condição de vitória</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+if numero == jogada:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Parabens!&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+# condição de derrota</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+elif tentativas == 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Perdeu... Era o numero&quot;, numero)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+# lógica de jogo</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+elif jogada &gt; numero:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Numero muito grande...&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+else:</span></p>
+
+<p class=codigo><span lang=EN-GB>        print(&quot;Numero muito
+pequeno...&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>This code uses a <a
+href="https://www.w3schools.com/python/python_while_loops.asp">while</a><span
+class=MsoHyperlink> </span>structure to implement the game loop. This structure
+always repeats your code block as long as the conditional expression is
+evaluated as true</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='height:18.35pt'>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><b><span lang=EN-GB><img border=0 width=36 height=36
+  id="Graphic 18" src="t7a_guess.fld/image001.png" alt="Balloon animal"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=EN-GB>Try this new version of the game.</span></p>
+  <p class=MsoNormal><i><span lang=EN-GB>You will certainly find it much more
+  fun.</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 15"
+  src="t7a_guess.fld/image003.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>O que poderia acontecer se a variável </span><span lang=EN-GB
+  style='font-size:9.0pt;font-family:"Courier New"'>jogada</span><span
+  lang=EN-GB> fosse inicializada com um valor entre 1 e 100?</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Observe that it was necessary to initialize the variable </span><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>jogada</span><span
+  lang=EN-GB> with an initial value outside the game range (1 to 100) so that
+  the game cycle can always have at least one move.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>What could happen if the variable </span><span lang=EN-GB
+  style='font-size:9.0pt;font-family:"Courier New"'>jogada</span><span
+  lang=EN-GB> was initialized with a value between 1 and 100?</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB style='color:white'>Finally, the end of the
+game occurs in the first two conditions of the conditional structure: by
+victory or by defeat. When any of these expressions are true, the cycle
+condition will be false and the game cycle will end shortly afterwards</span><span
+lang=EN-GB>...</span></p>
+
+<h1><span lang=EN-GB style='color:black'>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='color:black'>Procedural abstraction - functions</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>Games, when well designed and adapted to
+the player's abilities, are able to focus all their attention on the challenges
+of the game. This psychological state is called &quot;flow&quot;. </span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=576
+ style='width:432.0pt;margin-left:-.25pt;border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border-top:solid windowtext 1.0pt;
+  border-left:solid windowtext 1.0pt;border-bottom:none;border-right:none;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 20"
+  src="t7a_guess.fld/image002.png" alt=Eye></span></b></p>
+  </td>
+  <td width=501 colspan=2 valign=top style='width:376.1pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB><a href="https://en.wikipedia.org/wiki/Flow_(psychology)"><b>Flow</b></a></span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>According to psycologist  <a
+  href="https://en.wikipedia.org/wiki/Mihaly_Csikszentmihalyi">Mihaly
+  Csikszentmihalyi</a>, &quot;flow&quot; is the mental state in which a person
+  performing some activity is fully immersed in a feeling of energized focus,
+  full involvement, and enjoyment in the process of the activity. In essence,
+  flow is characterized by the complete absorption in what one does, and a
+  resulting transformation in one's sense of time.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=158 colspan=2 valign=top style='width:118.2pt;border-top:none;
+  border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'><span lang=EN-GB
+  style='font-size:10.0pt;font-family:"Calibri",sans-serif'><br clear=all
+  style='page-break-before:always'>
+  </span>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-GB><img
+  border=0 width=107 height=106 id="Picture 28" src="t7a_guess.fld/image005.png"></span></p>
+  </td>
+  <td width=418 valign=top style='width:313.8pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>As the player progresses in the game, s/he gains skills (learns)
+  and the tasks become easier. If the difficulty level does not increase, the
+  player is bored and will stop playing. But if the difficulty is too high, the
+  player feels frustrated and will also stop playing.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>There is a narrow strip that keeps the player in a
+  &quot;flowing&quot; state.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>The game designer must be able to parameterize the level of
+  difficulty in order to adapt to the player's skills.</span></p>
+  </td>
+ </tr>
+ <tr height=0>
+  <td width=75 style='border:none'></td>
+  <td width=83 style='border:none'></td>
+  <td width=418 style='border:none'></td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB style='color:white'>Ideally, the game can
+be played with another type of numerical range or another maximum number of
+moves. For this, the ideal is to build a function, which </span><span
+lang=EN-GB>in addition to encapsulating the game code, allows its
+parameterization.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>In Python, the code that implements this
+procedural abstraction is as follows:</span></p>
+
+<p class=codigo><span lang=EN-GB>import random</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB>def jogo(tentativas, minimo, maximo):</span></p>
+
+<p class=codigo><span lang=EN-GB>    # numero aleatorio a adivinhar</span></p>
+
+<p class=codigo><span lang=EN-GB>    numero = random.randint(minimo,maximo)</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB>    # ciclo de jogo</span></p>
+
+<p class=codigo><span lang=EN-GB>    jogada = 0 # inicializar a variável</span></p>
+
+<p class=codigo><span lang=EN-GB>    while jogada != numero and tentativas &gt;
+0:</span></p>
+
+<p class=codigo><span lang=EN-GB>        jogada = int (input(&quot;Adivinhe o
+numero (1 a 100): &quot;))</span></p>
+
+<p class=codigo><span lang=EN-GB>        tentativas = tentativas - 1</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB>        # condição de vitória</span></p>
+
+<p class=codigo><span lang=EN-GB>        if numero == jogada:</span></p>
+
+<p class=codigo><span lang=EN-GB>            print (&quot;Parabens!&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>        # condição de derrota</span></p>
+
+<p class=codigo><span lang=EN-GB>        elif tentativas == 0:</span></p>
+
+<p class=codigo><span lang=EN-GB>            print (&quot;Perdeu... Era o
+numero&quot;, numero)</span></p>
+
+<p class=codigo><span lang=EN-GB>        # lógica de jogo</span></p>
+
+<p class=codigo><span lang=EN-GB>        elif jogada &gt; numero:</span></p>
+
+<p class=codigo><span lang=EN-GB>            print (&quot;Numero muito
+grande...&quot;)</span></p>
+
+<p class=codigo><span lang=EN-GB>        else:</span></p>
+
+<p class=codigo><span lang=EN-GB>            print(&quot;Numero muito
+pequeno...&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>It is not enough to define a function for
+your code to be executed... </span></p>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='height:18.35pt'>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><b><span lang=EN-GB><img border=0 width=36 height=36
+  id="Graphic 19" src="t7a_guess.fld/image001.png" alt="Balloon animal"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=EN-GB>You need to call the function. Example:</span></p>
+  <p class=codigo><span lang=EN-GB>jogo(7, 1, 100)</span></p>
+  <p class=MsoNormal><span lang=EN-GB>Test this new version of the game, experimenting
+  with different value ranges...</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 17"
+  src="t7a_guess.fld/image003.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>The main change compared to the previous version was the
+  encapsulation in the </span><span lang=EN-GB style='font-size:9.0pt;
+  font-family:"Courier New"'>jogo()</span><span lang=EN-GB> function by
+  indenting the code to define the function block.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>What other changes have been made?</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Hint: Observe the function definition</span><span lang=EN-GB
+  style='font-size:9.0pt;font-family:"Courier New"'> jogo().</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB>4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='color:white'>Final challenge</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>Play the opposite game now. This time it
+will be the computer trying to guess the number, between 1 and 100, that you
+are thinking about ... And at most in 7 attempts!</span></p>
+
+<p class=MsoNormal><i><span lang=EN-GB>(Optional) Vary the range of values to
+guess...</span></i></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 1"
+  src="t7a_guess.fld/image006.png" alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><b><span
+  lang=EN-GB>Share</span></b><span lang=EN-GB> your game!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=EN-GB>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

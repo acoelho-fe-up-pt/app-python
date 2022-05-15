@@ -1,0 +1,494 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.codigo, li.codigo, div.codigo
+	{mso-style-name:codigo;
+	mso-style-link:"codigo Char";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:17.85pt;
+	page-break-after:avoid;
+	font-size:9.0pt;
+	font-family:"Courier New";}
+span.codigoChar
+	{mso-style-name:"codigo Char";
+	mso-style-link:codigo;
+	font-family:"Courier New";
+	font-weight:normal;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=PT style='color:black'>O jogo do 21 (<i>Blackjack</i>)</span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=PT>Este é um jogo de casino, com cartas, em que o
+objetivo principal é ter mais pontos do que o adversário, mas sem ultrapassar
+os 21 (caso em que se perde). </span></p>
+
+<p class=MsoNormal><span lang=PT>Nesta versão mais simplificada do <a
+href="https://pt.wikipedia.org/wiki/Blackjack">jogo do 21</a>, o jogador joga
+contra a &quot;casa&quot;/&quot;dealer&quot; (o computador), segundo as
+seguintes regras: </span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Em cada tentativa o jogador pode pedir mais uma
+carta ou ficar com a mão que já tem;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Cada vez que o jogador pede uma carta, a casa faz o
+mesmo. Neste caso apenas nos interessa o valor da carta (1 a 10);</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Quando o jogador parar de pedir cartas, verifica-se
+a pontuação total de cada jogador;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Caso algum dos jogadores exceda o número 21, perde
+(se ambos ultrapassarem os 21 damos preferência ao jogador... perde a casa);</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Ganha quem tiver o maior valor.</span></p>
+
+<h1><span lang=PT>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Inicialização do jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>Vamos começar por inicializar o jogo, criando
+a função </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogo21()</span><span
+lang=PT> com o seguinte código em Python. </span></p>
+
+<p class=codigo><span lang=PT>import random</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>def jogo21():</span></p>
+
+<p class=codigo><span lang=PT>    print (&quot;Vamos jogar o jogo do 21:
+&quot;)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>    # pontuação da casa e do jogador</span></p>
+
+<p class=codigo><span lang=PT>    casa = 0</span></p>
+
+<p class=codigo><span lang=PT>    jogador = 0</span></p>
+
+<p class=MsoNormal><span lang=PT>Uma das vantagens de criar uma função é a sua possível
+reutilização. Imagine criar um programa que permita jogar diversos jogos de
+cartas... Ou poder jogar várias vezes o jogo do 21, ganhando ou perdendo o
+valor da sua aposta...</span></p>
+
+<h1><span lang=PT>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Iterando através das jogadas – o ciclo de jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>As jogadas vão-se repetindo até o jogador não
+querer mais nenhuma carta. </span></p>
+
+<p class=MsoNormal><span lang=PT>O ciclo de jogo terá como condição a opção do
+jogador querer continuar a pedir cartas:</span></p>
+
+<p class=codigo><span lang=PT>    jogar = &quot;sim&quot;</span></p>
+
+<p class=codigo><span lang=PT>    while jogar == &quot;sim&quot;:</span></p>
+
+<p class=codigo><span lang=PT>        print (&quot;Pontuacao do jogador: &quot;
++ str(jogador))</span></p>
+
+<p class=codigo><span lang=PT>        print (&quot;Pontuacao da casa: &quot; +
+str(casa))</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>        jogar = input(&quot;Pretende uma carta?
+&quot;)</span></p>
+
+<p class=codigo><span lang=PT>        if jogar == &quot;sim&quot;:</span></p>
+
+<p class=MsoNormal style='margin-top:0cm'><span lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT>O algoritmo a implementar dentro do ciclo de
+jogo, será incluído no bloco condicional (do </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>if</span><span lang=PT>):</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=PT-BR>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT-BR>Retirar cartas do baralho;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=PT-BR>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT-BR>Mostrar jogada;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=PT-BR>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT-BR>Calcular pontuação;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT-BR>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT-BR>Verificar se terminou o jogo.</span></p>
+
+<span lang=PT-BR style='font-size:10.0pt;font-family:"Calibri",sans-serif'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=PT-BR>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT>Em Python, o código que implementa este bloco
+é o seguinte:</span></p>
+
+<p class=codigo><span lang=PT>              # 1. retirar cartas do baralho</span></p>
+
+<p class=codigo><span lang=PT>            carta_jogador = random.randint(1,10)</span></p>
+
+<p class=codigo><span lang=PT>            carta_casa =
+random.randint(1,10)            </span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>            # 2. mostrar jogada</span></p>
+
+<p class=codigo><span lang=PT>            print (&quot;Tirou uma carta que
+vale&quot;, carta_jogador, &quot;pontos.&quot;)</span></p>
+
+<p class=codigo><span lang=PT>            print (&quot;A casa tirou uma carta
+que vale&quot;, carta_casa, &quot;pontos.&quot;)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>            # 3. calcular pontuação</span></p>
+
+<p class=codigo><span lang=PT>            casa += carta_casa</span></p>
+
+<p class=codigo><span lang=PT>            jogador += carta_jogador</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>            # 4. verificar se terminou o jogo</span></p>
+
+<p class=codigo><span lang=PT>            if jogador == 21:</span></p>
+
+<p class=codigo><span lang=PT>                print (&quot;21! Ganhou.
+Parabéns!&quot;)</span></p>
+
+<p class=codigo><span lang=PT>                return</span></p>
+
+<p class=codigo><span lang=PT>            elif casa == 21:</span></p>
+
+<p class=codigo><span lang=PT>                print (&quot;21... Ganhou a
+casa...&quot;)</span></p>
+
+<p class=codigo><span lang=PT>                return</span></p>
+
+<p class=codigo><span lang=PT>            elif casa &gt; 21:</span></p>
+
+<p class=codigo><span lang=PT>                print (&quot;Ganhou! A casa
+passou os 21.&quot;)</span></p>
+
+<p class=codigo><span lang=PT>                return</span></p>
+
+<p class=codigo><span lang=PT>            elif jogador &gt; 21:</span></p>
+
+<p class=codigo><span lang=PT>                print (&quot;Perdeu... Passou os
+21.&quot;)</span></p>
+
+<p class=codigo><span lang=PT>                return</span></p>
+
+<p class=MsoNormal><span lang=PT>As cartas são obtidas através de valores
+aleatórios de 1 a 10. </span></p>
+
+<p class=MsoNormal><span lang=PT>No segundo passo do algoritmo surge um novo
+operador:</span></p>
+
+<p class=codigo><span lang=PT>            casa += carta_casa</span></p>
+
+<p class=MsoNormal><span lang=PT>Que é equivalente a:</span></p>
+
+<p class=codigo><span lang=PT>            casa = casa + carta_casa</span></p>
+
+<p class=MsoNormal><span lang=PT>No final do ciclo de jogo temos a seleção
+múltipla que determina se algum dos jogadores ganhou por ter acertado em 21 ou
+se perdeu por ter excedido os 21. Para que o programa termine o ciclo de jogo e
+saia da função utiliza-se a instrução:</span></p>
+
+<p class=codigo><span lang=PT>                return</span></p>
+
+<p class=MsoNormal><span lang=PT>Após o ciclo de jogo, caso nenhum dos
+jogadores tenha atingido ou ultrapassado os 21 pontos, verifica-se quem ganhou
+por ter mais pontos:</span></p>
+
+<p class=codigo><span lang=PT>    if jogador &gt;= casa:</span></p>
+
+<p class=codigo><span lang=PT>        print (&quot;Ganhou com&quot;, jogador,
+&quot;contra&quot;, casa, &quot;pontos da casa.&quot;)</span></p>
+
+<p class=codigo><span lang=PT>    else:</span></p>
+
+<p class=codigo><span lang=PT>        print (&quot;Perdeu com&quot;, jogador,
+&quot;contra&quot;, casa, &quot;pontos da casa.&quot;)</span></p>
+
+<p class=MsoNormal style='margin-top:0cm'><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='height:18.35pt'>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><b><span lang=PT><img border=0 width=36 height=36
+  id="Graphic 7" src="t7b_jogo21.fld/image001.png" alt="Balloon animal"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=PT>Experimente este jogo.</span></p>
+  <p class=MsoNormal><i><span lang=PT>Basta chamar a função </span></i><span
+  lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogo21()</span><i><span
+  lang=PT>.</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=PT>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='color:white'>Desafio final</span></h1>
+
+<p class=MsoNormal><span lang=PT>Neste tutorial simplificamos um pouco o jogo.
+Tente agora incorporar a seguinte regra do jogo:</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>&quot;A casa/dealer só pode pedir até um máximo de
+5 cartas ou até chegar ao número 17.&quot;</span></p>
+
+<p class=MsoNormal><span lang=PT>Ou seja, o número de jogadas do computador e
+do jogador podem ser diferentes...!</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 1" src="t7b_jogo21.fld/image002.png"
+  alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Partilhe
+  o <b>seu</b> jogo!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

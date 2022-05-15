@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style>
+        .botao {
+          background-color: rgb(51, 101, 192);
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        .grelha {
+          background-color: rgb(204, 214, 235);
+          border: black;
+          color: black;
+          padding: 4px 2px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 20px;
+          font-family: 'Courier New', Courier, monospace;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        .grelha2 {
+          background-color: rgb(245, 239, 66);
+          border: black;
+          color: black;
+          padding: 4px 2px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 20px;
+          font-family: 'Courier New', Courier, monospace;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>        
+</head>
+<body>
+
+<h2>Jogo da Sueca</h2>
+<h3 id = "jogada"></h3>
+<h4 id = "resultado"></h4>
+<p><button id="botao_jogar" type="button" onclick="sueca(0)">Jogar</button></p>
+<p id = "0"><br></p>
+<p id = "1"><br></p>
+<p id = "2"><br></p>
+<p id = "3"><br><br></p>
+<p id = "pontos1"></p>
+<p id = "pontos2"></p>
+
+<p><br>Após jogar o jogo, pode passar ao tutorial.</p>
+
+<a href = "t10a_sueca.html" class="botao" title='Tutorial'>Tutorial</a>
+<script>
+
+var naipes = ["O", "C", "P", "E"];
+var figuras = ["2", "3", "4", "5", "6", "Q", "J", "K", "7", "A"];
+var cartas_equipa = [];
+var cartas_oponente = [];
+var jogada = 0;
+var nomes = ["Humano: ", "Adversario 1: ", "Colega: ", "Adversario 2"];
+
+// Abstração carta (tuplo)
+function cria_carta(figura, naipe){
+    return [figura, naipe];
+}
+
+function figura(carta){
+    return carta[0];
+}
+
+function naipe(carta){
+    return carta[1];
+}
+
+function pontos(figura){
+    if (figura == "A")
+        return 11;
+    else if (figura == "Q")
+        return 2;
+    else if (figura == "J")
+        return 3;
+    else if (figura == "K")
+        return 4;
+    else if (figura == 7)
+        return 10;
+    else
+        return 0;
+}
+
+function da_figura(numero){
+    if (numero == 1)
+        return "A";
+    else if (numero == 8)
+        return "Q";
+    else if (numero == 9)
+        return "J";
+    else if (numero == 10)
+        return "K";
+    else
+        return numero;
+}
+
+function mostra_carta(carta){
+    return '<div class = "grelha">' + carta[0].toString() + "<sup>" + carta[1] + "</sup></div>";
+}
+
+// Para conjuntos de cartas
+function pontuacao(cartas){
+    soma = 0;
+    for (c of cartas)
+        soma += pontos(c[0]);
+
+    return soma;
+}
+
+function carta_maior(mao, naipe_jogada){
+    pontos_maximo = -1; // menor que minimo - zero valores para cartas de 2 a 6
+    carta_maximo = "";
+
+    // percorre a mao do jogador
+    for (carta of mao){
+        if (carta[1] == naipe_jogada){
+            if (pontos(figura(carta)) > pontos_maximo){
+                carta_maximo = figura(carta)
+                pontos_maximo = pontos(carta_maximo)
+            }
+        }
+    }
+
+    // nao tem cartas desse naipe
+    if (pontos_maximo >= 0)
+        return carta_maximo;
+    else
+        return false;
+}
+
+function cria_baralho(){
+    baralho = [];
+    for (n of naipes){ // para cada um dos 4 naipes
+        for (f of figuras) // para cada uma das 10 cartas
+            baralho.push(cria_carta(f, n));  // cria carta e acrescenta ao baralho
+    }
+    return baralho;
+}
+
+function baralha_cartas(baralho, vezes){
+    for (i=0; i<vezes; i++){
+        // troca cartas
+        let i = Math.floor(Math.random()*baralho.length);
+        let j = Math.floor(Math.random()*baralho.length);
+        let temp = baralho[i];
+        baralho[i] = baralho[j];
+        baralho[j] = temp;
+    }
+}
+
+// Interacao com o jogador
+function joga_jogador (mao){
+    var numero = 0;
+    while (numero<1 || numero > mao.length ){
+        jogada = window.prompt(mostra_mao(mao));
+        numero = parseInt(jogada);
+    }
+    var carta = mao[numero-1];
+    mao.splice(numero-1, 1);
+
+    return carta;
+}
+
+// IA dos NPC
+function joga_NPC (cartas, mao, naipe_jogada, naipe_trunfo){
+    // verifica o naipe da jogada
+    if (naipe_jogada == "")
+        naipe_jogada = naipes[Math.floor(Math.random()*naipes.length)];  // naipe 'a sorte... Desafio: Melhorar...
+
+    // Tenta assistir 'a jogada
+    var figura_jogada = carta_maior(mao, naipe_jogada);
+    if (figura_jogada != false){
+        for (i=0; i<mao.length; i++){
+            if (figura(mao[i]) == figura_jogada && mao[i][1] == naipe_jogada){
+                mao.splice(i, 1);
+                break;
+            }
+        }
+        return cria_carta(figura_jogada, naipe_jogada);
+    }else{
+        // caso nao tenha cartas do naipe da jogada
+        var figura_trunfo = carta_maior(mao, naipe_trunfo);
+        if (figura_trunfo != false){
+            for (i=0; i<mao.length; i++){
+                if (figura(mao[i]) == figura_trunfo && mao[i][1] == naipe_trunfo){
+                    mao.splice(i,1);
+                    break;
+                }
+            }
+            return cria_carta(figura_trunfo, naipe_trunfo);
+        }else{
+            // retorna a primeira carta... Desafio: Melhorar...
+            carta_outro_naipe = mao[0];
+            mao.splice(0,1);
+            return carta_outro_naipe;
+        }
+    }
+}
+
+// mostra cartas
+function compara(a, b){
+    var a = naipes.indexOf(a[1])*100 + figuras.indexOf(figura(a).toString());
+    var b = naipes.indexOf(b[1])*100 + figuras.indexOf(figura(b).toString());
+    return b-a;
+}
+
+function mostra_mao(mao){
+    var txt = "";
+
+    var botao = 1;
+    for (carta of mao){
+        txt += '<button class = "grelha2"' + 'onclick="sueca(' + botao.toString() + ')">' + carta[0].toString() + "<sup>" + carta[1] + "</sup></button>";
+        botao += 1;
+    }
+    return txt;
+}
+
+// variaveis de jogo
+var trunfo = "";
+var jogo = [0, 0, 0, 0];
+var jogador = 0 // o jogador que joga primeiro em cada ronda
+var pontos1 = 0;
+var pontos2 = 0;
+var jog = 0;
+var jogador_inicial = 0;
+var cartas;
+
+function sueca(continua){
+    if (jogada == 0){
+        // 1. cria baralho
+        let baralho = cria_baralho();
+
+        // 2. baralha as cartas (ex. 50 vezes)
+        baralha_cartas(baralho, 100);
+
+        // escolhe o trunfo
+        trunfo = baralho[0][1];
+
+        // 3. cria as mãos dos 4 jogadores (o primeiro jogador e' o humano)
+        for (i=0; i<4; i++){
+            let mao = baralho.slice(i*10, i*10 + 10);
+            mao.sort(compara);
+            jogo[i] = mao;
+        }
+
+        // 4. inicia o jogo
+        jogada = 1;
+
+    }
+    
+    if (jogada <=10){
+        // desliga botao "jogar"
+        if (continua > 0){
+            document.getElementById("botao_jogar").hidden = false;
+        }else{
+            document.getElementById("botao_jogar").hidden = true;
+            for (i=0; i<4; i++)
+                document.getElementById(i.toString()).innerHTML = nomes[i];
+            document.getElementById("resultado").innerHTML = "Começa a jogar "+nomes[jogador];
+        }
+
+        // visualizar informação da jogada
+        document.getElementById("jogada").innerHTML = "\nJogada " + jogada.toString() + "/10 (o trunfo e' " + trunfo + ")";
+
+        // os 4 jogadores escolhem a carta a jogar
+        if (jog == 0){
+            cartas = ["", "", "", ""];
+            naipe_jogada = "" // indica que o jogador que joga primeiro escolhe o naipe
+        }
+        for (; jog<4; jog++){
+            // joga humano ou computador?
+            if  (jogador == 0){
+                if (continua == 0){
+                    // joga_jogador(jogo[jogador]);
+                    document.getElementById(jogador.toString()).innerHTML = nomes[jogador] + mostra_mao(jogo[jogador]);
+                    return;
+                }else{
+                    let mao = jogo[jogador];
+                    cartas[jogador] = mao[continua-1];
+                    mao.splice(continua-1, 1);
+                    document.getElementById(jogador.toString()).innerHTML = nomes[jogador] + " jogou : " + mostra_carta(cartas[jogador]);
+                    continua = 0;
+                }
+            }else{
+                if (continua == 0){
+                    cartas[jogador] = joga_NPC(cartas, jogo[jogador], naipe_jogada, trunfo);
+                    document.getElementById(jogador.toString()).innerHTML = nomes[jogador] + " jogou : " + mostra_carta(cartas[jogador]);
+                }
+            }
+
+            // atualiza o naipe da jogada e o proximo jogador a jogar
+            if (naipe_jogada == "")
+                naipe_jogada = cartas[jogador][1];
+
+            jogador = (jogador + 1) % 4; // jogador 'a direita
+        }
+
+        // verifica-se quem ganha a jogada e acrescenta-se as cartas 'a equipa correspondente
+        carta_naipe_trunfo = carta_maior(cartas, trunfo);
+
+        if (carta_naipe_trunfo != false){
+            // ganhou quem colocou trunfo
+            for (j= 0; j<cartas.length; j++){
+                if (cartas[j][0] == carta_naipe_trunfo && cartas[j][1]==trunfo){
+                    jogador = j;
+                    break;
+                }
+            }
+        }else{
+            // maior carta do naipe jogado
+            carta_jogada = carta_maior(cartas, naipe_jogada);
+            for (j= 0; j<cartas.length; j++){
+                if (cartas[j][0] == carta_jogada && cartas[j][1]== naipe_jogada){
+                    jogador = j;
+                    break;
+                }
+            }
+
+        }
+        // verifica quem ganha a jogada e acrescenta cartas para a pontuacao dessa equipa
+        if (jogador % 2 == 0){
+            cartas_equipa.push(cartas);
+            pontos1 += pontuacao(cartas);
+            //window.alert("Jogada para a sua equipa!");
+            document.getElementById("resultado").innerHTML = "Jogada para a sua equipa!";
+        }else{
+            cartas_oponente.push(cartas)
+            pontos2 += pontuacao(cartas);
+            //window.alert("Jogada para a equipa adversaria.");
+            document.getElementById("resultado").innerHTML = "Jogada para a equipa adversaria.";
+        }
+        document.getElementById("pontos1").innerHTML = "<br>Os pontos da sua equipa: " + pontos1.toString();
+        document.getElementById("pontos2").innerHTML = "Os pontos dos adversários: " + pontos2.toString();
+
+        jogada += 1;
+        jog = 0;
+    }
+    if (jogada > 10){
+        // final do jogo
+        if (pontos1 > 60)
+            window.alert("Ganhou sua a equipa. " + pontos1.toString() + " pontos. Parabens!");
+        else if (pontos1 < 60)
+            window.alert("Ganhou a equipa adversaria com " + pontos2.toString() + " pontos.");
+        else
+            window.alert("Empataram com 60 pontos.");
+    }
+}
+</script>
+    
+</body>
+</html> 

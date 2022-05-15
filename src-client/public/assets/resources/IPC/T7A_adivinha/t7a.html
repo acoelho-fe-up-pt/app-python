@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style>
+        .botao {
+          background-color: rgb(51, 101, 192);
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>        
+</head>
+<body>
+
+<h2>O jogo "Adivinhe o número em que estou a pensar..."</h2>
+<p><button type="button" onclick="jogo(7)">Jogar</button></p>
+
+<p><br>Após jogar o jogo, pode passar ao tutorial.</p>
+
+<a href = "t7a_adivinha.html" class="botao" title='Tutorial'>Tutorial</a>
+<script>
+    function pensar_numero()
+    {
+      return Math.floor(Math.random() * 100)+1;
+    }
+
+    function jogo(maxTentativas)
+    {
+      // computador pensa num número
+      var adivinha = pensar_numero();
+      var jogada = 0; // valor inicial
+      var tentativas = 0
+
+      // ciclo de jogo
+      while (jogada != adivinha)
+      {
+        // jogada: computador pede ao jogador que adivinhe
+        if (tentativas >= maxTentativas)
+        {
+          window.alert("Perdeu! Numero máximo de tentativas ("+maxTentativas+") atingido.");
+          return;
+        }else
+          tentativas++
+
+        var jogada = window.prompt("Em que número estou a pensar? (jogada "+tentativas+")");
+
+        if (jogada == adivinha)
+          window.alert("Parabéns! Adivinhou em " + tentativas + " tentativas!");
+        else if (jogada > adivinha)
+          window.alert("Menor... Jogue novamente. ");
+        else
+          window.alert("Maior... Jogue novamente. ");
+      }
+    }
+</script>
+    
+</body>
+</html> 

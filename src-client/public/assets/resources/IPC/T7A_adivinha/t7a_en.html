@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style>
+        .botao {
+          background-color: rgb(51, 101, 192);
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>        
+</head>
+<body>
+
+<h2>The game "Guess the number I am thinking on..."</h2>
+<p><button type="button" onclick="jogo(7)">Play</button></p>
+
+<p><br>After playing the game, you can proceed to the tutorial.</p>
+
+<a href = "t7a_guess.html" class="botao" title='Tutorial'>Tutorial</a>
+<script>
+    function pensar_numero()
+    {
+      return Math.floor(Math.random() * 100)+1;
+    }
+
+    function jogo(maxTentativas)
+    {
+      // computador pensa num número
+      var adivinha = pensar_numero();
+      var jogada = 0; // valor inicial
+      var tentativas = 0
+
+      // ciclo de jogo
+      while (jogada != adivinha)
+      {
+        // jogada: computador pede ao jogador que adivinhe
+        if (tentativas >= maxTentativas)
+        {
+          window.alert("You lose! Maximum number of attempts ("+ maxTentativas +") reached.");
+          return;
+        }else
+          tentativas++
+
+        var jogada = window.prompt("What number am I thinking of? (move "+tentativas+")");
+
+        if (jogada == adivinha)
+          window.alert("Parabéns! You guessed in " + tentativas + " moves!");
+        else if (jogada > adivinha)
+          window.alert("Less... Play again. ");
+        else
+          window.alert("Bigger... Play again. ");
+      }
+    }
+</script>
+    
+</body>
+</html> 

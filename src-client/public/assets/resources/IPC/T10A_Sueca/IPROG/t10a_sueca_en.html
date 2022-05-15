@@ -1,0 +1,2026 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;
+	font-weight:normal;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Calibri",sans-serif;}
+p.codigo, li.codigo, div.codigo
+	{mso-style-name:codigo;
+	mso-style-link:"codigo Char";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:17.85pt;
+	page-break-after:avoid;
+	font-size:9.0pt;
+	font-family:"Courier New";
+	font-weight:bold;}
+span.codigoChar
+	{mso-style-name:"codigo Char";
+	mso-style-link:codigo;
+	font-family:"Courier New";
+	font-weight:bold;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=EN-GB style='color:black'>The game of
+&quot;Sueca&quot; (Swedish girl)</span></h1>
+
+</div>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span lang=EN-GB>In this
+tutorial, we will develop a version of the &quot;Sueca&quot; game, where four
+players play in teams of two. In this version of the game, one of the players
+will be &quot;human&quot; and the other 3 will be controlled by the computer.</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span lang=EN-GB>In this game,
+each player has a list of 10 cards (one hand), which is reduced over 10 moves,
+until the players run out of cards. At the end of the game, it is necessary to
+count the number of points for each team (of 2 players), through the cards won
+(maximum total, 120 points).</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span lang=EN-GB>In this game,
+cards 8, 9 and 10 are not used, with each card having the following value in
+points:</span></p>
+
+<div align=center>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=51 valign=top style='width:38.3pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:3.0pt;margin-right:0cm;margin-bottom:
+  3.0pt;margin-left:0cm'><span lang=EN-GB>Card</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.15pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>&quot;A&quot;</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>2</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>3</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>4</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>5</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>6</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>7</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>&quot;Q&quot;</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.35pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>&quot;J&quot;</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.35pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>&quot;K&quot;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=51 valign=top style='width:38.3pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:3.0pt;margin-right:0cm;margin-bottom:
+  3.0pt;margin-left:0cm'><span lang=EN-GB>Points</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>11</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>0</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>0</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>0</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>0</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>0</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>10</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>2</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>3</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB>4</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img width=36 height=36 id="Graphic 6"
+  src="t10a_sueca_en.fld/image001.png" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Note that numeric cards 2 to 6 have no value, while card 7 is
+  worth 10 points. Figures are represented by capital letters: &quot;A&quot;,
+  &quot;Q&quot;, &quot;J&quot; and &quot;K&quot;.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB>Each &quot;hand&quot; of a player is a list
+of cards, where each card is represented by a tuple with 2 elements (a pair):
+the number / figure of the card and the suit (one character).</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The suit is represented by the initial
+letter: &quot;O&quot; - Ouros (diamonds); &quot;C&quot; - Copas (hearts);
+&quot;E&quot; - Espadas (swords); &quot;P&quot; - Paus (clubs).</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>As an example, analyse the following hand
+of a player, represented by a list of pairs:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;line-height:200%'><span
+lang=EN-GB style='font-size:9.0pt;line-height:200%;font-family:"Courier New"'>mao
+= [(3, &quot;C&quot;),(&quot;A&quot;,&quot;C&quot;), (2, &quot;O&quot;),
+(&quot;K&quot;,&quot;P&quot;), (7, &quot;E&quot;)]</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img width=36 height=36 src="t10a_sueca_en.fld/image002.png"
+  alt="Head with gears"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB>Why have we chosen to use a list for the
+  player's &quot;hand&quot; and a tuple for the &quot;card&quot;?</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB>If you don't know how to play the Swedish
+game, read the following Wikipedia article:</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=EN-GB
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT><a
+href="https://pt.wikipedia.org/wiki/Sueca_(jogo_de_cartas)"><span lang=EN-GB>O
+Jogo da Sueca</span></a></span><span lang=EN-GB> </span></p>
+
+<h1><span lang=EN-GB>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Game setup</span></h1>
+
+<p class=MsoNormal style='margin-left:18.0pt'><span lang=EN-GB>This game has a
+certain complexity, so it is recommended to use the principles of abstraction
+and decomposition into subproblems, to structure it:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Abstraction &quot;Carta&quot; (card): create
+functions to create objects of the type &quot;carta&quot; and access its
+&quot;figure&quot; and &quot;suit&quot;;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Points on a card: returns the value of a card;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Draw a card: create a specific card from the
+deck;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Scoring: calculating and returning the score for
+a set of cards;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Highest card: determine the highest card of a
+suit, in a set of cards;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Create the Deck of cards: create a list of 40
+cards, with all 10 figures of the 4 suits;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>7.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Shuffle the cards: make a sequence of card
+exchanges, at random;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>8.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Show the cards: view the cards.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>9.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Interaction with the Player: Show the player's
+hand and ask for the card to play;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>10.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
+lang=EN-GB>Artificial Intelligence: Other players' plays, controlled by the
+computer.</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB>11.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
+lang=EN-GB>game of &quot;Sueca&quot;: finally the game loop...</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>This game will use a text-based user
+interface on the command line.</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 10"
+  src="t10a_sueca_en.fld/image002.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB>Dedicate a few moments of reflection on
+  the content of each of the 11 points mentioned, trying to justify its
+  existence. However, don't worry if you can't find justification for all of
+  them, as you'll find it in the rest of the tutorial.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Abstraction &quot;Carta&quot; (card)</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>A card is represented by a tuple of two
+values (a pair): the figure and the suit.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>(figura, naipe)</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Function </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>cria_carta(figura, naipe)</span><span
+lang=EN-US style='font-size:8.0pt;font-family:"Courier New"'> </span><span
+lang=EN-US>returns a tuple from two parameters: the figure and the suit. </span><span
+lang=PT>It is a constructor of abstraction Carta</span><span lang=EN-GB>.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def
+cria_carta(figura, naipe):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+return (figura, naipe)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>To access the two values of a letter, two selectors
+of the Letter abstraction were created:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def
+figura(carta):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+return carta[0]</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def
+naipe(carta):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+return carta[1]</span></p>
+
+<h1><span lang=EN-GB>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Points of a card</span></h1>
+
+<p class=MsoNormal><span lang=EN-US>Function </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>pontos()</span><b><span
+lang=EN-US style='font-size:8.0pt;font-family:"Courier New"'> </span></b><span
+lang=EN-US>returns an integer corresponding to the value of a card, according
+to the indicated table. This function has only one parameter, </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>letter</span><span
+lang=EN-US>, which can be either an integer or a character.</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Analyze the code of the </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>pontos</span><span
+lang=EN-US> () function where we chose to use a conditional multiple selection
+structure</span><span lang=EN-GB>.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def
+pontos(figura):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+if figura == &quot;A&quot;:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+return 11</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+elif figura == &quot;Q&quot;:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+return 2</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+elif figura == &quot;J&quot;:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+return 3</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+elif figura == &quot;K&quot;:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+return 4</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+elif figura == 7:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+return 10</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+else:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+return 0</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 11"
+  src="t10a_sueca_en.fld/image002.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB>Where are the options that select cards 2
+  to 6?</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB>4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Determine the figure corresponding to the index</span></h1>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span lang=EN-US>Function </span><span
+lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>da_figura()</span><b><span
+lang=EN-US style='font-size:8.0pt;font-family:"Courier New"'> </span></b><span
+lang=EN-US>has only one parameter, the order number of the card, and returns
+the corresponding number or figure (character), according to the following
+table:</span></p>
+
+<div align=center>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=106 valign=top style='width:79.35pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:3.0pt;margin-right:0cm;margin-bottom:
+  3.0pt;margin-left:0cm'><span lang=EN-GB style='font-size:11.0pt'>nº de ordem</span></p>
+  </td>
+  <td width=45 valign=top style='width:34.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>1</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>2</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>3</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>4</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>5</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>6</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>7</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.25pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>8</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.25pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>9</span></p>
+  </td>
+  <td width=41 valign=top style='width:30.45pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>10</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=106 valign=top style='width:79.35pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:3.0pt;margin-right:0cm;margin-bottom:
+  3.0pt;margin-left:0cm'><span lang=EN-GB style='font-size:11.0pt'>Carta</span></p>
+  </td>
+  <td width=45 valign=top style='width:34.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>&quot;A&quot;</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>2</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>3</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>4</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>5</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>6</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.2pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>7</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>&quot;Q&quot;</span></p>
+  </td>
+  <td width=40 valign=top style='width:30.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>&quot;J&quot; </span></p>
+  </td>
+  <td width=41 valign=top style='width:30.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+  margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span lang=EN-GB
+  style='font-size:11.0pt'>&quot;K&quot;</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=codigo style='margin-top:3.0pt;margin-right:-49.95pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Aanalyze the function code. Once again a
+conditional multiple selection structure was used.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def
+da_figura(numero):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+if numero == 1:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+return &quot;A&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+elif numero == 8:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+return &quot;Q&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+elif numero == 9:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+return &quot;J&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+elif numero == 10:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+return &quot;K&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+else:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+return numero</span></p>
+
+<h1><span lang=EN-US>5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Determine the score for a set of cards</span></h1>
+
+<p class=MsoNormal><span lang=EN-US>At the end of the game it is necessary to
+count the total score of the cards won by each team.</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Function </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>pontuacao()</span><span
+lang=EN-US> has only one parameter, which is a list of cards, and adds the
+points of all the cards:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def
+pontuacao(cartas):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+soma = 0</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+for carta in cartas:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+soma += pontos(figura(carta))</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+return soma </span></p>
+
+<h1><span lang=EN-GB>6<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Determine the highest card of a given suit</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>When a player has to &quot;assist&quot; a
+move, he usually tries to check which is the highest card (highest number of
+points) in his &quot;hand&quot; corresponding to the suit of the move. The
+function </span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>carta_maior()</span><span
+lang=EN-GB> has two parameters:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:38.65pt;text-indent:-18.0pt'><span lang=EN-GB
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>mao</span><span
+lang=EN-GB>, a list of cards;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:6.0pt;margin-right:-7.45pt;
+margin-bottom:6.0pt;margin-left:38.65pt;text-indent:-18.0pt'><span lang=EN-GB
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>naipe_jogada</span><span
+lang=EN-GB>, which is a character corresponding to the suit to play
+(&quot;C&quot;, &quot;O&quot;, &quot;P&quot; ou &quot;E&quot;).</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>This function returns only the number /
+figure of the card. When there is no card of that suit it returns </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>False</span><span
+lang=EN-GB>. </span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Analyze the function code and notice the
+counted loop structure that runs through the hand of cards.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def
+carta_maior(mao, naipe_jogada):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+# inicializacao</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+pontos_maximo = -1 # menor que minimo - zero valores para cartas de 2 a 6</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+carta_maximo = &quot;&quot; </span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+# percorre a mao do jogador</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+for carta in mao:</span></p>
+
+<p class=MsoNormal style='margin-right:-7.45pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        if naipe(carta) ==
+naipe_jogada and pontos(figura(carta)) &gt; pontos_maximo:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+carta_maximo = figura(carta)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+pontos_maximo = pontos(carta_maximo)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'> </span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'> </span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>  
+# valor de retorno</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+if pontos_maximo &gt;= 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+return carta_maximo</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+else:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+return False</span></p>
+
+<h1><span lang=EN-GB>7<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Create the Deck of Cards</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>The deck of cards consists of 40 cards,
+comprising 10 card figures for each of the 4 suits. </span></p>
+
+<p class=MsoNormal><span lang=PT>Function </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>cria_baralho() </span><span
+lang=PT>has no parameters:</span></p>
+
+<p class=MsoNormal><b><span lang=PT style='font-size:8.0pt;font-family:"Courier New"'>&nbsp;</span></b></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def
+cria_baralho():</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+baralho = []</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+for naipe in [&quot;O&quot;, &quot;C&quot;, &quot;P&quot;, &quot;E&quot;]: #
+para cada um dos 4 naipes</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+for c in range(1, 11): # para cada uma das 10 cartas</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+baralho.append(cria_carta(da_figura(c), naipe))      </span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+return baralho</span></p>
+
+<h1><span lang=EN-GB>8<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Shuffle the deck of cards </span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>In any card game it is generally necessary
+to shuffle the cards. </span></p>
+
+<p class=MsoNormal><span lang=EN-US>Function </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>baralha_cartas(baralho,
+vezes)</span><span lang=EN-US> has as parameters a deck (a list of cards) and
+the number of times you want to shuffle the cards:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>def
+baralha_cartas(baralho, vezes):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+for i in range(vezes):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+#troca cartas</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+i = random.randint(0, len(baralho)-1)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+j = random.randint(0, len(baralho)-1)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+temp = baralho[i]</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+baralho[i] = baralho[j]</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+baralho[j] = temp</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 12"
+  src="t10a_sueca_en.fld/image002.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>You can now see why the deck was created as a list - so you can
+  shuffle it!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Could a tuple also have been used?</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Also, analyse the card exchange algorithm. </span></p>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+  temp = baralho[i]        </span></p>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+  baralho[i] = baralho[j]</span></p>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+  baralho[j] = temp</span><span lang=EN-GB> </span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Why a local variable was used (</span><span lang=EN-GB
+  style='font-size:9.0pt;font-family:"Courier New"'>temp</span><span
+  lang=EN-GB>) ? </span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB>9<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Player interaction</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>When interacting with the player, it is
+essential to provide him with the necessary information to be able to make the
+move (output) and a simple interaction mode to act on the game (input).</span></p>
+
+<h2><span lang=EN-GB>9.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Output</span></h2>
+
+<p class=MsoNormal><span lang=EN-GB>For this purpose, we will create the
+function </span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>mostra_mao</span><span
+lang=EN-GB> () that visualizes the player's hand in text mode, but in an
+attractive configuration:</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>A sua mao:</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'> 1    2    3    4    5   
+6    7    8    9    10   </span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>+--+ +--+ +--+ +--+ +--+ +--+
++--+ +--+ +--+ +--+ </span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>| e| | p| | p| | p| | c| | c|
+| o| | o| | o| | o| </span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>|K | |A | |J | |Q | |5 | |2 |
+|A | |7 | |4 | |2 | </span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>+--+ +--+ +--+ +--+ +--+ +--+
++--+ +--+ +--+ +--+ </span></p>
+
+<p class=MsoNormal><span lang=EN-GB>This function starts by sorting the list of
+cards by suit and figure, in order to facilitate the player's choice of the
+card to play.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>For this it was necessary to create two
+character strings with sorted by suit and by figure. And a </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>numero()</span><span
+lang=EN-GB> function was created that returns an integer value for each card.
+This function will make it possible to compare the cards using the </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>sort () </span><span
+lang=EN-GB>method, which will be used to sort the lists of cards.</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'># mostra cartas</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>naipes = &quot;OCPE&quot;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>figuras =
+&quot;23456QJK7A&quot;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>def numero(t):</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    return
+naipes.index(naipe(t))*100+figuras.index(str(figura(t)))</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 9"
+  src="t10a_sueca_en.fld/image002.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>To better understand the sorting with this function, calculate the
+  value of the following cards:</span></p>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center;
+  text-autospace:none'><span lang=EN-GB>(</span><span lang=EN-GB
+  style='font-size:9.0pt;font-family:"Courier New"'>2, &quot;O&quot;), (3,
+  &quot;O&quot;), (4, &quot;O&quot;), (4, &quot;C&quot;), (4, &quot;P&quot;), (4,
+  &quot;E&quot;)</span></p>
+  <p class=MsoNormal><span lang=EN-GB>And why is it necessary to use the
+  function </span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>str()</span><span
+  lang=EN-GB> for the figure?</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Observe function  </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>mostra_mao()</span><span
+lang=EN-GB>. </span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>def mostra_mao(mao):</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    print (&quot;A sua
+mao:&quot;)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # ordena a mao</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    mao.sort(key=numero,
+reverse = True)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # numeracao: 1    2   
+3    4    5    6    7    8    9    10</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    txt = &quot;&quot;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    for i in range
+(len(mao)):</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        txt += &quot; &quot;
++ str(i+1) + &quot;   &quot;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    print (txt)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # bordo superior: +--+
++--+ +--+ +--+ +--+ +--+ +--+ +--+ +--+ +--+     txt = &quot;&quot;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    for i in range
+(len(mao)):</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        txt += &quot;+--+
+&quot;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    print (txt)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # naipe: | e| | p| | p| |
+p| | c| | c| | o| | o| | o| | o|</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    txt = &quot;&quot;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    for carta in mao:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        txt += &quot;|
+&quot;+ naipe(carta).lower() + &quot;| &quot;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    print (txt)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'> </span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # figura: |K | |A | |J |
+|Q | |5 | |2 | |A | |7 | |4 | |2 |</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    txt = &quot;&quot;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    for carta in mao:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        txt += &quot;|&quot;+
+str(figura(carta)) + &quot; | &quot;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    print (txt)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'> </span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # bordo inferior: +--+
++--+ +--+ +--+ +--+ +--+ +--+ +--+ +--+ +--+</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    txt = &quot;&quot;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    for i in range
+(len(mao)):</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        txt += &quot;+--+
+&quot;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    print (txt)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 5"
+  src="t10a_sueca_en.fld/image001.png" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Observe first the use of the method </span><span lang=PT><a
+  href="mailto:https://www.w3schools.com/python/ref_list_sort.asp"><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>sort()</span></a></span><span
+  lang=EN-GB> on the list. </span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Reverse sorting (from largest to smallest) is done with the
+  attribute </span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>reverse
+  = True</span><span lang=EN-GB>.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>And as the elements of the list originate from a user-defined
+  abstraction (Abstraction &quot;Carta&quot;), the function </span><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>numero()</span><span
+  lang=EN-GB>, previously defined, is assigned to make the numerical comparison
+  between two of these elements.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Also note the way the letters are drawn, with characters, and
+  &quot;line by line&quot;.</span></p>
+  </td>
+ </tr>
+</table>
+
+<h2><span lang=EN-GB>9.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Input</span></h2>
+
+<p class=MsoNormal><span lang=EN-GB>This sub-problem focuses on the interaction
+with the &quot;human&quot; player. Firstly, the &quot;player's hand&quot; is
+shown, calling the function </span><span lang=EN-GB style='font-size:9.0pt;
+font-family:"Courier New"'>mostra_mao (),</span><span lang=EN-GB> so that he
+can choose his play.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Then, the card number (order number in the
+player's hand) that the player wants to play is read.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>joga_jogador()</span><span
+lang=EN-GB> function has as only one parameter </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>mao</span><span lang=EN-GB>,
+which is the list of cards (tuples) referring to the player's hand.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>At the end, the function returns the
+selected card, erasing it from your hand. This function is therefore a modifier!</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>def joga_jogador (mao):</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # visualização da mão do
+jogador</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    mostra_mao(mao)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # valida o input do jogador
+para ser um número válido</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    n=0</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    while not (n &gt; 0 and n
+&lt;= len(mao)):</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        resp = input
+(&quot;Qual a carta que pretende jogar? (1 a &quot; + str(len(mao)) + &quot;):
+&quot;)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        n = int(resp)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # retorna a carta e
+elimina-a da mão do jogador</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    carta = mao[n-1]</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    del mao[n-1]</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    return carta</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 13"
+  src="t10a_sueca_en.fld/image002.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>In the condition of the while cycle, the number read was compared
+  with the number of cards in the player's &quot;hand&quot;. Why?</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>del</span><span
+  lang=EN-GB> was used to delete an item from the list. What other solution
+  could you use? </span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB>10<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Artificial Intelligence (IA)</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>Three of the players are controlled by the
+computer. Artificial Intelligence (AI) studies a set of techniques that allow
+you to program a computer to simulate &quot;intelligent&quot; behaviour. We are
+not going to explore these techniques in depth, but just design an algorithm
+that follows simple game rules, to provide an interesting challenge to the
+human player.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 15"
+  src="t10a_sueca_en.fld/image002.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>The first step in creating the rules of the non-human player (NPC)
+  is to think about how we play...</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Simulate one or two rounds of this game and analyse how you decide
+  which card to play ...</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Check if that it is similar to the algorithm that is outlined
+  below.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The algorithm is defined with the following
+steps:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Check the suit of the move or whether it is the
+player who plays first.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>In the latter case, select a random suit;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Select the highest card of the suit of the move;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=EN-GB>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>If you have no card of the suit, try to
+&quot;cut&quot; the play with an trump;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-GB>If you also don't have an asset, play the first card in your hand.</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Function </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>joga_NPC()</span><b><span
+lang=EN-US style='font-size:8.0pt;font-family:"Courier New"'> </span></b><span
+lang=EN-US>has as parameters:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:38.65pt;text-indent:-18.0pt'><span lang=EN-GB
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>cartas</span><span
+lang=EN-GB>, which is a list of 4 cards referring to the current move;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:38.65pt;text-indent:-18.0pt'><span lang=EN-GB
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>mao</span><span
+lang=EN-GB>, which is the player's list of cards;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:38.65pt;text-indent:-18.0pt'><span lang=EN-GB
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>naipe_jogada</span><b><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>, </span></b><span
+lang=EN-GB>the suit of the move;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:38.65pt;text-indent:-18.0pt'><span lang=EN-GB
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>naipe_trunfo</span><b><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>, </span></b><span
+lang=EN-GB>the trump suit.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Analyze the function code</span><b><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>.</span></b></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>def joga_NPC (cartas, mao, naipe_jogada,
+naipe_trunfo):</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # verifica o naipe da
+jogada</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    if naipe_jogada ==
+&quot;&quot;: </span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        # neste caso é o
+primeiro a jogar</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        naipe_jogada =
+random.choice([&quot;O&quot;, &quot;P&quot;, &quot;C&quot;, &quot;E&quot;])  #
+naipe 'a sorte... </span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # Tenta assistir à jogada</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    figura_jogada =
+carta_maior(mao, naipe_jogada)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    if figura_jogada !=
+False:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        for i in
+range(len(mao)):</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            if figura(mao[i])
+== figura_jogada and naipe(mao[i]) == naipe_jogada:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>                del mao[i]</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>                break</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        return
+cria_carta(figura_jogada, naipe_jogada)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    else:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        # caso nao tenha
+cartas do naipe da jogada</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        figura_trunfo =
+carta_maior(mao, naipe_trunfo)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        if figura_trunfo !=
+False:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            for i in
+range(len(mao)):</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>                if figura(mao[i])
+== figura_trunfo and naipe(mao[i]) == naipe_trunfo:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>                    del
+mao[i]</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>                    break</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            return
+cria_carta(figura_trunfo, naipe_trunfo)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        else:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            # retorna a
+primeira carta... Desafio: Melhorar...</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            carta_outro_naipe
+= mao[0]</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            del mao[0]</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            return
+carta_outro_naipe</span></p>
+
+<p class=MsoNormal><b><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>&nbsp;</span></b></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=585
+ style='width:439.0pt;border-collapse:collapse;border:none'>
+ <tr style='height:18.35pt'>
+  <td width=49 valign=top style='width:36.95pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=EN-GB><img border=0 width=36 height=36
+  id="Graphic 8" src="t10a_sueca_en.fld/image003.png" alt="Balloon animal"></span></p>
+  </td>
+  <td width=536 valign=top style='width:402.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=EN-GB>Computer controlled players are called
+  &quot;Non Player Character&quot; and are often referred to by the acronym
+  NPC.</span></p>
+  <p class=MsoNormal><span lang=EN-GB>The area of Artificial Intelligence (AI)
+  develops several algorithms that promote &quot;intelligent&quot; behaviour,
+  both by simulating the heuristics used by specialists, as well as through
+  computational learning itself (Machine Learning).</span></p>
+  <p class=MsoNormal><span lang=EN-GB>These algorithms are often used in
+  digital games to control NPCs.</span></p>
+  <p class=MsoNormal align=left style='text-align:left'><b><span lang=EN-GB>Challenge
+  (optional):</span></b><span lang=EN-GB> Try to find a better algorithm for
+  the </span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>joga_NPC
+  ()</span><span lang=EN-GB> function.</span></p>
+  <p class=MsoNormal align=left style='text-align:left'><span lang=EN-GB>(This
+  challenge has a high degree of difficulty.)</span></p>
+  <p class=MsoNormal align=left style='text-align:left'><i><span lang=EN-US>Hint:
+  The algorithm must consider who is winning (your team or the opponent) and
+  proceed in order to optimize the team's points.</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left'><i><span lang=EN-US>To
+  do this, you must access the cards parameter, with the list of cards in play,
+  which was not used in the presented algorithm.</span></i><i><span lang=EN-GB>.</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB>11<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Jogo da Sueca</span></h1>
+
+<p class=MsoNormal><span lang=EN-US>Finally, function </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>sueca() </span><span
+lang=EN-US>implements the game, starting at startup, and then through the game loop.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The initialization creates a deck of cards,
+followed by the shuffling of the cards. Then the game's trump card is selected
+from the first card in the deck, and finally the 40 cards in the deck are
+divided into 4 10-card hands for the 4 players. </span><span lang=EN-US>Lists </span><span
+lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>cartas_equipa</span><b><span
+lang=EN-US style='font-size:8.0pt;font-family:"Courier New"'> </span></b><span
+lang=EN-US>and</span><b><span lang=EN-US style='font-size:8.0pt;font-family:
+"Courier New"'> </span></b><span lang=EN-US style='font-size:9.0pt;font-family:
+"Courier New"'>cartas_oponente</span><span lang=EN-US> serve to accumulate the
+result of each team in order to be able to count the score, at the end.</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>def sueca():</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # 1. cria baralho</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    baralho = cria_baralho()</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # 2. baralha as cartas
+(ex. 100 vezes)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    baralha_cartas(baralho,
+100)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # escolhe o trunfo</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    trunfo =
+naipe(baralho[0])</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # 3. cria as mãos dos 4
+jogadores (o primeiro jogador e' o humano)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    jogo = [0, 0, 0, 0]</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    for i in range(4):</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        jogo[i] =
+baralho[i*10 : i*10 + 10]</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    </span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    cartas_equipa = []</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    cartas_oponente = []</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=585
+ style='width:439.0pt;border-collapse:collapse;border:none'>
+ <tr style='height:18.35pt'>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=EN-GB><img border=0 width=36 height=36
+  id="Graphic 7" src="t10a_sueca_en.fld/image001.png" alt=Eye></span></p>
+  </td>
+  <td width=523 valign=top style='width:392.2pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal align=left style='text-align:left'><span lang=EN-GB>Observe
+  how the deck is segmented into 4 sets of 10 cards, which are the players'
+  hands.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>The game loop is executed through a counted
+loop (</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>for</span><span
+lang=EN-US>) since the game consists of exactly 10 moves.</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'># 4.
+faz jogo - 10 jogadas</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+jogador = 0 # comeca o jogador</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+for i in range(10):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The algorithm for each move is as follows:</span></p>
+
+<p class=MsoListParagraph style='margin-left:35.45pt;text-indent:-20.7pt'><span
+lang=EN-GB>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Display the move number (jogada). </span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:5.0pt'><br>
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+# visualizar informação da jogada</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        print(&quot;\n**
+Jogada &quot; + str(i+1) + &quot; (o trunfo e' &quot; + trunfo + &quot;) **
+&quot;)</span></p>
+
+<p class=MsoListParagraph style='margin-left:35.45pt;text-indent:-18.0pt'><span
+lang=EN-GB>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Each of the 4 players plays a card,
+sequentially, in order to complete a turn. The list of 4 cards of the play and
+the suit of the play is initialized, which will be defined by the player who
+plays first. Then, in a counted loop (for) with 4 iterations, each player's
+play is saved, each player's play is visualized and the play suit is updated
+from the first player's card. </span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        # os 4 jogadores
+escolhem a carta a jogar</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        cartas =
+[&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;]</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        naipe_jogada =
+&quot;&quot; # indica que o jogador que joga primeiro pode escolher o naipe</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        for j in range (4): </span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            # joga humano ou
+computador?</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            if jogador == 0:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>               
+cartas[jogador] = joga_jogador(jogo[jogador])</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            else:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>               
+cartas[jogador] = joga_NPC(cartas, jogo[jogador], naipe_jogada, trunfo)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            print
+(&quot;Jogador &quot; + str(jogador+1) + &quot; jogou : &quot; +
+str(cartas[jogador]))</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            # atualiza o
+naipe da jogada e o próximo jogador a jogar</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            if naipe_jogada
+== &quot;&quot;:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>                naipe_jogada
+= naipe(cartas[jogador])</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            jogador =
+(jogador + 1) % 4 # jogador à direita</span></p>
+
+<p class=MsoListParagraph style='margin-left:35.45pt;text-indent:-18.0pt'><span
+lang=EN-GB>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>After the four players have played, the card
+list is filled. First check if someone has played trump and, if so, the player
+with the highest card of the trump suit wins. If there are no trump cards,
+whoever has the highest card of the suit in the hand wins. Thus, the player
+variable is updated with the winner of the play, who will be the next to start
+the play.</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        # verifica-se quem
+ganha e acrescenta-se as cartas à equipa correspondente</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        carta_naipe_trunfo =
+carta_maior(cartas, trunfo)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        if carta_naipe_trunfo
+!= False:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            # ganhou quem
+colocou trunfo</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            for j in
+range(len(cartas)):</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>                if
+figura(cartas[j]) == carta_naipe_trunfo and naipe(cartas[j])==trunfo:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>                    jogador =
+j</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>                    break</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        else:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            # maior carta do
+naipe jogado</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            carta_jogada =
+carta_maior(cartas, naipe_jogada)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            for j in
+range(len(cartas)):</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>                if
+figura(cartas[j]) == carta_jogada and naipe(cartas[j])== naipe_jogada:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>                    jogador =
+j</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>                    break</span></p>
+
+<p class=MsoListParagraph style='margin-left:35.45pt;text-indent:-18.0pt'><span
+lang=EN-GB>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>At the end of each round, the cards from that
+round are added to the winning team, so that in the end it is possible to count
+the score.</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        # verifica quem ganha
+a jogada e acrescenta cartas para a pontuação dessa equipa</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        if jogador % 2 == 0:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>            cartas_equipa.extend(cartas)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>           
+print(&quot;Jogada para a sua equipa!&quot;)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        else:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>           
+cartas_oponente.extend(cartas)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>           
+print(&quot;Jogada para a equipa adversária.&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>After the end of the game loop, the score
+of each team is checked, indicating the winner (score greater than 60) or the
+tie (if both teams get 60 points).</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    # verifica a equipa
+vencedora  </span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    if
+pontuacao(cartas_equipa) &gt; 60:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        print(&quot;Ganhou
+sua a equipa. &quot; + str(pontuacao(cartas_equipa)) + &quot; pontos. Parabens!&quot;)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    elif
+pontuacao(cartas_oponente) &gt; 60:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        print(&quot;Ganhou a
+equipa adversaria&quot; + str(pontuacao(cartas_oponente)) + &quot;
+pontos.&quot;)</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    else: </span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>        print(&quot;Empataram
+com 60 pontos.&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Test the game with the following function
+call:</span></p>
+
+<p class=MsoNormal style='margin-right:-42.9pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>Sueca()</span></p>
+
+<h1><span lang=EN-GB>12<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Final challenge</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>One of the characteristics of digital games
+is that they have very intuitive user interfaces. Improve the functions of
+interaction with the human player, through a graphical interface, with the
+mouse, using the p5 module. </span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><i><span lang=EN-GB>Hint:
+You can use images of decks of cards that exist on the internet. <br>
+To do this, simply use the function </span></i><span lang=PT><a
+href="mailto:https://p5.readthedocs.io/en/latest/examples/image/load%20and%20display%20image.html"><i><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>image()</span></i></a></span><i><span
+lang=EN-GB> from p5.</span></i></p>
+
+<p class=MsoNormal><span lang=EN-GB>A high-level challenge, which is optionally
+proposed, is to improve the computer's AI algorithm.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 1"
+  src="t10a_sueca_en.fld/image004.png" alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>Share o <b>your</b> game!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=EN-GB>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

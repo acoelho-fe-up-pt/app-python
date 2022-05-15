@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style>
+        .botao {
+          background-color: rgb(51, 101, 192);
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        .grelha {
+          background-color: rgb(204, 214, 235);
+          border: black;
+          color: black;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 20px;
+          font-family: 'Courier New', Courier, monospace;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>        
+</head>
+<body>
+
+<h2>Soup of letters</h2>
+<p id = "letras" class="grelha">
+    <b>Cities</b><br><br>
+    YRAVHMZZJTXCNBMCFARORYDLAOLFWH<br>
+    KWXJADPBIDMFQNJDHUCAQDGRKSUJPV<br>
+    HTZASKVCFJAXJLISBOABFDTBSKYPIG<br>
+    PWARASXJVTWOBRAGANCAXJJTBPAHCX<br>
+    EGKKZAEYPVKJOJOWNZHINEHKALYMYZ<br>
+    RQAGARBHHAKSDMWXXVSCNLWLPVJYXZ<br>
+    QDHPAOEGNJIVREGHWXEJUURUSPRDEN<br>
+    AVYOTROPXZIJEVXSGVWZIBMCQMOKOI<br>
+    LUHYSTXHCXHQOJVCBMDHWZBLYJWDAJ<br>
+    ZMZBARBMIOCQFGIQLMGOOAMITROPYR</p>
+<p>Find the words: 
+    <input type="text" id="palavra">
+    <button type="button" onclick="jogo(5)">Play</button></p>
+<p>Words discovered: </p>
+<p id = "descobertas"></p>
+
+<p><br>After playing the game, you can proceed to the tutorial.</p>
+
+<a href = "t8b_soup_of_letters.html" class="botao" title='Tutorial'>Tutorial</a>
+<script>
+var palavras = ["Porto", "Lisboa", "Braga", "Portimao", "Braganca", "Faro", "Coimbra"]
+
+function pesquisa(lista, elem){
+    for (i=0; i<lista.length; ++i)
+        if (elem.toLowerCase() == lista[i].toLowerCase())
+            return true;
+    return false;
+}
+
+function jogo(tentativas){
+    // le valores da pagina web
+    palavra = document.getElementById("palavra").value;
+    lista = document.getElementById("descobertas").innerHTML;
+    if (lista == "")
+        palavras_selecionadas = [];
+    else
+        palavras_selecionadas = lista.split(", ");
+    nPalavrasaDescobrir = palavras.length - palavras_selecionadas.length;
+
+    // verifica se já terminou o jogo
+    if (nPalavrasaDescobrir == 0)
+    {
+        window.alert("Game Over. Parabéns! (again)");
+    }else{
+        // pesquisa palavra do jogador
+        var acertou = pesquisa(palavras, palavra);
+        var acertadas = pesquisa(palavras_selecionadas, palavra);
+        
+        if (acertou && !acertadas){
+            if (lista!="")
+                lista += ", ";
+            document.getElementById("descobertas").innerHTML = lista + palavra;
+            document.getElementById("palavra").value = "";
+            nPalavrasaDescobrir -= 1
+            window.alert("Acertou! You still miss " + nPalavrasaDescobrir.toString() + " words");
+            
+            if (nPalavrasaDescobrir == 0)
+                window.alert("Parabéns! You have found all words.");   
+        }else{
+            window.alert("Try again...");
+            tentativas -= 1;
+        }
+
+        // verifica se jogador ganhou
+    }
+}
+</script>
+    
+</body>
+</html> 

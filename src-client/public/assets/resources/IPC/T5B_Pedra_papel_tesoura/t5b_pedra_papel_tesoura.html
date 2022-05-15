@@ -1,0 +1,388 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Calibri Light",sans-serif;
+	font-weight:bold;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Garamond",serif;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Garamond",serif;
+	font-weight:bold;}
+p.codigo, li.codigo, div.codigo
+	{mso-style-name:codigo;
+	mso-style-link:"codigo Char";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:17.85pt;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:9.0pt;
+	font-family:"Courier New";}
+span.codigoChar
+	{mso-style-name:"codigo Char";
+	mso-style-link:codigo;
+	font-family:"Courier New";
+	font-weight:normal;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;background:#B4C6E7;border:none;padding:0cm'><span
+lang=PT style='color:black'>O jogo &quot;Pedra Papel Tesoura&quot;</span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=PT>Em português, &quot;Pedra Papel Tesoura&quot; é
+um jogo simples que duas ou mais pessoas podem jogar para decidir, por exemplo,
+quem começa um jogo. Simultaneamente cada jogador lança Pedra (mão fechada),
+Papel (mão aberta) ou Tesoura (indicador e dedo do meio em V). As regras são
+simples:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:49.65pt;text-indent:-18.0pt'><span
+lang=PT style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Pedra vence contra Tesoura;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:49.65pt;text-indent:
+-18.0pt'><span lang=PT style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Tesoura vence contra Papel;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:49.65pt;text-indent:-18.0pt'><span
+lang=PT style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Papel vence contra Pedra.</span></p>
+
+<h1><span lang=PT>1. Vamos lá começar...</span></h1>
+
+<p class=MsoNormal><span lang=PT>Tal como o jogo da moeda (Tutorial </span><span
+lang=EN-US><a href="t5a.html"><span lang=PT>T5A</span></a></span><span lang=PT>),
+a primeira parte do programa consiste em selecionar aleatoriamente a jogada do
+computador e ler (input) a jogada do jogador.</span></p>
+
+<p class=MsoNormal><span lang=PT>O algoritmo deste jogo é o seguinte:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span lang=PT>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Selecionar aleatoriamente a jogada do computador.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Ler a jogada do jogador (input) </span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Mostrar a jogada do computador (output).</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Verificar se o jogador ganha, perde ou empata e visualizar esse
+resultado (output).</span></p>
+
+<p class=MsoNormal><span lang=PT>Assim, o jogador deverá pensar numa opção (pedra,
+papel ou tesoura) e depois executar o programa, verificando se acertou ou não.</span></p>
+
+<p class=MsoNormal><span lang=PT>Em Python, o código que implementa os 3 primeiros
+passos do algoritmo é o seguinte:</span></p>
+
+<p class=codigo><span lang=PT>import random</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># 1. escolhe objeto 'a sorte</span></p>
+
+<p class=codigo><span lang=PT>escolha = random.choice([&quot;pedra&quot;, &quot;papel&quot;,
+&quot;tesoura&quot;])</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># 2. le jogada do jogador (input)</span></p>
+
+<p class=codigo><span lang=PT>jogada = input(&quot;pedra, papel ou tesoura? &quot;)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># 3. </span></p>
+
+<p class=codigo><span lang=PT>print (&quot;Eu joguei&quot;, escolha)</span></p>
+
+<p class=MsoNormal><span lang=PT>Através da função </span><span lang=EN-US><a
+href="https://docs.python.org/3/library/random.html"><span lang=PT>random.choice()</span></a></span><span
+lang=PT>, cria-se aleatoriamente o valor de &quot;pedra&quot;,
+&quot;papel&quot; ou &quot;tesoura&quot; que é atribuído à variável </span><span
+lang=PT style='font-family:"Courier New"'>escolha</span><span lang=PT>. </span></p>
+
+<p class=MsoNormal><span lang=PT>Em seguida lê-se a jogada do jogador para a
+variável </span><span lang=PT style='font-family:"Courier New"'>jogada</span><span
+lang=PT> e visualiza-se o resultado da escolha do computador com a função </span><span
+lang=EN-US><a href="https://docs.python.org/3/library/functions.html#print"><span
+lang=PT>print</span></a></span><span lang=PT>.</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 4"
+  src="t5b_pedra_papel_tesoura.fld/image001.jpg" alt="Balloon animal"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-autospace:none'><span lang=EN-US>&nbsp;</span></p>
+  <p class=MsoNormal><i><span lang=PT>Agora experimente esta primeira versão...
+  </span></i></p>
+  <p class=MsoNormal style='text-autospace:none'><i><span lang=PT>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=PT style='color:white'>2. </span><span lang=PT>Quem vence o jogo?</span></h1>
+
+<p class=MsoNormal><span lang=PT>Este jogo tem várias possibilidades, podendo
+obter-se a derrota, a vitória ou o empate. Isto depende das regras do jogo,
+também denominadas &quot;mecânicas de jogo&quot;.</span></p>
+
+<p class=MsoNormal><span lang=PT>Quantas possibilidades haverá? <br>
+Com três símbolos temos 3<sup>2</sup> = 9 possibilidades (computador vs jogador):</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>&quot;pedra&quot; vs &quot;tesoura&quot;: Perdeu!</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>&quot;tesoura&quot; vs &quot;papel&quot;: &quot;Perdeu!</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>&quot;papel&quot; vs &quot;pedra&quot;: &quot;Perdeu!&quot;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>&quot;tesoura&quot; vs &quot;pedra&quot;: &quot;Ganhou!&quot;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>&quot;papel&quot; vs &quot;tesoura&quot;: &quot;Ganhou!&quot;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>&quot;pedra&quot; vs &quot;papel&quot;: &quot;Ganhou!
+&quot;</span></p>
+
+<p class=MsoNormal><span lang=PT>As 3 restantes possibilidades dão o &quot;Empate...&quot;.</span></p>
+
+<p class=MsoNormal><span lang=PT>Teremos assim que fazer uma decisão entre
+múltiplas possibilidades. Precisamos utilizar uma estrutura de decisão para
+fazer uma seleção múltipla. Em Python esta estrutura é o </span><span
+lang=EN-US><a
+href="https://docs.python.org/3/reference/compound_stmts.html#the-if-statement"><span
+lang=PT>if...elif...else</span></a></span><span class=MsoHyperlink><span
+lang=PT> .</span></span></p>
+
+<p class=MsoNormal><span lang=PT>O código que implementa as regras do jogo
+definidas acima é o seguinte:</span></p>
+
+<h2 align=left style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:17.85pt;margin-bottom:.0001pt;text-align:left'><span lang=PT
+style='font-size:8.0pt;font-family:"Courier New"'>&nbsp;</span></h2>
+
+<p class=codigo><span lang=PT># 3. verifica se ganhou ou perdeu</span></p>
+
+<p class=codigo><span lang=PT>if escolha == &quot;pedra&quot; and jogada == &quot;tesoura&quot;:</span></p>
+
+<p class=codigo><span lang=PT>    print (&quot;perdeu! &quot;)</span></p>
+
+<p class=codigo><span lang=PT>elif escolha == &quot;tesoura&quot; and jogada ==
+&quot;papel&quot;:</span></p>
+
+<p class=codigo><span lang=PT>    print (&quot;perdeu! &quot;)</span></p>
+
+<p class=codigo><span lang=PT>elif escolha == &quot;papel&quot; and jogada == &quot;pedra&quot;:</span></p>
+
+<p class=codigo><span lang=PT>    print (&quot;perdeu! &quot;)</span></p>
+
+<p class=codigo><span lang=PT>elif escolha == &quot;tesoura&quot; and jogada ==
+&quot;pedra&quot;:</span></p>
+
+<p class=codigo><span lang=PT>    print (&quot;Ganhou! &quot;)</span></p>
+
+<p class=codigo><span lang=PT>elif escolha == &quot;papel&quot; and jogada == &quot;tesoura&quot;:</span></p>
+
+<p class=codigo><span lang=PT>    print (&quot;Ganhou! &quot;)</span></p>
+
+<p class=codigo><span lang=PT>elif escolha == &quot;pedra&quot; and jogada == &quot;papel&quot;:</span></p>
+
+<p class=codigo><span lang=PT>    print (&quot;Ganhou! &quot;)</span></p>
+
+<p class=codigo><span lang=PT>else:</span></p>
+
+<p class=codigo><span lang=PT>    print (&quot;Empate!&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT>Tanto o primeiro &quot;if&quot; como os
+sucessivos &quot;elif&quot; têm expressões condicionais para avaliar cada uma
+das jogadas. A primeira expressão condicional a ser avaliada como verdadeira é
+executada e o resto das expressões já não são avaliadas. Se nenhuma destas
+expressões condicionais for verdadeira então aplica-se o código presente no
+&quot;else&quot;, caso tenha sido definido.</span></p>
+
+<p class=MsoNormal><span lang=PT>Repare que para avaliar cada uma das jogadas é
+necessário assegurar que ambos os jogadores apresentam um par de valores
+específico, simultaneamente. Para tal usa-se uma operação de conjunção,
+definida pelo operador lógico </span><span lang=EN-US><a
+href="https://www.w3schools.com/python/python_operators.asp"><span lang=PT>and</span></a></span><span
+lang=PT>. Assim, só quando ambas as expressões são verdadeiras é que a
+expressão condicional é verdadeira. Nos restantes casos é falsa.</span></p>
+
+<h1><span lang=PT>3. Desafio final</span></h1>
+
+<p class=MsoNormal><span lang=PT>As mecânicas de jogo podem ser reutilizadas em
+diferentes jogos, com temas e/ou conceitos diferentes.</span></p>
+
+<p class=MsoNormal><span lang=PT>Desenvolva uma variação deste jogo,
+selecionando outro tema de forma a substituir as palavras &quot;pedra&quot;, &quot;papel&quot;
+e &quot;tesoura&quot; por outras três que funcionem com as mesmas regras.</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 1"
+  src="t5b_pedra_papel_tesoura.fld/image002.jpg" alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-autospace:none'><i><span lang=EN-US>Partilhe o
+  seu jogo!</span></i></p>
+  <p class=MsoNormal style='text-autospace:none'><i><span lang=EN-US>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

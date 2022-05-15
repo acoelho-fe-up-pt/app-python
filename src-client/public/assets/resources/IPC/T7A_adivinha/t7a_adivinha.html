@@ -1,0 +1,850 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.codigo, li.codigo, div.codigo
+	{mso-style-name:codigo;
+	mso-style-link:"codigo Char";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:17.85pt;
+	page-break-after:avoid;
+	font-size:9.0pt;
+	font-family:"Courier New";}
+span.codigoChar
+	{mso-style-name:"codigo Char";
+	mso-style-link:codigo;
+	font-family:"Courier New";
+	font-weight:normal;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=PT style='color:black'>O jogo
+&quot;Adivinha o número em que estou a pensar&quot;</span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=PT>O jogador é desafiado a adivinhar um número
+aleatório de 1 a 100, gerado pelo computador. As regras são simples: </span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Em cada tentativa o jogador propõe um número;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>O computador responde se esse número é maior ou
+menor que o número correto;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>De forma iterativa, o jogador vai fazendo tentativas/jogadas
+até acertar no número, caso em que vence, ou exceder o número máximo de
+tentativas, perdendo o jogo.</span></p>
+
+<h1><span lang=PT>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Primeira versão do jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>Comecemos por uma versão simplificada do jogo.
+A primeira parte do programa consiste em selecionar aleatoriamente o número a
+adivinhar e, adicionalmente, em ler o número do jogador humano. </span></p>
+
+<p class=MsoNormal><span lang=PT>Em Python, o código que implementa esta fase
+de inicialização é o seguinte:</span></p>
+
+<p class=codigo><span lang=PT>import random</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># numero aleatorio a adivinhar</span></p>
+
+<p class=codigo><span lang=PT>numero = random.randint(1,100)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># ler numero do jogador humano</span></p>
+
+<p class=codigo><span lang=PT>jogada = int (input(&quot;Adivinhe o numero (1 a
+100): &quot;))</span></p>
+
+<p class=MsoNormal><span lang=PT>A função <a
+href="https://docs.python.org/3/library/random.html#functions-for-sequences">random.randint()</a>
+seleciona um número inteiro aleatório entre 1 e 100.</span></p>
+
+<p class=MsoNormal><span lang=PT>A leitura da jogada por parte do jogador
+humano é realizada através da função <a
+href="https://www.w3schools.com/python/ref_func_input.asp">input()</a>. Como
+esta função lê uma cadeia de caracteres, é necessário fazer uma conversão de
+tipo, neste caso,  através da função <a
+href="https://www.w3resource.com/python/built-in-function/int.php">int()</a>
+para se obter um número inteiro.</span></p>
+
+<p class=MsoNormal><span lang=PT>Agora basta verificar se o jogador adivinhou,
+através de uma estrutura de decisão alternativa:</span></p>
+
+<p class=codigo><span lang=PT># verifica se venceu</span></p>
+
+<p class=codigo><span lang=PT>if numero == jogada:</span></p>
+
+<p class=codigo><span lang=PT>    print (&quot;Parabens!&quot;)</span></p>
+
+<p class=codigo><span lang=PT>else:</span></p>
+
+<p class=codigo><span lang=PT>    print (&quot;Perdeu... Era o numero &quot;,
+numero)</span></p>
+
+<p class=MsoNormal style='margin-top:0cm'><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='height:18.35pt'>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><b><span lang=PT><img border=0 width=36 height=36
+  id="Graphic 7" src="t7a_adivinha.fld/image001.png" alt="Balloon animal"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=PT>Experimente esta primeira versão do jogo.</span></p>
+  <p class=MsoNormal><i><span lang=PT>Certamente irá achar demasiado difícil adivinhar
+  o número à primeira! </span></i><i><span lang=PT style='font-family:Wingdings'></span></i></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=PT style='color:black'>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='color:black'>Iterando através das jogadas -
+o ciclo de jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>Certamente achou frustrante jogar este jogo
+onde só tinha uma oportunidade para adivinhar...</span></p>
+
+<p class=MsoNormal><span lang=PT>Um bom jogo tem que ser justo e equilibrado.
+Neste caso, o jogador deve ter um conjunto de tentativas para adivinhar, e se
+possível algum retorno do computador para que possa elaborar uma estratégia
+para vencer. Vamos então modificar este jogo para permitir 7 tentativas e
+indicar ao jogador, caso não tenha adivinhado, se o número a adivinhar é maior
+ou mais pequeno.</span></p>
+
+<p class=MsoNormal><span lang=PT>Assim, este jogo não é só
+&quot;interativo&quot;, como é &quot;iterativo&quot;!</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 8" src="t7a_adivinha.fld/image002.png"
+  alt=Eye></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>“<i>Um
+  jogo é uma forma de entretenimento <b>interativo</b> onde os jogadores <b>devem
+  superar desafios</b>, tomando <b>ações</b> que são regidas por <b>regras</b>,
+  a fim de atender a uma <b>condição de vitória</b></i>.”</span></p>
+  <p class=MsoNormal align=right style='margin-top:0cm;text-align:right;
+  text-autospace:none'><span lang=EN-US>Rollings &amp; Adams “on Game Design”</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-US>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Para
+  além da interatividade, este jogo tem também uma condição de vitória: acertar
+  no número num número de tentativas não superior ao estabelecido. </span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='color:white'>Nesta nova versão do jogo</span><span
+lang=PT>, as jogadas vão-se repetindo enquanto:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>O jogador não acerta no número;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>o número de tentativas não chega a zero</span></p>
+
+<p class=MsoNormal><span lang=PT>A combinação das duas condições é realizada
+através de uma conjunção, com o operador lógico <a
+href="https://www.w3schools.com/python/python_operators.asp">and</a>:</span></p>
+
+<p class=codigo><span lang=PT>                  jogada != numero and tentativas
+&gt; 0</span></p>
+
+<p class=MsoNormal><span lang=PT>Este processo iterativo é implementado através
+do ciclo condicional – while:</span></p>
+
+<p class=codigo><span lang=PT> while jogada != numero and tentativas &gt; 0:</span></p>
+
+<p class=MsoNormal><span lang=PT>Para cada jogada é necessário ler o número escolhido
+pelo jogador e validar se se esse número está correto, se é maior ou se é menor.</span></p>
+
+<p class=MsoNormal><span lang=PT>Iremos utilizar uma estrutura de seleção
+múltipla - um </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>if...
+elif... else</span><span lang=PT>.</span></p>
+
+<p class=codigo><span lang=PT>    if numero == jogada:</span></p>
+
+<p class=codigo><span lang=PT>        print (&quot;Parabens!&quot;)</span></p>
+
+<p class=codigo><span lang=PT>    elif jogada &gt; numero:</span></p>
+
+<p class=codigo><span lang=PT>        print (&quot;Numero muito
+grande...&quot;)</span></p>
+
+<p class=codigo><span lang=PT>        tentativas = tentativas - 1</span></p>
+
+<p class=codigo><span lang=PT>    else:</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;Numero muito
+pequeno...&quot;)</span></p>
+
+<p class=codigo><span lang=PT>        tentativas = tentativas -1</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>A primeira expressão condicional verifica a
+condição de vitória - acertar no número.</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>A segunda expressão condicional verifica se o
+jogador falhou por o seu número ser maior do que o número a adivinhar. Em caso
+afirmativo, escreve uma mensagem ao jogador. </span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>O último passo da estrutura de decisão indica que o
+número é muito pequeno.</span></p>
+
+<p class=MsoNormal><span lang=PT>Em ambos os casos em que o jogador não acerta
+é feita a redução de uma tentativa.</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 10"
+  src="t7a_adivinha.fld/image002.png" alt=Eye></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Um
+  dos princípios fundacionais dos jogos é proporcionarem resposta  (<i>feedback</i>)
+  imediata ao jogador sobre as suas ações. Desta forma, o jogador poderá
+  melhorar a sua jogada na próxima tentativa. </span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Esta
+  é também uma das razões porque os jogos são importantes na aprendizagem.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 13"
+  src="t7a_adivinha.fld/image003.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>A
+  estrutura de seleção múltipla inclui a condição de vitória e duas condições
+  caso o jogador não acerte...</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Mas
+  onde se encontra a condição de derrota?</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=PT>O ciclo de jogo é a estrutura base de um jogo, que permite realizar
+várias jogadas até que a condição de vitória seja alcançada... Ou o jogador
+esgote os seus recursos (jogadas, vidas, energia, etc).</span></p>
+
+<span lang=PT style='font-size:10.0pt;font-family:"Calibri",sans-serif'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT>O ciclo de jogo é antecedido pela
+inicialização do estado do jogo.</span></p>
+
+<p class=codigo><span lang=PT>import random</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># número aleatório a adivinhar e máximo de
+tentativas possíveis</span></p>
+
+<p class=codigo><span lang=PT>numero = random.randint(1,100)</span></p>
+
+<p class=codigo><span lang=PT>tentativas = 7</span></p>
+
+<p class=codigo style='margin-left:0cm'><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 14"
+  src="t7a_adivinha.fld/image003.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Porque
+  foi definido um máximo de 7 tentativas?</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>A
+  estratégia mais eficaz para jogar este jogo é dividir o intervalo da solução
+  em duas partes e, considerando a resposta (&quot;maior&quot; /
+  &quot;menor&quot;), ir dividindo consecutivamente o intervalo resultante
+  sempre por 2.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Seguindo
+  esta estratégia o número máximo de tentativas pode ser calculado através da
+  expressão:  </span><span
+  lang=PT style='font-size:10.0pt;font-family:"Calibri",sans-serif;position:
+  relative;top:2.0pt'><img width=56 height=18
+  src="t7a_adivinha.fld/image004.png"></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='color:white'>Em Python, o código que
+implementa o ciclo de jogo é, então, o seguinte:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+ciclo de jogo</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogada
+= 0 # inicializar a variável</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>while
+jogada != numero and tentativas &gt; 0:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+jogada = int (input(&quot;Adivinhe o numero (1 a 100): &quot;))</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+tentativas = tentativas - 1</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# condição de vitória</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+if numero == jogada:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Parabens!&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# condição de derrota</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+elif tentativas == 0:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Perdeu... Era o numero&quot;, numero)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# lógica de jogo</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+elif jogada &gt; numero:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Numero muito grande...&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+else:</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;Numero muito
+pequeno...&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT>Este código utiliza uma estrutura <a
+href="https://www.w3schools.com/python/python_while_loops.asp">while</a> para
+implementar o ciclo de jogo. Esta estrutura repete sempre o seu bloco de código
+enquanto a expressão condicional for avaliada como verdadeira. </span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='height:18.35pt'>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><b><span lang=PT><img border=0 width=36 height=36
+  id="Graphic 18" src="t7a_adivinha.fld/image001.png" alt="Balloon animal"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=PT>Experimente esta nova versão do jogo.</span></p>
+  <p class=MsoNormal><i><span lang=PT>Certamente irá achar muito mais
+  divertido.</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 15"
+  src="t7a_adivinha.fld/image003.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Repare
+  que foi necessário inicializar a variável </span><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>jogada</span><span lang=PT>
+  com um valor inicial fora do intervalo de jogo (1 a 100) para que o ciclo de
+  jogo possa sempre ter, pelo menos, uma jogada.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>O
+  que poderia acontecer se a variável </span><span lang=PT style='font-size:
+  9.0pt;font-family:"Courier New"'>jogada</span><span lang=PT> fosse
+  inicializada com um valor entre 1 e 100?</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='color:white'>E para terminar</span><span
+lang=PT>, verifica-se o final do jogo ocorre nas duas primeiras condições da
+estrutura condicional: por vitória ou por derrota. Quando alguma destas
+expressões for verdadeira, a condição do ciclo será falsa e o ciclo de jogo
+terminará logo a seguir...</span></p>
+
+<h1><span lang=PT style='color:black'>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='color:black'>Abstração procedimental - funções</span></h1>
+
+<p class=MsoNormal><span lang=PT-BR>Os jogos, quando bem desenhados e adaptados
+às capacidades do jogador, conseguem focar toda a sua atenção nos desafios do
+jogo. A este estado psicológico denomina-se de &quot;fluxo&quot; (em inglês
+&quot;<i>flow</i>&quot;). </span></p>
+
+<p class=MsoNormal><span lang=PT-BR>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=576
+ style='width:432.0pt;margin-left:-.25pt;border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border-top:solid windowtext 1.0pt;
+  border-left:solid windowtext 1.0pt;border-bottom:none;border-right:none;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 20"
+  src="t7a_adivinha.fld/image002.png" alt=Eye></span></b></p>
+  </td>
+  <td width=501 colspan=2 valign=top style='width:375.6pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT><a
+  href="https://pt.wikipedia.org/wiki/Fluxo_(psicologia)"><b><span lang=PT-BR>Fluxo
+  (<i>flow</i>)</span></b></a></span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=PT-BR>De acordo com o psicólogo </span><span lang=PT><a
+  href="https://pt.wikipedia.org/wiki/Mihaly_Csikszentmihalyi"><span
+  lang=PT-BR>Mihaly Csikszentmihalyi</span></a></span><span lang=PT-BR>, &quot;fluxo&quot;
+  é um estado mental de operação em que a pessoa está totalmente imersa no que
+  está a fazer, caraterizado por um sentimento de total envolvimento e de
+  procura de sucesso no processo da atividade</span><span lang=PT>.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=158 colspan=2 valign=top style='width:118.2pt;border-top:none;
+  border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'><span lang=PT
+  style='font-size:10.0pt;font-family:"Calibri",sans-serif'><br clear=all
+  style='page-break-before:always'>
+  </span>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=PT><img
+  border=0 width=107 height=106 id="Picture 28"
+  src="t7a_adivinha.fld/image005.png"></span></p>
+  </td>
+  <td width=418 valign=top style='width:313.8pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>À
+  medida que o jogador progride no jogo, ganha competências (aprende) e as
+  tarefas tornam-se mais fáceis. Se o nível de dificuldade não aumentar, o
+  jogador fica aborrecido e deixará de jogar. Mas se a dificuldade for
+  demasiado elevada, o jogador sente-se frustrado e também deixará de jogar.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Existe
+  uma faixa estreita que mantém o jogador em estado de &quot;fluxo&quot;.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>O
+  designer de jogos deve ser capaz de parametrizar o nível de dificuldade  de
+  forma a adaptar-se às competências do jogador.</span></p>
+  </td>
+ </tr>
+ <tr height=0>
+  <td width=75 style='border:none'></td>
+  <td width=83 style='border:none'></td>
+  <td width=418 style='border:none'></td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT-BR style='color:white'>O ideal é</span><span
+lang=PT-BR> que o jogo possa ser jogado com outro tipo de intervalo numérico ou
+outro número máximo de jogadas. Para tal, o ideal será construir uma função,
+que para além de encapsular o código do jogo, permite a sua parametrização.</span></p>
+
+<p class=MsoNormal><span lang=PT>Em Python, o código que implementa esta
+abstração procedimental é o seguinte:</span></p>
+
+<p class=codigo><span lang=PT>import random</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>def jogo(tentativas, minimo, maximo):</span></p>
+
+<p class=codigo><span lang=PT>    # numero aleatorio a adivinhar</span></p>
+
+<p class=codigo><span lang=PT>    numero = random.randint(minimo,maximo)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>    # ciclo de jogo</span></p>
+
+<p class=codigo><span lang=PT>    jogada = 0 # inicializar a variável</span></p>
+
+<p class=codigo><span lang=PT>    while jogada != numero and tentativas &gt; 0:</span></p>
+
+<p class=codigo><span lang=PT>        jogada = int (input(&quot;Adivinhe o
+numero (1 a 100): &quot;))</span></p>
+
+<p class=codigo><span lang=PT>        tentativas = tentativas - 1</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>        # condição de vitória</span></p>
+
+<p class=codigo><span lang=PT>        if numero == jogada:</span></p>
+
+<p class=codigo><span lang=PT>            print (&quot;Parabens!&quot;)</span></p>
+
+<p class=codigo><span lang=PT>        # condição de derrota</span></p>
+
+<p class=codigo><span lang=PT>        elif tentativas == 0:</span></p>
+
+<p class=codigo><span lang=PT>            print (&quot;Perdeu... Era o
+numero&quot;, numero)</span></p>
+
+<p class=codigo><span lang=PT>        # lógica de jogo</span></p>
+
+<p class=codigo><span lang=PT>        elif jogada &gt; numero:</span></p>
+
+<p class=codigo><span lang=PT>            print (&quot;Numero muito
+grande...&quot;)</span></p>
+
+<p class=codigo><span lang=PT>        else:</span></p>
+
+<p class=codigo><span lang=PT>            print(&quot;Numero muito
+pequeno...&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT> Não basta definir uma função para que o seu código
+seja executado... </span></p>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='height:18.35pt'>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><b><span lang=PT><img border=0 width=36 height=36
+  id="Graphic 19" src="t7a_adivinha.fld/image001.png" alt="Balloon animal"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=PT>É preciso chamar a função. Por exemplo:</span></p>
+  <p class=codigo><span lang=PT>jogo(7, 1, 100)</span></p>
+  <p class=MsoNormal><span lang=PT>Teste esta nova versão do jogo,
+  experimentando gamas de valores diferentes...</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 17"
+  src="t7a_adivinha.fld/image003.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>A
+  principal alteração face à versão anterior foi o encapsulamento na função
+  jogo() através da indentação do código para definir o bloco da função.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Que
+  outras alterações foram realizadas?</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Pista:
+  Observe a definição da função </span><span lang=PT style='font-size:9.0pt;
+  font-family:"Courier New"'>jogo().</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=PT>4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='color:white'>Desafio final</span></h1>
+
+<p class=MsoNormal><span lang=PT>Faça agora o jogo contrário. Desta vez será o
+computador a tentar adivinhar o número, entre 1 e 100, em que está a pensar...
+E no máximo em 7 tentativas!</span></p>
+
+<p class=MsoNormal><i><span lang=PT>(Opcional) Varie a gama de valores a adivinhar...</span></i></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 1" src="t7a_adivinha.fld/image006.png"
+  alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Partilhe
+  o <b>seu</b> jogo!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

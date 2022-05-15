@@ -1,0 +1,837 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.codigo, li.codigo, div.codigo
+	{mso-style-name:codigo;
+	mso-style-link:"codigo Char";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:17.85pt;
+	page-break-after:avoid;
+	font-size:9.0pt;
+	font-family:"Courier New";}
+span.codigoChar
+	{mso-style-name:"codigo Char";
+	mso-style-link:codigo;
+	font-family:"Courier New";
+	font-weight:normal;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=PT style='color:black'>O jogo das cartas</span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=PT>Trata-se de um jogo de cartas para dois
+jogadores (um humano e o computador), que se desenrola em 10 jogadas com um
+baralho digital de 40 cartas para o computador e um baralho em papel de 40
+cartas para o jogador humano.  Semelhante ao denominado &quot;jogo da
+batalha&quot;, as regras, para cada jogada, são simples: </span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Cada jogador retira uma carta do seu baralho e as
+duas cartas são confrontadas;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>O jogador que tiver a carta mais alta ganha 2
+pontos (1 ponto por carta);</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Caso as cartas tenham a mesma figura, ocorre um
+empate, e cada jogador retira mais uma carta. Quem ganhar recebe 4 pontos (2
+pontos por cada carta). </span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>E no caso de ocorrerem empates seguidos, adicionar-se-ão
+sempre mais 2 pontos por cada duas cartas que se confrontam.</span></p>
+
+<h1><span lang=PT>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Primeira versão do jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>Para criarmos o jogo, necessitamos de definir
+algumas variáveis e literais globais. </span></p>
+
+<p class=codigo><span lang=PT>import random</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>BARALHO = &quot;23456QJK7A&quot;</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># pontuacao dos dois jogadores</span></p>
+
+<p class=codigo><span lang=PT>pontosComputador = 0</span></p>
+
+<p class=codigo><span lang=PT>pontosHumano = 0</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># numero maximo de jogadas</span></p>
+
+<p class=codigo><span lang=PT>jogadas = 10</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># conta as cartas em caso de empate</span></p>
+
+<p class=codigo><span lang=PT>empate = 0</span></p>
+
+<p class=MsoNormal><span lang=PT>A literal </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>BARALHO</span><span lang=PT>
+contém a sequência de figuras das cartas do baralho digital, ordenadas em valor
+crescente, portanto, do menor valor (2) para o maior (A). </span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  width=36 height=36 id="Graphic 2" src="t6b_jcartas.fld/image001.png"
+  alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Observe
+  em que posição se coloca a carta 7. Não aparece imediatamente a seguir à
+  carta 6!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>O
+  baralho digital só tem 10 cartas, em vez das 40 cartas de um baralho normal!
+  Terá isto algum impacto negativo no funcionamento do jogo?</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='color:white'>Em seguida, definem-se as
+varáveis da pontuação do jogador humano e do computador, inicializadas a zero.
+Finalmente o número máximo de jogadas</span><span lang=PT> (10). Há ainda uma
+variável adicional (</span><span lang=PT style='font-size:9.0pt;font-family:
+"Courier New"'>empate</span><span lang=PT>) que permite contabilizar a
+pontuação a atribuir em caso de empate ou empates seguidos.</span></p>
+
+<p class=MsoNormal><span lang=PT>Definiremos uma função </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>jogada()</span><span lang=PT>
+para interagir com o jogador humano. O jogador retira uma carta do seu baralho
+(em papel) e é chamada a função </span><span lang=PT style='font-size:9.0pt;
+font-family:"Courier New"'>jogada()</span><span lang=PT>com a figura da carta
+como argumento.</span></p>
+
+<p class=MsoNormal><span lang=PT>O algoritmo para cada jogada pode ser o
+seguinte:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span lang=PT>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>O computador retira uma carta;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Apresentam-se as cartas de ambos os jogadores;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><b><span
+lang=PT>Subproblema</span></b><span lang=PT> logica do jogo;</span></p>
+
+<p class=MsoListParagraphCxSpLast align=left style='text-align:left;text-indent:
+-18.0pt'><span lang=PT>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Se terminaram as 10 jogadas então:<br>
+<b>Subproblema</b> apresentar o vencedor</span></p>
+
+<p class=MsoNormal><span lang=PT>Para simplificar, deixamos como subproblemas:
+1) logica do jogo, que consiste na aplicação das regras do jogo e determinação
+das pontuações, que são variáveis globais; 2) apresentar o vencedor.</span></p>
+
+<p class=MsoNormal><span lang=PT>Observe, a implementação da função </span><span
+lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogada()</span><span
+lang=PT>:</span></p>
+
+<p class=codigo><span lang=PT>def jogada(cartaHumano):    </span></p>
+
+<p class=codigo><span lang=PT>    print(&quot;*** Jogada ***&quot;)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>    # 1. jogada do computador</span></p>
+
+<p class=codigo><span lang=PT>    cartacomputador = random.choice(BARALHO)</span></p>
+
+<p class=codigo><span lang=PT>                </span></p>
+
+<p class=codigo><span lang=PT>    # 2. apresenta ambas as cartas</span></p>
+
+<p class=codigo><span lang=PT>    print(&quot;Computador:&quot;,
+cartacomputador)</span></p>
+
+<p class=codigo><span lang=PT>    print(&quot;Humano:&quot;, cartaHumano)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>    # 3. subproblema logica de jogo</span></p>
+
+<p class=codigo><span lang=PT>    logica_jogo(cartacomputador, cartaHumano)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>    # 4. verifica se já terminaram as jogadas</span></p>
+
+<p class=codigo><span lang=PT>    if jogadas == 0:</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;O jogo terminou...&quot;)</span></p>
+
+<p class=codigo><span lang=PT>        # subproblema vencedor</span></p>
+
+<p class=codigo><span lang=PT>        vencedor()</span></p>
+
+<p class=codigo><span lang=PT>    else:</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;Tem&quot;, jogadas,
+&quot;jogadas.&quot;)</span></p>
+
+<p class=MsoNormal style='margin-top:0cm'><span lang=PT style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  width=36 height=36 id="Graphic 6" src="t6b_jcartas.fld/image002.png" alt=Eye></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>A
+  figura da carta do computador é obtida através da função </span><span
+  lang=PT style='font-size:9.0pt;font-family:"Courier New"'>random.choice()</span><span
+  lang=PT style='font-size:9.0pt'>com  a cadeia de caracteres do </span><span
+  lang=PT style='font-size:9.0pt;font-family:"Courier New"'>BARALHO</span><span
+  lang=PT style='font-size:9.0pt'>.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT
+  style='font-size:9.0pt'>Mas esta função não garante que não saia a mesma
+  figura várias vezes repetida...</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='color:white'>Antes de </span><span
+lang=PT>iniciar a lógica de jogo, é conveniente definir uma função simples que
+determine o valor da figura da carta. </span></p>
+
+<p class=codigo><span lang=PT># retorna numero de ordem da figura no baralho</span></p>
+
+<p class=codigo><span lang=PT>def valor(carta):</span></p>
+
+<p class=codigo><span lang=PT>    return BARALHO.index(carta)</span></p>
+
+<p class=MsoNormal><span lang=PT>Uma vez que o literal </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>BARALHO</span><span lang=PT>
+tem as figuras das cartas em sequência, utiliza-se o método <a
+href="https://www.w3schools.com/python/ref_list_index.asp"><span
+style='font-size:9.0pt;font-family:"Courier New"'>index()</span></a> para
+determinar o seu número de ordem.</span></p>
+
+<p class=MsoNormal><span lang=PT>O algoritmo da lógica de jogo será uma
+estrutura de seleção múltipla com as seguintes condições:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Se carta computador &gt; carta humano então:</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=PT style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=PT>Atribuir pontos ao jogador humano</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=PT style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=PT>decrementar uma jogada</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Se não, se carta computador &lt; carta humano</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=PT style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=PT>Atribuir pontos ao computador</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=PT style='font-family:"Courier New"'>o<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span><span lang=PT>decrementar uma jogada</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Se não... Empate.</span></p>
+
+<p class=MsoNormal><span lang=PT>Observe que a atribuição dos pontos ao vencedor
+inclui, não só as 2 cartas em confronto, mas também as cartas anteriores, em
+caso de empates prévios. No caso de empate, mantém-se a mesma jogada até ocorrer
+um desempate.</span></p>
+
+<p class=MsoNormal><span lang=PT>O código da lógica de jogo é o seguinte.</span></p>
+
+<p class=codigo><span lang=PT>def logica_jogo(comp, hum):</span></p>
+
+<p class=codigo><span lang=PT>    global pontosComputador, pontosHumano,
+empate, jogadas</span></p>
+
+<p class=codigo><span lang=PT>   </span></p>
+
+<p class=codigo><span lang=PT>    if valor(comp) &gt; valor(hum):</span></p>
+
+<p class=codigo><span lang=PT>        print(2 + empate * 2, &quot;pontos para o
+computador.&quot;)</span></p>
+
+<p class=codigo><span lang=PT>        pontosComputador += 2 + empate * 2</span></p>
+
+<p class=codigo><span lang=PT>        jogadas -= 1</span></p>
+
+<p class=codigo><span lang=PT>        empate = 0</span></p>
+
+<p class=codigo><span lang=PT>    elif valor(comp) &lt; valor(hum):</span></p>
+
+<p class=codigo><span lang=PT>        pontosHumano += 2 + empate * 2</span></p>
+
+<p class=codigo><span lang=PT>        print(2 + empate * 2, &quot;pontos para o
+jogador humano.&quot;)</span></p>
+
+<p class=codigo><span lang=PT>        jogadas -= 1</span></p>
+
+<p class=codigo><span lang=PT>        empate = 0</span></p>
+
+<p class=codigo><span lang=PT>    else:</span></p>
+
+<p class=codigo><span lang=PT>        empate += 1</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;Empate... Jogue
+novamente...&quot;)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>    # pontuação </span></p>
+
+<p class=codigo><span lang=PT>    print(&quot;Computador&quot;,
+pontosComputador, &quot;vs&quot;, pontosHumano, &quot;Humano&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='height:18.35pt'>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><b><span lang=PT><img border=0 width=36 height=36
+  id="Graphic 7" src="t6b_jcartas.fld/image003.png" alt="Balloon animal"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=PT>Experimente esta primeira versão do jogo,
+  através da linha de comando.</span></p>
+  <p class=MsoNormal><i><span lang=PT>Para cada jogada chame a função</span></i><span
+  lang=PT style='font-size:9.0pt;font-family:"Courier New"'> jogada()</span><i><span
+  lang=PT> com a sua carta:</span></i></p>
+  <p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&gt;&gt;&gt;
+  jogada (&quot;7&quot;)</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=PT style='color:black'>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='color:black'>Uma versão melhorada!</span></h1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 8" src="t6b_jcartas.fld/image001.png"
+  alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=PT>Certamente achou que a necessidade de chamar
+  a função jogada() a cada jogada quebrava um pouco a sensação de
+  &quot;imersão&quot; no jogo. Seria possível que o próprio computador
+  realizasse a iteração entre jogadas, de forma automática? </span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>A
+  resposta é afirmativa... Podemos utilizar um ciclo <a
+  href="https://www.w3schools.com/python/python_while_loops.asp">while</a>.
+  Abordaremos esta estrutura de controlo no capítulo seguinte. Para já fique
+  com a noção que esta estrutura repete sempre o seu bloco de código enquanto a
+  expressão condicional for avaliada como verdadeira..</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=PT>Observe que o facto de utilizarmos variáveis globais complica a leitura
+do algoritmo. Nesta nova versão, iremos apenas utilizar variáveis locais, como
+princípio de boa programação. Apenas a literal BARALHO se manterá</span></p>
+
+<p class=MsoNormal><span lang=PT>A função </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>jogo()</span><span lang=PT>
+que vamos criar, engloba todas as variáveis de jogo e também a lógica de jogo</span></p>
+
+<p class=MsoNormal><span lang=PT>Antes de passarmos à função </span><span
+lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogo()</span><span
+lang=PT> , relembraremos a função </span><span lang=PT style='font-size:9.0pt;
+font-family:"Courier New"'>valor()</span><span lang=PT>e apresentaremos a
+função</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>
+vencedor().</span></p>
+
+<p class=MsoNormal><span lang=PT>A função vencedor segue o seguinte algoritmo:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span lang=PT>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Cabeçalho indicando o final do jogo</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Estrutura condicional de seleção múltipla para determinar resultado
+final do jogo:</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=PT>a.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Vitória do jogados humano;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=PT>b.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Vitória do computador;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:72.0pt;text-indent:-18.0pt'><span
+lang=PT>c.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Empate</span></p>
+
+<p class=codigo><span lang=PT>import random</span></p>
+
+<p class=codigo><span lang=PT>BARALHO = &quot;23456QJK7A&quot;</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># retorna numero de ordem da carta no baralho</span></p>
+
+<p class=codigo><span lang=PT>def valor(carta):</span></p>
+
+<p class=codigo><span lang=PT>    return BARALHO.index(carta)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># mostra o vencedor</span></p>
+
+<p class=codigo><span lang=PT>def vencedor(pontosComputador, pontosHumano):  </span></p>
+
+<p class=codigo><span lang=PT>    print(&quot;&quot;)</span></p>
+
+<p class=codigo><span lang=PT>    print(&quot;O jogo terminou...&quot;)</span></p>
+
+<p class=codigo><span lang=PT>    print(&quot;---- Resultado final ----&quot;)</span></p>
+
+<p class=codigo><span lang=PT>    print(&quot;Computador&quot;,
+pontosComputador, &quot;vs&quot;, pontosHumano, &quot;Humano&quot;)</span></p>
+
+<p class=codigo><span lang=PT>  </span></p>
+
+<p class=codigo><span lang=PT>    if pontosHumano &gt; pontosComputador:</span></p>
+
+<p class=codigo><span lang=PT>        print (&quot;Voce ganhou!&quot;)</span></p>
+
+<p class=codigo><span lang=PT>    elif pontosHumano &lt; pontosComputador:</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;Voce perdeu&quot;)</span></p>
+
+<p class=codigo><span lang=PT>    else:</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;Empatamos...&quot;)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># jogo</span></p>
+
+<p class=codigo><span lang=PT>def jogo(jogadas):</span></p>
+
+<p class=codigo><span lang=PT>    # pontuacao dos dois jogadores</span></p>
+
+<p class=codigo><span lang=PT>    pontosComputador = 0</span></p>
+
+<p class=codigo><span lang=PT>    pontosHumano = 0</span></p>
+
+<p class=codigo><span lang=PT>    pontos = 2</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>    while jogadas&gt;0:</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;*** Jogada ***&quot;)</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;Computador&quot;,
+pontosComputador, &quot;vs&quot;, pontosHumano, &quot;Humano&quot;)        </span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>        # input - jogada do computador e do
+jogador humano</span></p>
+
+<p class=codigo><span lang=PT>        cartaHumano = input(&quot;Humano: &quot;)</span></p>
+
+<p class=codigo><span lang=PT>        cartacomputador = random.choice(BARALHO)</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;Computador:&quot;,
+cartacomputador)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>        # logica de jogo</span></p>
+
+<p class=codigo><span lang=PT>        if valor(cartacomputador) ==
+valor(cartaHumano):</span></p>
+
+<p class=codigo><span lang=PT>            # empate</span></p>
+
+<p class=codigo><span lang=PT>            print(&quot;Empate... Jogue
+novamente...&quot;)</span></p>
+
+<p class=codigo><span lang=PT>            pontos += 2</span></p>
+
+<p class=codigo><span lang=PT>        elif valor(cartacomputador) &gt;
+valor(cartaHumano):</span></p>
+
+<p class=codigo><span lang=PT>            print(pontos, &quot;pontos para o
+computador.&quot;)</span></p>
+
+<p class=codigo><span lang=PT>            pontosComputador += pontos</span></p>
+
+<p class=codigo><span lang=PT>            jogadas -= 1</span></p>
+
+<p class=codigo><span lang=PT>            pontos = 2</span></p>
+
+<p class=codigo><span lang=PT>        else:</span></p>
+
+<p class=codigo><span lang=PT>            print(pontos, &quot;pontos para o
+jogador humano.&quot;)</span></p>
+
+<p class=codigo><span lang=PT>            pontosHumano += pontos</span></p>
+
+<p class=codigo><span lang=PT>            jogadas -= 1</span></p>
+
+<p class=codigo><span lang=PT>            pontos = 2</span></p>
+
+<p class=codigo><span lang=PT> </span></p>
+
+<p class=codigo><span lang=PT>        # final da jogada</span></p>
+
+<p class=codigo><span lang=PT>        print(&quot;Tem&quot;, jogadas,
+&quot;jogadas.&quot;)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>    vencedor(pontosComputador, pontosHumano)</span></p>
+
+<p class=codigo style='margin-left:0cm'><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 4" src="t6b_jcartas.fld/image001.png"
+  alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Observe
+  a função </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogo()</span><span
+  lang=PT> e determine as principais alterações face à versão anterior do jogo.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=PT>Confira as principais alterações ocorridas:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>As variáveis globais </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>pontosComputador</span><span
+lang=PT> e </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>pontosHumano</span><span
+lang=PT> passaram a variáveis locais da função </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>jogo()</span><span lang=PT>;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>A variável global </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>jogadas</span><span lang=PT>
+passou a ser um parâmetro da função </span><span lang=PT style='font-size:9.0pt;
+font-family:"Courier New"'>jogo()</span><span lang=PT>. Isto permite configurar
+o jogo em função do número de jogadas com que prefere jogar;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>A variável global </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>empate</span><span lang=PT>
+foi substituída pela variável local </span><span lang=PT style='font-size:9.0pt;
+font-family:"Courier New"'>pontos</span><span lang=PT>;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>A interação com o jogador passou a ser feita com a
+função </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>input()</span><span
+lang=PT>.</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:54.0pt;text-indent:-36.0pt'><span
+lang=PT>•<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>A condição de término do jogo passou para o ciclo </span><span
+lang=PT style='font-size:9.0pt;font-family:"Courier New"'>while</span><span
+lang=PT>, que repete as jogadas indefinidamente até a variável </span><span
+lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogadas</span><span
+lang=PT> atingir o valor 0. </span></p>
+
+<h1><span lang=PT>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Desafio final</span></h1>
+
+<p class=MsoNormal><span lang=PT>Altere o jogo de forma a que o jogo não
+termine após um determinado número de jogadas, mas quando um dos jogadores
+atingir um determinado valor de pontos (10 pontos, por exemplo, que seria
+definido como parâmetro da função </span><span lang=PT style='font-size:9.0pt;
+font-family:"Courier New"'>jogo()</span><span lang=PT>).</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 1" src="t6b_jcartas.fld/image004.png"
+  alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Partilhe
+  o <b>seu</b> jogo!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

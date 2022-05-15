@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style>
+        .botao {
+          background-color: rgb(51, 101, 192);
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>        
+</head>
+<body>
+
+<h2>Blackjack</h2>
+<p><button type="button" onclick="jogo21()">Play</button></p>
+
+<p><br>After playing the game, you can proceed to the tutorial.</p>
+
+<a href = "t7b_blackjack.html" class="botao" title='Tutorial'>Tutorial</a>
+<script>
+function jogo21(){
+  // pontuacao da casa e do jogador
+  var casa = 0;
+  var jogador = 0;
+
+  var jogar = true;
+  while (jogar)
+  {
+    var texto = "Score of the player: " + jogador + "\nScore of the house: " + casa + "\nDo you want a card?";
+
+    jogar = window.confirm(texto);
+    if (jogar)
+    {
+        // retirar cartas do baralho
+        var carta_jogador = Math.floor(Math.random()*10)+1;
+        var carta_casa = Math.floor(Math.random()*10)+1;
+
+        // mostrar jogada
+        texto = "You draw a card with " + carta_jogador + " points.\n";
+        texto += "The house draw a card with " + carta_casa + " points.\n";
+
+        // calcular pontuacao
+        casa += carta_casa
+        jogador += carta_jogador
+
+        // verificar se terminou o jogo
+        if (jogador == 21)
+        {
+            window.alert(texto + "21! You won. Parabéns!");
+            return;
+        }else if(casa == 21){
+            window.alert (texto + "21... You lose...");
+            return;
+        }else if (casa > 21){
+            window.alert (texto + "You won! The house went over 21.");
+            return;
+        }else if (jogador > 21)
+        {
+            window.alert (texto + "You lose... You went over 21.");
+            return;
+        }else{
+            window.alert (texto);
+        }
+    }    
+  }
+    
+  if (jogador >= casa)
+      window.alert ("You won with " + jogador + " points against " + casa + " points from the house.");
+  else
+      window.alert ("You lose with " + jogador + " points against " + casa + " points from the house.");
+}
+</script>
+    
+</body>
+</html> 

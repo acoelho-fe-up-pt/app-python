@@ -1,0 +1,685 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;
+	font-weight:normal;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=PT style='color:black'>O jogo de aventuras
+de texto</span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=PT-BR>Neste tutorial, iremos desenvolver uma
+versão genérica de um jogo que possibilite criar diversas aventuras de texto.
+Na verdade, é quase um &quot;livro digital&quot; de aventuras...</span></p>
+
+<p class=MsoNormal><span lang=PT-BR>As aventuras de texto baseiam-se em
+narrativas não lineares e interativas. Ou seja, em cada cena o jogador pode
+selecionar diversas opções, com as quais irá definindo o enredo da sua
+aventura.</span></p>
+
+<p class=MsoNormal><span lang=PT-BR>Como abstração principal, uma Narrativa é
+descrita através de um dicionário (em Python). A chave de cada entrada no
+dicionário associa-se à informação de uma cena, descrita por um tuplo com 3
+objetos:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=PT-BR style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT-BR>Uma cadeia de caracteres descrevendo o texto da
+cena;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+lang=PT-BR style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT-BR>Uma lista de cadeias de caracteres com os textos
+das opções disponíveis ao jogador;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT-BR
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT-BR>Uma lista de chaves com a indicação da próxima
+cena, consoante a opção selecionada pelo jogador.</span></p>
+
+<p class=MsoNormal><span lang=PT-BR>A título de exemplo analise a seguinte narrativa
+(minimalista):</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro
+= {}</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro[&quot;inicio&quot;]
+= (&quot;Escolhe uma das duas portas:&quot;,\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[&quot;Abres
+a porta da esquerda.&quot;, &quot;Abres a porta da direita.&quot;],\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[&quot;1&quot;,&quot;2”])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro[&quot;1&quot;]
+= (&quot;Perdeste.&quot;,[],[])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro[&quot;2&quot;]
+= (&quot;Ganhaste.&quot;,[],[])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  width=36 height=36 id="Graphic 6" src="t10e_aventura_texto.fld/image001.png"
+  alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=PT-BR>Observe que quando a lista de opções é
+  vazia, corresponde a um dos finais do jogo... </span></p>
+  <p class=MsoNormal><span lang=PT-BR>Uma narrativa não linear pode ter vários
+  finais distintos...</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=PT-BR>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='color:white'>Pode</span><span lang=PT>mos
+assim imaginar, para esta narrativa minimalista, que o jogo mostrará o
+seguinte:</span></p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Escolhe uma das duas portas:</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>1- Abres a porta da esquerda.</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>2- Abres a porta da direita.</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Selecione a sua opção: <b>1</b></span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Perdeste.</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>*** Fim ***</span></p>
+
+</div>
+
+<p class=MsoNormal><span lang=PT>Tentemos agora a outra opção:</span></p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Escolhe uma das duas portas:</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>1- Abres a porta da esquerda.</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>2- Abres a porta da direita.</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Selecione a sua opção: <b>2</b></span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Ganhaste.</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>*** Fim ***</span></p>
+
+</div>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT>Com esta simplicidade narrativa, não parece um
+jogo muito atrativo. No entanto, com algumas pequenas alterações ao texto da
+narrativa, por exemplo, ao nível da opção 1, verá como é fácil abrir novos
+caminhos de aventuras:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro
+= {};</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro[&quot;inicio&quot;]
+= (&quot;Escolhe uma das duas portas:&quot;,\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[&quot;Abres
+a porta da esquerda.&quot;, &quot;Abres a porta da direita.&quot;],\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[&quot;1&quot;,&quot;2&quot;])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro[&quot;1&quot;]
+= (&quot;Passando a porta da esquerda, entras num corredor bem
+iluminado!&quot;,[&quot;Esperas.&quot;, &quot;Caminhas pelo
+corredor&quot;],[&quot;30&quot;, &quot;35&quot;])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro[&quot;2&quot;]
+= (&quot;Ganhaste.&quot;,[],[])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro[&quot;30&quot;]
+= (&quot;Perdeste.&quot;, [],[])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro[&quot;35&quot;]
+= (&quot;Encontraste um tesouro!!!&quot;, [],[])</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT>Tentemos explorar a opção 1.</span></p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Escolhe uma das duas portas:</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>1- Abres a porta da esquerda.</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>2- Abres a porta da direita.</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Selecione a sua opção: 1</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Passando a porta da esquerda,
+entras num corredor bem iluminado!</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>1- Esperas.</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>2- Caminhas pelo corredor</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Selecione a sua opção: 1</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Perdeste.</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>*** Fim ***</span></p>
+
+</div>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT>Ou então:</span></p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Escolhe uma das duas portas:</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>1- Abres a porta da esquerda.</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>2- Abres a porta da direita.</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Selecione a sua opção: 1</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Passando a porta da esquerda,
+entras num corredor bem iluminado!</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>1- Esperas.</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>2- Caminhas pelo corredor</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Selecione a sua opção: 2</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>Encontraste um tesouro!!!</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>*** Fim ***</span></p>
+
+</div>
+
+<p class=MsoNormal><span lang=PT> </span></p>
+
+<h1 style='text-indent:0cm'><span lang=PT>&nbsp;</span></h1>
+
+<h1><span lang=PT>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>O ciclo de jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>Este jogo é muito simples, implementado por
+uma única função - </span><span lang=PT style='font-size:9.0pt;font-family:
+"Courier New"'>jogo_aventura()</span><span lang=PT> - uma vez que apenas tem
+que apresentar a narrativa de acordo com a sua estrutura. Esta função tem dois
+parâmetros: o livro (um dicionário) e o estado inicial. </span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span lang=PT>O ciclo de jogo
+será então o seguinte, sendo a variável </span><span lang=PT style='font-size:
+9.0pt;font-family:"Courier New"'>estado</span><span lang=PT> a que verifica se
+o jogo chegou ao </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&quot;fim&quot;</span><span
+lang=PT>... </span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  width=36 height=36 id="Graphic 2" src="t10e_aventura_texto.fld/image001.png"
+  alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>O
+  </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>estado</span><span
+  lang=PT> inicial é também passado como segundo parâmetro, uma vez que cada
+  livro poderá ter estados iniciais distintos. Ou até poder ser uma continuação
+  de uma sessão anterior, em que o jogador inicia a sua aventura numa fase mais
+  adiantada...</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New";
+color:white'>def jogo_aventura(livro, estado):    </span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+while estado != &quot;fim&quot;:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+# le a cena atual e imprime o texto</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>      
+ texto, opcoes, prox_estado = livro[estado]</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+print(texto)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  width=36 height=36 id="Graphic 3" src="t10e_aventura_texto.fld/image001.png"
+  alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Observe
+  a simplicidade como o tuplo que define a cena é lido numa única instrução,
+  onde são atribuídos valores a três variáveis: </span><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>texto, opcoes </span><span
+  lang=PT>e</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>
+  prox_estado</span><span lang=PT>.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New";
+color:white'>        # verifica se </span><span lang=PT style='font-size:9.0pt;
+font-family:"Courier New"'>não é o fim do jogo e imprime as opções da narrativa</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>if opcoes
+!= []:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>           
+for i in range(len(opcoes)):</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>               
+print(str(i+1) + &quot;- &quot; + opcoes[i])</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'># le opção
+do jogador e valida-a com o número de opções</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>opcao
+= 0</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>           
+while opcao&lt;1 or opcao&gt;len(opcoes):</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>               
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>opcao =
+int(input(&quot;Selecione a sua opção: &quot;))</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+# determina a próxima cena de acordo com a opção do jogador</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+estado = prox_estado[opcao-1]</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+else:    </span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+print(&quot;*** Fim ***&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+estado = &quot;fim&quot; # fim do jogo - sai do ciclo</span></p>
+
+<h1><span lang=PT>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Um jogo de aventura simples</span></h1>
+
+<p class=MsoNormal><span lang=PT>Jogue a seguinte narrativa para um primeiro
+jogo:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro
+= {};</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro[&quot;inicio&quot;]
+= (&quot;Encontras-te ao fundo de um corredor de uma gruta. \nÀ tua frente
+encontram-se 3 portas.\nAtrás de ti, pelo corredor aproxima-se algo aterrador.
+O que fazes?&quot;,\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[&quot;Abres
+a porta com o símbolo da água.&quot;,&quot;Abres a porta com o símbolo do
+ar.&quot;, &quot;Abres a porta com o símbolo da terra.&quot;],\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro[&quot;1&quot;]
+= (&quot;Abres a porta e uma torrente de enorme caudal empurra-te pelo
+corredor...\nTudo fica escuro à tua volta no meio do turbilhão de água
+revolta... perdes a consciência...\nPerdeste.&quot;,\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[],\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro[&quot;2&quot;]
+= (&quot;Abres a porta e encontras-te em frente de um enorme precipício.\nUm
+enorme dragão aproxima-se e leva-te nas suas garras até te largar em segurança
+em tua casa.\nÉ o teu dragão. Estás a salvo.&quot;,\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[],\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro[&quot;3&quot;]
+= (&quot;Abres a porta e vês dois corredores. Uma leve brisa afaga a tua face direita...&quot;,\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[&quot;Vais
+pelo túnel da esquerda.&quot;,&quot;Vais pelo túnel da direita.&quot;],\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[&quot;4&quot;,&quot;5&quot;])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro[&quot;4&quot;]
+= (&quot;Encontras-te em frente a um precipício, atravessado por uma ponte de
+cordas em mau estado que te leva à saída da gruta.\nAtravessas a ponte em
+direção à liberdade...\nMas a ponte cai... Perdeste.\n&quot;,\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[],\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>livro[&quot;5&quot;]
+= (&quot;O túnel da direita leva-te à saída da gruta, como pressagiava a brisa
+proveniente de lá. Estás em liberdade!&quot;,\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[],\</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>[])</span></p>
+
+<p class=MsoNormal><span lang=PT>Pode jogar através da seguinte instrução:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogo_aventura(livro,
+&quot;inicio&quot;)</span></p>
+
+<h1><span lang=PT>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Uma aventura mais complexa...</span></h1>
+
+<p class=MsoNormal><span lang=PT>O jogo &quot;<a href="merlin.py">Merlin</a>&quot;
+é um jogo de aventura que foi desenvolvido pelo Luís Reis e pela Ana Alves no
+âmbito dos seus trabalhos de mestrado na FEUP.</span></p>
+
+<p class=MsoNormal><span lang=PT>Tem apenas que copiar esta narrativa interativa
+para o ficheiro com o código que acabou de desenvolver e jogar, substituindo:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogo_aventura(livro,
+&quot;inicio&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT>por:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogo_aventura(story,
+&quot;start&quot;)</span></p>
+
+<h1><span lang=PT>4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Desafio final</span></h1>
+
+<p class=MsoNormal><span lang=PT-BR>Construa a sua própria narrativa
+interativa!</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 1"
+  src="t10e_aventura_texto.fld/image002.png" alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Partilhe
+  o <b>seu</b> jogo!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

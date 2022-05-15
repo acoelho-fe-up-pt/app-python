@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Adivinhe o número em que estou a pensar...</h2>
+<p >Tentativas: <i id="tentativas">7</i></p> 
+<form action="JavaScript:jogar();" method="get">
+  	Numero: <input type="number" id="adivinha">
+	<button type="submit">Jogar</button>
+</form>
+<p id="feedback"></p> 
+
+<script>
+function chave(gama){
+	return Math.floor((Math.random() * gama) + 1);
+}
+
+function jogar() {
+	// valores da interface
+    var tentativas = document.getElementById("tentativas").innerHTML;
+    //var numero = document.getElementById("numero").innerHTML;
+    var adivinha = document.getElementById("adivinha").value;
+    var resultado = "Perdeu!";
+
+	if (tentativas > 0)
+    {
+    	// jogar : verifica numero
+        if (numero == adivinha)
+        {
+        	resultado  = "Parabens!";
+        }else if (adivinha > numero){
+        	resultado  = "Numero muito grande...";
+            tentativas--;
+        }else{
+        	resultado  = "Numero muito pequeno...";
+            tentativas--;
+        }
+    }
+    
+    
+    document.getElementById("tentativas").innerHTML = tentativas;
+    document.getElementById("feedback").innerHTML = resultado;
+}
+
+// main
+var numero = chave(100);
+</script>
+
+</body>
+</html> 

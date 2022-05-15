@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .botao {
+          background-color: rgb(51, 101, 192);
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>        
+</head>
+<body>
+
+<h2>The Coin Game</h2>
+<p>Let's start by a very simple game.
+It is the game where you throw a coin in the air and try to guess whether it is heads or tails - the Coin Game.</p>
+<p>Atire uma moeda ao ar e prima o botão seguinte...</p>
+
+
+<button type="button" onclick="jogo()"> Heads or tails?</button>
+
+<p id="demo">>></p>
+
+<p><br>After playing the game, you can proceed to the tutorial.</p>
+
+<a href = "t5a_coin.html" class="botao" title='Tutorial'>Tutorial</a>
+<script>
+    function jogo() {
+        var valores = ["heads", "tails"];
+        document.getElementById("demo").innerHTML = ">> I have played <b>" + valores[Math.round(Math.random())] + "</b>. What about you?";
+    }
+</script>
+    
+</body>
+</html> 

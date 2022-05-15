@@ -1,0 +1,469 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:6.0pt !msorm;margin-right:0cm !msorm;
+margin-bottom:6.0pt !msorm;margin-left:0cm !msorm;text-align:justify !msorm;
+page-break-after:auto !msorm;background:white !msorm;border:none !msorm;
+mso-style-name:Caption !msorm;margin-top:18.0pt;margin-right:0cm;margin-bottom:
+12.0pt;margin-left:0cm;text-align:center;background:#B4C6E7;border:none;
+padding:0cm'><span style='font-family:"Calibri",sans-serif !msorm;color:windowtext !msorm;
+font-weight:normal !msorm;font-style:italic !msorm'><span lang=PT
+style='color:black'>O jogo </span></span><span style='font-family:"Calibri",sans-serif !msorm;
+color:windowtext !msorm;font-weight:normal !msorm;font-style:italic !msorm'><span
+lang=PT style='color:black'>do Bingo</span></span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=PT-BR>Neste tutorial, iremos desenvolver uma
+versão simplificada de um jogo conhecido internacionalmente - o </span><span
+lang=PT><a href="https://pt.wikipedia.org/wiki/Bingo"><span lang=PT-BR>Jogo do
+Bingo</span></a></span><span lang=PT-BR> - e que foi criado nos EUA em </span><span
+lang=PT>1929</span><span lang=PT-BR>.</span></p>
+
+<p class=MsoNormal><span lang=PT-BR>O jogo é composto por uma tômbola de bolas
+numeradas de 1 a 99, que serão sorteadas sequencialmente. </span></p>
+
+<p class=MsoNormal><span lang=PT-BR>Cada jogador tem um ou mais cartões com 15
+números. Estes cartões dispõem os números em 3 linhas e 9 colunas.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=PT><img
+border=0 width=208 height=73 id="Picture 2" src="t10d_bingo.fld/image001.png"
+alt="A red and white sign&#10;&#10;Description automatically generated"></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span lang=PT-BR>Cada
+linha tem 5 números e cada coluna terá um ou dois números, sendo que as colunas
+têm os números de cada uma das 9 dezenas (1-9, 10-19, 20-29, 30-39, 40-49, 50-59,
+60-69, 70-79, 80-90).</span></p>
+
+<p class=MsoNormal><span lang=PT-BR>Neste jogo iremos apenas determinar o
+vencedor que complete um dos seus cartões - Bingo! - ignorando o primeiro a concluir
+uma linha.</span></p>
+
+<p class=MsoNormal><span lang=PT-BR>Dada a sua simplicidade, optou-se por uma
+interface por texto, o que também simplifica a estruturação do programa: </span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=PT-BR>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT-BR>Uma função que cria os cartões de jogo;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT-BR>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT-BR>E outra função que encapsula todo o jogo.</span></p>
+
+<h1><span lang=PT>A criação dos cartões</span></h1>
+
+<p class=MsoNormal><span lang=PT>Esta função cria um conjunto de 15 números não
+repetidos. Para tal utiliza-se a abstração Conjunto (Set) dado que evita a
+ocorrência de números repetidos. </span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>import
+random</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+número de números em cada cartão</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>NUMEROS
+= 15</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+preenche um cartao com 15 números diferentes</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+preenche_cartao():</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+cartao = set()</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>while
+len(cartao) &lt; NUMEROS:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+cartao.add(random.randint(1,90))</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+return </span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>cart</span><span
+lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>a</span><span
+lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>o</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 4" src="t10d_bingo.fld/image002.png"
+  alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=PT>Observe que esta função utiliza um ciclo condicional
+  (</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>while</span><span
+  lang=PT>) em vez de um ciclo contado (</span><span lang=PT style='font-size:
+  9.0pt;font-family:"Courier New"'>for</span><span lang=PT>)... <br>
+  Porque foi feita esta opção? </span></p>
+  <p class=MsoNormal><span lang=PT>Pista: Estude o funcionamento da função </span><span
+  lang=PT style='font-size:9.0pt;font-family:"Courier New"'>add</span><span
+  lang=PT> em conjuntos...</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=PT>&nbsp;</span></h1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 7" src="t10d_bingo.fld/image003.png"
+  alt=Eye></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='text-align:left'><span lang=PT>Repare
+  que, para simplificação, esta função não respeita uma das regras de criação
+  dos cartões:<br>
+  - Cada linha tem 5 números e cada coluna terá um ou dois números, sendo que
+  as colunas têm os números de cada uma das 9 dezenas (1-9, 10-19, 20-29,
+  30-39, 40-49, 50-59, 60-69, 70-79, 80-90).</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>Considere como desafio incluir esta regra...</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=PT style='color:white'>A preparação do</span><span lang=PT> jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>O jogo do bingo é implementado com a função </span><span
+lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogo()</span><span
+lang=PT>, que inicia com a criação das bolas numeradas de 1 a 90</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+jogo():</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# cria o conjunto inicial de bolas a sortear</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+bolas = list(range(1,91))</span></p>
+
+<p class=MsoNormal><span lang=PT>Em seguida cria-se um cartão para o jogador
+humano e um cartão para o computador.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# cartão de cada jogador</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+cartaoHumano = preenche_cartao()</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+cartaoComputador = preenche_cartao()</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+numeros_ja_saidos = set()</span></p>
+
+<p class=MsoNormal><span lang=PT>E a versão de impressão de cada cartão, que é
+uma lista ordenada. </span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# versão de impressão</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+bilheteHumano = list(cartaoHumano)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+bilheteHumano.sort()</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+bilheteComputador = list(cartaoComputador)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+bilheteComputador.sort()</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 8" src="t10d_bingo.fld/image002.png"
+  alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=PT>Porque será necessário criar uma lista para
+  ordenar os números?</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=PT style='color:white'>O ciclo de </span><span lang=PT>jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>O ciclo de jogo repete-se até que sejam
+esgotadas as bolas numeradas. </span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# inicialização</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+while len(bolas) &gt; 0:</span></p>
+
+<p class=MsoNormal><span lang=PT>A cada jogada é sorteado um número... que é
+depois adicionado à lista de </span><span lang=PT style='font-size:9.0pt;
+font-family:"Courier New"'>numeros</span><span lang=PT> que saíram.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>      
+# retira número</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+if input(&quot;E roda a esfera...&quot;) </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>== &quot;end&quot;:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>return</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+numero_sorteado = bolas.pop(random.randint(0, len(bolas)-1))</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+print (numero_sorteado)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+numeros_ja_saidos.add(numero_sorteado)</span></p>
+
+<p class=MsoNormal><span lang=PT>Em seguida, calcula-se quantos números faltam
+sair no cartão de cada jogador.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+# mostra bilhete do jogador humano</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+nH = NUMEROS - len(cartaoHumano.intersection(numeros_ja_saidos))</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+print(bilheteHumano, &quot;- faltam&quot;, nH)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+nC = NUMEROS - len(cartaoComputador.intersection(numeros_ja_saidos))</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+print(bilheteComputador, &quot;- faltam&quot;, nC)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 10" src="t10d_bingo.fld/image003.png"
+  alt=Eye></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=PT>Para calcular os números que já saíram em
+  cada cartão utiliza-se o comprimento do conjunto devolvido pelo método <a
+  href="https://www.w3schools.com/python/ref_set_intersection.asp#:~:text=The%20intersection()%20method%20returns,with%20more%20than%20two%20sets."><span
+  style='font-size:9.0pt;font-family:"Courier New"'>intersection()</span></a>
+  dos conjuntos.</span></p>
+  <p class=MsoNormal><span lang=PT>Este método calcula a quantidade de números
+  que se encontram, simultaneamente, no cartão do jogador e no conjunto de
+  valores que já saíram.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='color:white'>Finalmente, </span><span
+lang=PT>verifica-se se há um vencedor... </span><span lang=EN-US>Bingo!</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+if nC == 0 and nH == 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>           
+print(&quot;Empate...&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>           
+break</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+elif nC == 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>print(&quot;Bingo!
+Ganhou o computador.&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+break</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+elif nH == 0:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+print(&quot;Bingo! Ganhou o jogador humano.&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+break</span></p>
+
+<h1><span lang=PT>Desafio final</span></h1>
+
+<p class=MsoNormal><span lang=PT-BR>Evolua esta versão do jogo para incorporar
+as regras de criação dos cartões e a possibilidade de haver vários jogadores,
+com vários cartões.</span></p>
+
+<p class=MsoNormal><span lang=PT-BR>Também poderá desenvolver uma versão
+gráfica utilizando o módulo p5...</span></p>
+
+<p class=MsoNormal><span lang=PT-BR>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 1" src="t10d_bingo.fld/image004.png"
+  alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Partilhe
+  o <b>seu</b> jogo!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style>
+        .botao {
+          background-color: rgb(51, 101, 192);
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>        
+</head>
+<body>
+
+<h2>O jogo "pedra, papel, tesoura"</h2>
+<p>Trata-se do jogo com dois jogadores em que se cada um seleciona um dos três símbolos, e depois se confrontam.<br>
+Sabendo que:<ul>
+<li>Pedra vence contra Tesoura;</li>
+<li>Tesoura vence contra Papel;</li>
+<li>Papel vence contra Pedra.</li></ul></p>
+
+<p>Selecione um dos três símbolos prima o botão</p>
+<form>
+    <input type="radio" id="pedra" name="simbolo" value="pedra">
+    <label for="pedra">pedra</label><br>
+    <input type="radio" id="papel" name="simbolo" value="papel">
+    <label for="papel">papel</label><br>
+    <input type="radio" id="tesoura" name="simbolo" value="tesoura">
+    <label for="tesoura">tesoura</label>
+</form>
+
+
+<p><button type="button" onclick="jogo()">Jogar</button></p>
+
+<p id="demo">>></p>
+
+<p><br>Após jogar o jogo, pode passar ao tutorial.</p>
+
+<a href = "t5b_pedra_papel_tesoura.html" class="botao" title='Tutorial'>Tutorial</a>
+<script>
+    function jogo() {
+        var valores = ["pedra", "papel", "tesoura"];
+        var jogadaPC = valores[Math.floor(Math.random()*3)];
+
+        var jogadaHumano = "";
+        if (document.getElementById("pedra").checked == true)
+            jogadaHumano = "pedra";
+        if (document.getElementById("papel").checked == true)
+            jogadaHumano = "papel";
+        if (document.getElementById("tesoura").checked == true)
+            jogadaHumano = "tesoura";
+                
+        var resultado = "Empatamos.";
+        if (jogadaPC == "pedra" && jogadaHumano == "tesoura" || jogadaPC == "tesoura" && jogadaHumano == "papel" || jogadaPC == "papel" && jogadaHumano == "pedra")
+            resultado = "Perdeu.";
+        if (jogadaPC == "tesoura" && jogadaHumano == "pedra" || jogadaPC == "papel" && jogadaHumano == "tesoura" || jogadaPC == "pedra" && jogadaHumano == "papel")
+            resultado = "Ganhou.";
+ 
+        if (jogadaHumano == "")
+            document.getElementById("demo").innerHTML = ">> Tem que escolher um dos três simbolos...";
+        else
+           document.getElementById("demo").innerHTML = ">> Eu escolhi <b>" + jogadaPC + "<br>" + resultado;
+    }
+</script>
+    
+</body>
+</html> 

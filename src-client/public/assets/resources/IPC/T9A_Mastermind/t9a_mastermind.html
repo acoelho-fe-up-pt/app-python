@@ -1,0 +1,1328 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;
+	font-weight:normal;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=PT style='color:black'>O jogo &quot;Mastermind&quot;</span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=PT>O <a
+href="https://en.wikipedia.org/wiki/Mastermind_(board_game)">Mastermind</a> é
+um jogo de tabuleiro cujo objetivo é descodificar um determinado código, e que
+foi inventado em 1970 por Mordecai Meirowitz. A figura seguinte apresenta o
+tabuleiro [<a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)">Wikipedia</a>]:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=PT><img
+border=0 width=150 height=159 id="Picture 2"
+src="t9a_mastermind.fld/image001.jpg" alt=astermind.jpg></span></p>
+
+<p class=MsoNormal><span lang=PT>As regras do jogo são as seguintes:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>O código é composto por 4 pinos de diversas cores
+(tipicamente 6), excetuando o preto e o branco. Na imagem do tabuleiro, a chave
+é constituída pelos 4 pinos na extremidade mais próxima, escondidos do jogador,
+que se encontra na extremidade mais afastada;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>O jogador apresenta combinações de 4 pinos até
+acertar ou exceder o número de possibilidades (tipicamente 12); Na imagem do
+tabuleiro, a primeira jogada é composta pelos 4 pinos mais afastados: amarelo,
+amarelo, azul, azul.</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>A cada jogada, o jogador é informado de quantos
+pinos têm a cor certa e estão no sítio certo (pinos pretos, na imagem do
+tabuleiro, pinos vermelhos). E de quantos têm a cor certa, mas estão na posição
+errada (pinos brancos). Na imagem do tabuleiro, os 4 pinos da primeira jogada
+são acompanhados por 1 pino branco. Este pino indica ao jogador que acertou na
+cor de um pino da chave, mas a posição está errada. Por outro lado, os pinos da
+sexta jogada, são acompanhados por 4 pequenos pinos vermelhos, o que significa
+que o jogador acertou na chave, ou seja, acertou nas 4 cores e nas 4 posições
+dos pinos da chave.</span></p>
+
+<h1><span lang=PT>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>inicialização do jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>Este jogo já apresenta alguma complexidade,
+pelo que será útil utilizar a decomposição do problema para estruturar melhor o
+jogo em subproblemas. </span></p>
+
+<p class=MsoNormal><img width=95 height=157
+src="t9a_mastermind.fld/image002.jpg" align=left hspace=12><span lang=PT>O jogo
+requer alguma funcionalidade gráfica e optámos por estruturá-lo em p5, através
+das  funções típicas: </span><span lang=PT style='font-size:9.0pt;font-family:
+"Courier New"'>setup()</span><span lang=PT>e </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>draw().</span><span lang=PT> </span></p>
+
+<p class=MsoNormal><span lang=PT>Na imagem ao lado, vemos que a chave se
+encontra escondida, no topo, e que, após a primeira jogada (amarelo, amarelo,
+cyan, cyan), o computador indica 1 pino preto e zero pinos brancos, o que
+significa que o jogador acertou na cor e na posição de um dos pinos da chave.</span></p>
+
+<p class=MsoNormal><span lang=PT>Será necessário importar o módulo p5, bem como
+o módulo random para selecionar a chave de forma aleatória.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>from
+p5 import *</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>import
+random</span></p>
+
+<p class=MsoNormal><span lang=PT>Comecemos por definir um tuplo que representa
+o conjunto de <a href="https://www.w3schools.com/colors/colors_names.asp">cores</a>
+(</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>CORES</span><span
+lang=PT>) e o número de pinos que compõem a chave (</span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>DIM_CHAVE</span><span
+lang=PT>), bem como o diâmetro da representação dos pinos (</span><span
+lang=PT style='font-size:9.0pt;font-family:"Courier New"'>DIAMETRO</span><span
+lang=PT>) e o número máximo de tentativas para adivinhar a chave (</span><span
+lang=PT style='font-size:9.0pt;font-family:"Courier New"'>MAX_JOGADAS</span><span
+lang=PT>):</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>CORES
+= (&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;, &quot;cyan&quot;,
+&quot;yellow&quot;, &quot;magenta&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>DIM_CHAVE
+= 4</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>DIAMETRO
+= 50</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>MAX_JOGADAS
+= 12</span></p>
+
+<p class=MsoNormal><span lang=PT>O </span><span lang=PT style='font-size:9.0pt;
+font-family:"Courier New"'>DIAMETRO </span><span lang=PT>pode ser definido de
+forma a alterar a dimensão do tabuleiro e símbolos de jogo.</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 3"
+  src="t9a_mastermind.fld/image003.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=PT>A constante </span><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>MAX_JOGADAS </span><span
+  lang=PT>acaba por definir o comprimento do tabuleiro de jogo pois define o
+  número de linhas do tabuleiro (observe a figura anterior).</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='color:white'>Definamos também</span><span
+lang=PT> algumas variáveis globais, que representam a chave a adivinhar (</span><span
+lang=PT style='font-size:9.0pt;font-family:"Courier New"'>chave</span><span
+lang=PT>), a jogada atual do jogador (</span><span lang=PT style='font-size:
+9.0pt;font-family:"Courier New"'>jogada</span><span lang=PT>), a representação
+do tabuleiro (</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>tabuleiro</span><span
+lang=PT>)...</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>chave
+= None</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogada
+= [0]</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span lang=PT style='font-size:
+9.0pt;font-family:"Courier New"'>tabuleiro = []</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 11"
+  src="t9a_mastermind.fld/image003.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=PT>A variável </span><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>chave </span><span lang=PT>será
+  um tuplo, uma vez que depois de criada não será alterada. Mas como os tuplos
+  são imutáveis, será inicializada por </span><span lang=PT style='font-size:
+  9.0pt;font-family:"Courier New"'>None</span><span lang=PT>, que representa a
+  ausência de um valor. As outras duas variáveis são listas, pois irão ser
+  alteradas com o decorrer do jogo.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='color:white'>E ainda duas variáveis
+auxiliares</span><span lang=PT>... O número de tentativas restantes, que é
+inicializado com </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>MAX_JOGADAS</span><span
+lang=PT>.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>tentativas
+= MAX_JOGADAS</span></p>
+
+<p class=MsoNormal><span lang=PT>E duas variáveis booleanas que permitem saber
+se o jogo e a jogada já terminaram.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>terminou
+= False</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogou
+= False</span></p>
+
+<p class=MsoNormal><span lang=PT>A função </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>setup()</span><span lang=PT>terá
+a seguinte funcionalidade:</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Criar a chave como uma combinação aleatória das 6 cores numa sequência
+de 4 pinos.</span></p>
+
+<p class=MsoNormal><span lang=PT>Através de um ciclo contado (</span><span
+lang=PT style='font-size:9.0pt;font-family:"Courier New"'>for</span><span
+lang=PT>) cria-se um tuplo de 4 valores (</span><span lang=PT style='font-size:
+9.0pt;font-family:"Courier New"'>DIM_CHAVE</span><span lang=PT>) com inteiros
+de 0 a 5 (consoante as 6 cores definidas em </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>CORES</span><span lang=PT>).</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 12"
+  src="t9a_mastermind.fld/image003.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=PT>A variável </span><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>chave</span><span lang=PT>
+  será alterada, pelo que é necessário referir isso no início da função:</span></p>
+  <p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+  global chave</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Definir a dimensão da janela gráfica do p5, bem como o título da janela
+(&quot;Mastermind&quot;).</span></p>
+
+<p class=MsoNormal><span lang=PT>A dimensão da janela poderá ser calculada tendo
+em conta: a largura depende do número de pinos e do espaço para colocar o número
+de pinos pretos e brancos, que se considera igual à largura de 2 pinos. A
+altura da janela será dependente do número de jogadas máximo (1 linha por
+jogada) + 1 linha para a chave. Estas dimensões são multiplicadas pelo diâmetro
+dos pinos.</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span lang=PT>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Criar uma font de texto para visualizar o número de pinos pretos e
+brancos, do tipo &quot;Arial&quot; de tamanho 42, alinhada à esquerda e
+centrada na coordenada indicada. </span></p>
+
+<p class=MsoListParagraphCxSpLast><i><span lang=PT>Obs.: Será necessário
+colocar na pasta do ficheiro .py o ficheiro</span></i><span lang=PT> &quot;<b><a
+href="arial.ttf">Arial.ttf</a>&quot;</b></span><i><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>.</span></i></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT>Eis o código da função </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>setup()</span><span lang=PT>:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+setup():</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+global chave</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# chave</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>chave
+= (random.randint(0,len(CORES)-1), )</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+for i in range(DIM_CHAVE-1):</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>chave =
+chave + (random.randint(0,len(CORES)-1), )</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# janela</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+size(DIAMETRO*(DIM_CHAVE+2), DIAMETRO*(MAX_JOGADAS+1))</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>title(&quot;Mastermind&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+# texto</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+f = create_font(&quot;Arial.ttf&quot;, 42)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+text_font(f)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+text_align(&quot;LEFT&quot;, &quot;CENTER&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 13"
+  src="t9a_mastermind.fld/image003.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=PT>A função  </span><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>create_font()</span><span
+  lang=PT> importa uma font vetorial de um ficheiro, a função </span><span
+  lang=PT style='font-size:9.0pt;font-family:"Courier New"'>text_font()</span><span
+  lang=PT> seleciona-a como font corrente e a função </span><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>text_align() </span><span
+  lang=PT>define o alinhamento do texto sobre o ponto de inserção:</span></p>
+  <p class=MsoNormal><span lang=PT>Para mais detalhes consulte <a
+  href="https://p5.readthedocs.io/en/latest/tutorials/typography.html">Typography
+  no p5</a>.</span></p>
+  <p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1 style='margin-left:0cm;text-indent:0cm'><span lang=PT>&nbsp;</span></h1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 5"
+  src="t9a_mastermind.fld/image003.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=PT>Ao longo deste tutorial iremos utilizar os
+  tuplos como abstração primordial para o jogo, deixando as listas apenas para
+  as situações que requerem estruturas de dados mutáveis.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=PT>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Iterando através das jogadas – o ciclo de jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>O ciclo de jogo é executado através da função </span><span
+lang=PT style='font-size:9.0pt;font-family:"Courier New"'>draw()</span><span
+lang=PT> do módulo p5, como agora se vai ver</span></p>
+
+<h2><span lang=PT>2.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Input do jogador</span></h2>
+
+<p class=MsoNormal><span lang=PT>Nesta implementação do jogo, o jogador
+interage com o teclado (teclas do cursor: </span><span lang=PT
+style='font-family:Symbol'>¬</span><span lang=PT>, </span><span lang=PT
+style='font-family:Symbol'>¯</span><span lang=PT>, </span><span lang=PT
+style='font-family:Symbol'>®</span><span lang=PT>, </span><span lang=PT
+style='font-family:Symbol'>­</span><span lang=PT>) para escolher a cor que
+pretende para cada pino. </span></p>
+
+<p class=MsoNormal><span lang=PT>Este subproblema será desenvolvido através da
+função </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>key_pressed()</span><span
+lang=PT> do módulo p5, como se verá no ponto 3.</span></p>
+
+<h2><span lang=PT>2.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Lógica do jogo</span></h2>
+
+<p class=MsoNormal><span lang=PT>Começamos por verificar se o jogador já não
+tem tentativas (comprimento do tabuleiro é igual ao número de tentativas) ou se
+a última jogada acertou na chave, caso em que o jogo termina, com a derrota ou
+a vitória, respetivamente.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+draw():</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+global tabuleiro, chave, jogada</span><span lang=PT> </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>, tentativas, terminou, jogou</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# 2.2. logica de jogo</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# verifica se jogo terminou</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+if len(tabuleiro)&gt;0: </span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+ult_jogada = tabuleiro[-1]</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+if ult_jogada[0:DIM_CHAVE] == chave or tentativas == 0:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+terminou = True</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>  
+</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 14"
+  src="t9a_mastermind.fld/image003.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>A
+  variável </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>terminou
+  </span><span lang=PT>é denominada de <i>flag</i> (ou &quot;bandeira&quot;)
+  pois assinala um estado booleano (0 ou 1 / &quot;on&quot; ou
+  &quot;off&quot;). </span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Neste
+  caso se o jogo terminou ou não. </span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Será
+  utilizada para apenas para restringir a interação do jogador com o jogo
+  enquanto este não terminar.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Esta
+  variável será verdadeira caso o jogador acerte na chave na última jogada, ou
+  o número de tentativas se esgotar (zero).</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Observe
+  a forma como é indexada a última jogada: </span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>tabuleiro[-1]</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT>O jogador poderá terminar o jogo premindo
+&quot;ESC&quot; ou fechando a janela.</span></p>
+
+<p class=MsoNormal><span lang=PT>Em seguida, verificamos se a jogada está
+completa (jogador insere quarto pino e prime tecla ). </span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# verifica se a jogada já foi concluída pelo jogador</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+if jogou:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+# acrescenta jogada ao tabuleiro com a respetiva pontuação</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+tabuleiro.append(tuple(jogada) + pinos(chave, jogada))</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+tentativas -= 1</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+jogada = [0]</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+jogou = False</span></p>
+
+<p class=MsoNormal><span lang=PT>Nesse caso, adiciona-se ao tabuleiro a jogada
+(4 pinos) + um par de valores (um tuplo) com o número de pinos pretos e o
+número de pinos brancos. </span></p>
+
+<p class=MsoNormal><span lang=PT>É também decrementado (subtrair um) o número
+de </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>tentativas
+</span><span lang=PT>restantes, inicializada a jogada seguinte com o pino
+inicial vermelho (índice 0) e desbloqueada a jogada (</span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>jogou </span><span lang=PT>=
+False).</span></p>
+
+<p class=MsoNormal><span lang=PT>Como são determinados o número de pinos
+brancos e o número de pinos pretos? </span></p>
+
+<p class=MsoNormal><span lang=PT>Esse é um subproblema que é solucionado pela
+função </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>pinos()</span><span
+lang=PT>, comparando </span><span lang=PT style='font-size:9.0pt;font-family:
+"Courier New"'>chave</span><span lang=PT> com </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>jogada</span><span lang=PT>, e
+que será explicado posteriormente (ponto 4).</span></p>
+
+<h2><span lang=PT>2.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Output - visualização do tabuleiro de jogo e
+jogadas efetuadas</span></h2>
+
+<p class=MsoNormal><span lang=PT>O algoritmo de output (visualização) contempla
+os seguintes passos:</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Limpar a janela</span></p>
+
+<p class=MsoNormal><span lang=PT>Para que a visualização seja interativa, é
+necessário animar a seleção dos pinos de cada jogada, pelo que é sempre
+necessário limpar o ecrã da janela de jogo com a função </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>background()</span><span
+lang=PT>. </span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# 2.3.1. Limpa o ecrã de jogo</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+background(200)</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Desenhar a chave</span></p>
+
+<p class=MsoNormal><span lang=PT>A chave é, normalmente, desenhada apenas com
+círculos vazios, de forma a não ser revelada. </span></p>
+
+<p class=MsoNormal><span lang=PT>No final do jogo (em que a variável </span><span
+lang=PT style='font-size:9.0pt;font-family:"Courier New"'>terminou</span><span
+lang=PT> é verdadeira), a chave já é desenhada com as cores corretas.</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# 2.3.2. desenha chave</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+fill(200)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# primeiro, desenha o retângulo que envolve a chave</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+rect((0,0), DIAMETRO*(DIM_CHAVE), DIAMETRO)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+ponto = (DIAMETRO//2, DIAMETRO//2)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>  
+# chave, normalmente, escondida é visualizada através de círculos vazios. </span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>  
+# No final do jogo, a chave é visualizada com as suas cores.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>for i
+in range (DIM_CHAVE):</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>if terminou:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+# mostra chave no final do jogo</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+fill(CORES[chave[i]])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+circle(move_ponto(ponto, i*DIAMETRO, 0), DIAMETRO//2)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 6"
+  src="t9a_mastermind.fld/image003.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Deve
+  ter reparado que neste código utilizamos uma função auxiliar, </span><span
+  lang=PT style='font-size:9.0pt;font-family:"Courier New"'>move_ponto()</span><span
+  lang=PT>.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Trata-se
+  de uma função que recebe um ponto (tuplo de dois valores - as suas
+  coordenadas) e que retorna um ponto deslocado de um vetor, como se pode
+  verificar na figura seguinte.</span></p>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center;
+  text-autospace:none'><span lang=PT><img border=0 width=132 height=91
+  id="Picture 7" src="t9a_mastermind.fld/image004.jpg"></span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>A
+  função, a definir no início do ficheiro, é a seguinte:</span></p>
+  <p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+  move_ponto(ponto, dx, dy):</span></p>
+  <p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+  x = ponto[0]</span></p>
+  <p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+  y = ponto[1]</span></p>
+  <p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+  return (x+dx, y+dy)</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Legenda P&amp;B</span></p>
+
+<p class=MsoNormal><img width=171 height=73
+src="t9a_mastermind.fld/image005.jpg" align=left hspace=12><span lang=PT>Segue-se
+a legenda para os pinos brancos e pretos - círculo preto e círculo branco.</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>  
+</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>  
+ # 2.3.3. legenda para os pinos</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+fill(0)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+circle(((DIM_CHAVE+0.5)*DIAMETRO, DIAMETRO//2), DIAMETRO//3)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+fill(255)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+circle(((DIM_CHAVE+1.5)*DIAMETRO, DIAMETRO//2), DIAMETRO//3)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 8"
+  src="t9a_mastermind.fld/image003.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Repare
+  que tanto o &quot;branco&quot; como o &quot;preto&quot; têm os três
+  componentes RGB idênticos, pelo que basta colocar um valor.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>O
+  &quot;preto&quot; corresponde à ausência de cor (valor 0).</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>O
+  &quot;branco&quot; corresponde à intensidade máxima de cor (valor 255).</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT style='color:white'>Jogadas anteriores</span><span lang=PT> e jogada
+atual</span></p>
+
+<p class=MsoNormal><span lang=PT>Para cada linha do tabuleiro, visualiza as
+jogadas efetuadas, incluindo os 4 pinos e o número de pinos pretos e de pinos
+brancos.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# 2.3.4. desenha jogadas anteriores</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+for linha in tabuleiro:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+ponto = (DIAMETRO//2, ponto[1]+DIAMETRO)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+for i in range(DIM_CHAVE):</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+fill(CORES[linha[i]])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+circle(ponto, DIAMETRO//2)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+ponto = move_ponto(ponto, DIAMETRO, 0)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+# pinos P&amp;B</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+fill(0)</span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span lang=PT style='font-size:
+9.0pt;font-family:"Courier New"'>        text(str(linha[-2])+&quot;
+&quot;+str(linha[-1]), ponto)</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 15"
+  src="t9a_mastermind.fld/image003.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Repare
+  que o tuplo de cada jogada tem seis valores:</span></p>
+  <div align=center>
+  <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+   style='border-collapse:collapse;border:none'>
+   <tr>
+    <td width=38 valign=top style='width:1.0cm;border:solid windowtext 1.0pt;
+    padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal align=center style='margin-top:0cm;text-align:center;
+    text-autospace:none'><span lang=PT>Pino1</span></p>
+    </td>
+    <td width=38 valign=top style='width:1.0cm;border:solid windowtext 1.0pt;
+    border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal align=center style='margin-top:0cm;text-align:center;
+    text-autospace:none'><span lang=PT>Pino2</span></p>
+    </td>
+    <td width=38 valign=top style='width:1.0cm;border:solid windowtext 1.0pt;
+    border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal align=center style='margin-top:0cm;text-align:center;
+    text-autospace:none'><span lang=PT>Pino3</span></p>
+    </td>
+    <td width=38 valign=top style='width:1.0cm;border:solid windowtext 1.0pt;
+    border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal align=center style='margin-top:0cm;text-align:center;
+    text-autospace:none'><span lang=PT>Pino4</span></p>
+    </td>
+    <td width=38 valign=top style='width:1.0cm;border:solid windowtext 1.0pt;
+    border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal align=center style='margin-top:0cm;text-align:center;
+    text-autospace:none'><span lang=PT>P</span></p>
+    </td>
+    <td width=38 valign=top style='width:1.0cm;border:solid windowtext 1.0pt;
+    border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+    <p class=MsoNormal align=center style='margin-top:0cm;text-align:center;
+    text-autospace:none'><span lang=PT>B</span></p>
+    </td>
+   </tr>
+  </table>
+  </div>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Os
+  quatro pinos da jogada e o número de pretos e brancos:</span></p>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center;
+  text-autospace:none'><span lang=PT><img border=0 width=192 height=29
+  id="Picture 16" src="t9a_mastermind.fld/image006.jpg"></span></p>
+  <p class=MsoNormal align=left style='margin-top:0cm;text-align:left;
+  text-autospace:none'><span lang=PT>A linha anterior compõe os números numa
+  cadeia de texto para ser visualizada à direita dos 4 pinos da jogada: </span></p>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center;
+  text-autospace:none'><b><span lang=PT>&quot; 1 0&quot;</span></b></p>
+  <p class=MsoNormal align=left style='margin-top:0cm;text-align:left;
+  text-autospace:none'><span lang=PT>O valor de P é </span><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>linha[-2] </span><span
+  lang=PT>e o valor de B é </span><span lang=PT style='font-size:9.0pt;
+  font-family:"Courier New"'>linha[-1]</span><span lang=PT>. O penúltimo e o
+  último valor do tuplo. </span></p>
+  <p class=MsoNormal align=left style='margin-top:0cm;text-align:left;
+  text-autospace:none'><span lang=PT>A função  </span><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>text()</span><span lang=PT>
+  desenha esta cadeia de caracteres centrada em </span><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>ponto</span><span lang=PT>.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='color:white'>No caso </span><span
+lang=PT>da jogada atual, enquanto o jogador vai escolhendo as cores de cada
+pino, o número de pinos definidos vai variandode 1 a 4...</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# 2.3.5. desenha jogada atual</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+if not terminou:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+ponto = (DIAMETRO//2, ponto[1]+DIAMETRO)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+for pino in jogada:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+fill(CORES[pino])</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+circle(ponto, DIAMETRO//2)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+ponto = move_ponto(ponto, DIAMETRO, 0)</span></p>
+
+<p class=MsoNormal><span lang=PT>A jogada atual só é visualizada caso o jogo
+não tenha terminado.</span></p>
+
+<h1><span lang=PT>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Interação com o teclado</span></h1>
+
+<p class=MsoNormal><span lang=PT>A função que recebe os eventos provocados pelo
+teclado é a função </span><span lang=PT style='font-size:9.0pt;font-family:
+"Courier New"'>key_pressed().</span></p>
+
+<p class=MsoNormal><span lang=PT>A variável </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>key </span><span lang=PT>guarda
+o valor da tecla premida. Uma seleção múltipla permite avaliar se o jogador
+premiu alguma das teclas do cursor.</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-family:Symbol'>®</span><span lang=PT>
+adiciona/seleciona o pino à direita.</span></p>
+
+<p class=MsoNormal><span lang=PT>Se a jogada tiver já 4 pinos, ao premir </span><span
+lang=PT style='font-family:Symbol'>®</span><span lang=PT> termina a jogada
+(variável </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogou
+</span><span lang=PT>torna-se</span><span lang=PT style='font-size:9.0pt;
+font-family:"Courier New"'> True</span><span lang=PT>).</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-family:Symbol'>¬</span><span lang=PT>
+seleciona o pino à esquerda</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-family:Symbol'>­</span><span lang=PT>
+muda cor do pino para a seguinte</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-family:Symbol'>¯</span><span lang=PT>
+muda cor do pino para a seguinte</span></p>
+
+<p class=MsoNormal><span lang=PT>Quando o jogo terminar (jogada fica uma lista
+vazia) o jogador deixa de poder interagir. A função retorna antes da seleção das
+teclas.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+controla a interação com o utilizador através do teclado</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+key_pressed():</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+global jogada, terminou, jogou</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# se jogo terminou não permite jogar</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>if
+terminou or jogou:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+return</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+# verifica teclas premidas</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+if key == &quot;UP&quot;:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogada[-1]
+= (jogada[-1] + 1) % len(CORES)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+elif key == &quot;DOWN&quot;:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+jogada[-1] = (jogada[-1] - 1) % len(CORES)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+elif key == &quot;LEFT&quot;:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>if
+len(jogada)&gt;1:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>           
+jogada.pop()</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+elif key == &quot;RIGHT&quot;:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>if
+len(jogada) &lt; DIM_CHAVE:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+# acrescenta pino</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+jogada.append(0)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+else:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+# ou termina jogada</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+jogou = True</span></p>
+
+<h1><span lang=PT>4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Determinar quantos pinos da jogada estão certos</span></h1>
+
+<p class=MsoNormal><span lang=PT>Tendo em consideração a complexidade do
+problema de calcular o número de pinos certos na posição certa e os pinos
+certos mas na posição errada, desenvolveu-se a função </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>pinos()</span><span lang=PT>.
+Esta função tem dois parâmetros: a </span><span lang=PT style='font-size:9.0pt;
+font-family:"Courier New"'>chave</span><span lang=PT> e a </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>jogada</span><span lang=PT>.</span></p>
+
+<p class=MsoNormal><span lang=PT>O algoritmo desta função tem dois passos
+principais, seguindo-se o retorno da função com um par de valores (tuplo de 2
+posições):</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+pinos(chave, jogada):</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Determinar o número de pinos de cada cor que existem na jogada e na
+chave. Para tal calcula-se o mínimo entre as ocorrências da cor na chave e na
+jogada, utilizando a função <a
+href="https://www.w3schools.com/python/ref_list_count.asp"><span
+style='font-size:9.0pt;font-family:"Courier New"'>count()</span></a>.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>pinosB
+= 0</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+for i in range(len(CORES)):</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+pinosB += min(chave.count(i), jogada.count(i))</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Determinar o número de pinos certos na posição certa (pinos pretos),
+verificando a correspondência das 4 posições das cores na </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>chave</span><span lang=PT> e
+na </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogada</span><span
+lang=PT>.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+pinosP = 0</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+# 2.1. verifica se jogo terminou</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+for i in range(4):</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+if chave[i] == jogada[i]:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>pinosP
++= 1</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Finalmente retorna-se um par de valores com o número de pinos pretos e
+brancos.</span></p>
+
+<p class=MsoNormal style='margin-left:18.0pt'><span lang=PT>Repare que o número
+de pinos brancos é obtido subtraindo às cores certas na jogada as que também
+estão na posição certa.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+return (pinosP, pinosB-pinosP) </span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 17"
+  src="t9a_mastermind.fld/image003.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Pareceu
+  um tanto confuso?.. Observe o seguinte exemplo</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  style='position:relative;z-index:251662336'><span style='left:0px;position:
+  absolute;left:159px;top:-1591px;width:28px;height:67px'><img width=28
+  height=67 src="t9a_mastermind.fld/image007.jpg"></span></span><span
+  style='position:relative;z-index:251660288'><span style='left:0px;position:
+  absolute;left:134px;top:-1590px;width:28px;height:67px'><img width=28
+  height=67 src="t9a_mastermind.fld/image007.jpg"></span></span><span lang=PT>Considere
+  a seguinte chave:</span></p>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center;
+  text-autospace:none'><span lang=PT><img border=0 width=98 height=23
+  id="Picture 19" src="t9a_mastermind.fld/image008.jpg"></span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>E
+  a seguinte jogada:</span></p>
+  <p class=MsoNormal align=center style='margin-top:0cm;text-align:center;
+  text-autospace:none'><span lang=PT><img border=0 width=97 height=25
+  id="Picture 20" src="t9a_mastermind.fld/image009.jpg"></span></p>
+  <p class=MsoNormal align=left style='margin-top:0cm;text-align:left;
+  text-autospace:none'><span lang=PT>Primeiro, começamos por contar os pinos de
+  cada cor que existem na chave:</span></p>
+  <p class=MsoNormal align=left style='margin-top:0cm;text-align:left;
+  text-autospace:none'><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>pinosB</span><span
+  lang=PT>  = 2 verdes + 1 azul + 0 ciano = 3</span></p>
+  <p class=MsoNormal align=left style='margin-top:0cm;text-align:left;
+  text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='margin-top:0cm;text-align:left;
+  text-autospace:none'><span lang=PT>Em seguida verificamos os que têm a cor
+  certa e estão na posição certa:</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>pinosP</span><span lang=PT> 
+  = 2</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Os
+  valores serão assim:</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>P</span><span lang=PT>  = </span><span
+  lang=PT style='font-size:9.0pt;font-family:"Courier New"'>pinosP</span><span
+  lang=PT>  = 2</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>B</span><span lang=PT>  = </span><span
+  lang=PT style='font-size:9.0pt;font-family:"Courier New"'>pinosB-pinosP </span><span
+  lang=PT>= 3 - 2 = 1</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT>Não esquecer de no final do ficheiro colocar o
+seguinte código:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>if
+__name__ == '__main__':</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+run() </span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=62 valign=top style='width:46.8pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 28"
+  src="t9a_mastermind.fld/image010.jpg" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=513 valign=top style='width:384.7pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Sendo
+  este tutorial englobado no âmbito do capítulo que refere os tuplos, é natural
+  utilizarmos esta abstração de dados. </span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Mas
+  será a única solução?</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Existem
+  outras, como as listas, que irá explorar no próximo capítulo.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>A
+  razão porque foram utilizados no Mastermind prende-se com o facto de tanto a
+  chave, como as cores das peças de jogo, e cada jogada, serem imutáveis. Ou
+  seja, não é conveniente que estes dados sejam alterados ao longo do jogo. Mas
+  por outro lado, o tabuleiro é dinâmico ao longo do jogo... e por isso foi
+  implementado como uma lista.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Analise
+  novamente o jogo e observe estas opções de estruturas de dados.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Quando
+  explorar as listas no próximo capítulo tente avaliar quais as vantagens e
+  desvantagens dos tuplos.</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=PT>5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Desafio final</span></h1>
+
+<p class=MsoNormal><span lang=PT-BR>Acrescente a possibilidade de se utilizarem
+as teclas &quot;1&quot; a &quot;6&quot; para escolher diretamente a cor.
+Desenhe também o tabuleiro completo, com círculos sem preenchimento.</span></p>
+
+<p class=MsoNormal><span lang=PT-BR>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 1"
+  src="t9a_mastermind.fld/image011.jpg" alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Partilhe
+  o <b>seu</b> jogo!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,548 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.codigo, li.codigo, div.codigo
+	{mso-style-name:codigo;
+	mso-style-link:"codigo Char";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:17.85pt;
+	page-break-after:avoid;
+	font-size:9.0pt;
+	font-family:"Courier New";}
+span.codigoChar
+	{mso-style-name:"codigo Char";
+	mso-style-link:codigo;
+	font-family:"Courier New";
+	font-weight:normal;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=PT style='color:black'>O jogo &quot;Adivinhar
+a palavra&quot;</span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=PT>O jogo “Adivinhar a palavra” consiste em
+desvendar uma palavra (ou uma frase) letra a letra. É normalmente conhecido por
+&quot;jogo da forca&quot;. Neste tutorial iremos apenas considerar uma palavra,
+para maior simplicidade.</span></p>
+
+<p class=MsoNormal><span lang=PT>O jogo começa por visualizar uma palavra,
+escolhida aleatoriamente. Esta palavra será visualizada por uma sequência de
+caracteres “*”, de comprimento igual ao comprimento da palavra. </span></p>
+
+<p class=MsoNormal><span lang=PT>Por exemplo, se a palavra escolhida fosse &quot;carro&quot;,
+o computador visualizaria &quot;</span><span lang=PT style='font-size:9.0pt;
+font-family:"Courier New"'>*****&quot;.</span></p>
+
+<p class=MsoNormal><span lang=PT>A cada jogada, o jogador indica uma letra e,
+no caso dessa letra existir na palavra, é visualizada a palavra com essa letra
+na posição (ou posições) certa(s). Caso não exista, o jogador perde uma
+tentativa e a letra é indicada na lista de letras “erradas”.</span></p>
+
+<p class=MsoNormal><span lang=PT>Se fosse indicada a letra “a”, seria
+visualizada a sequência</span><span lang=PT style='font-size:9.0pt;font-family:
+"Courier New"'> &quot;*a***&quot;.</span></p>
+
+<p class=MsoNormal><span lang=PT>Se o jogador conseguir adivinhar todas as
+letras que formam a palavra dentro do número de tentativas definidas ganha,
+caso contrário, perde. </span></p>
+
+<h1><span lang=PT>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Inicialização do jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>A inicialização do jogo será realizada através
+da seleção aleatória de uma palavra dentro de uma lista de palavras. </span></p>
+
+<p class=MsoNormal><span lang=PT>O jogo será implementado pela função </span><span
+lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogo()</span><span
+lang=PT> que recebe dois parâmetros:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>palavras</span><span
+lang=PT>, uma lista de cadeias de caracteres (<i>strings</i>) com as palavras
+do jogo;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>tentativas</span><span
+lang=PT>, o número máximo de tentativas.</span></p>
+
+<p class=MsoNormal><span lang=PT>Depois de selecionar aleatoriamente a palavra,
+que iremos denominar </span><span lang=PT style='font-size:9.0pt;font-family:
+"Courier New"'>chave</span><span lang=PT>, é necessário criar uma outra palavra
+a ser decifrada (com o mesmo número de letras mas preenchida com “*”), para
+poder ser visualizada pelo jogador.</span></p>
+
+<p class=MsoNormal><span lang=PT>O código da função </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>jogo()</span><span lang=PT> é
+o seguinte:</span></p>
+
+<p class=codigo><span lang=PT>import random</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>def jogo(palavras, tentativas):</span></p>
+
+<p class=codigo><span lang=PT>    # seleção da chave da lista de palavras</span></p>
+
+<p class=codigo><span lang=PT>    chave = random.choice(palavras)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT>    # palavra escondida</span></p>
+
+<p class=codigo><span lang=PT>    palavra = &quot;&quot;</span></p>
+
+<p class=codigo><span lang=PT>    for c in chave:</span></p>
+
+<p class=codigo><span lang=PT>        palavra = palavra + &quot;*&quot;</span></p>
+
+<p class=MsoNormal><span lang=PT>Repare que o ciclo <a
+href="https://www.w3schools.com/python/python_for_loops.asp">for</a> percorre
+com grande simplicidade a palavra </span><span lang=PT style='font-size:9.0pt;
+font-family:"Courier New"'>chave</span><span lang=PT>, letra a letra.</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 5"
+  src="t8a_adivinha_palavra.fld/image001.jpg" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>É
+  importante referir que as cadeias de caracteres são imutáveis, ou seja, não
+  podem ser alteradas. Desta forma, a variável </span><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>palavra</span><span
+  lang=PT> é construída criando cópias e <b>concatenando</b> (juntando) cadeias
+  de caracteres, com o operador “+”.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>A
+  cada iteração, o espaço de memória que o identificador </span><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>palavra</span><span
+  lang=PT> referencia é distinto.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='color:white'>Seguidamente</span><span
+lang=PT>, inicializam-se as variáveis que indicam o número da jogada e as
+letras erradas (uma cadeia de caracteres), antecedendo o ciclo de jogo.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# inicialização das variáveis</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+jogada = 1</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+letras_erradas = &quot;&quot;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<h1><span lang=PT>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Iterando através das jogadas – o ciclo de jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>O ciclo de jogo é executado através de um
+ciclo condicional <a
+href="https://www.w3schools.com/python/python_while_loops.asp">while</a> cuja
+condição avalia se o jogador ainda não adivinhou a palavra e se ainda tem
+tentativas para jogar.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+while chave != palavra and tentativas &gt; 0:</span></p>
+
+<p class=MsoNormal><span lang=PT>O algoritmo de cada jogada é o seguinte:</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Imprimir a palavra a adivinhar e ler a letra do jogador.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Jogada&quot;, jogada, &quot;:&quot;, palavra)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;letras erradas: &quot;, letras_erradas)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+letra = input (&quot;Adivinhe a letra: &quot;)</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Verificar se a letra existe na palavra chave e nesse caso desvendar a
+palavra escondida. É criada uma nova cadeia de caracteres (</span><span
+lang=PT style='font-size:9.0pt;font-family:"Courier New"'>npalavra</span><span
+lang=PT>). O índice </span><span lang=PT style='font-size:9.0pt;font-family:
+"Courier New"'>i</span><span lang=PT> percorre tanto a palavra a desvendar,
+como a chave, de forma a verificar onde a letra existe.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>      
+# desvendar a palavra</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+npalavra = &quot;&quot;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+for i in range(len(chave)):</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>if
+chave[i].</span><span lang=EN-US> </span><span lang=EN-US style='font-size:
+9.0pt;font-family:"Courier New"'>casefold() == letra.</span><span lang=EN-US> </span><span
+lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>casefold():</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>               
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>npalavra
++= chave[i]</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+else:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>               
+npalavra += palavra[i]</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 8"
+  src="t8a_adivinha_palavra.fld/image002.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Ao
+  comparar as letras utiliza-se o método <a
+  href="https://www.w3schools.com/python/ref_string_casefold.asp">casefold</a> das
+  cadeias de caracteres para converter ambas as letras para minúsculas,
+  evitando as situações em que a palavra a decifrar tem uma maiúscula e o
+  jogador insere uma minúscula (ex. A primeira letra de um nome).</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Repare
+  também que a operação de concatenação de cadeias de caracteres pode ser
+  simplificada com o operador += .</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT style='color:white'>No caso de o jogador não acertar na letra (caso em
+que a nova </span><span lang=PT>palavra se mantém igual à anterior) diminui o
+número de tentativas e acrescenta essa letra às letras erradas.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+if palavra == npalavra:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+letras_erradas += letra</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>tentativas
+-= 1</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=PT>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Finalmente atualizam-se as variáveis </span><span lang=PT
+style='font-size:9.0pt;font-family:"Courier New"'>jogada</span><span lang=PT> e
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>palavra</span><span
+lang=PT>.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+jogada += 1</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+palavra = npalavra</span></p>
+
+<p class=MsoNormal><span lang=PT>Após o fim do jogo é verificado se o jogador
+ganhou ou perdeu... </span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+if tentativas == 0:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Perdeu. Já não tem mais tentativas... Era a palavra: &quot;, chave)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+elif chave == palavra:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Parabéns&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 10"
+  src="t8a_adivinha_palavra.fld/image003.jpg" alt="Balloon animal"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=PT-BR>Teste o jogo com a seguida lista:</span></p>
+  <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+  margin-left:9.35pt;margin-right:0cm'>
+  <p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>cidades =
+  [&quot;Porto&quot;, &quot;Lisboa&quot;, &quot;Braga&quot;, &quot;Faro&quot;,
+  &quot;Bragança&quot;]</span></p>
+  <p class=MsoNormal style='border:none;padding:0cm'><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>jogo(cidades,5).</span></p>
+  </div>
+  <p class=MsoNormal><span lang=PT-BR>Experimente depois com várias listas de
+  palavras de diferentes temas.</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=PT>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='color:white'>Desafio final</span></h1>
+
+<p class=MsoNormal><span lang=PT-BR>Faça uma variação deste jogo em que o
+jogador, em vez de apenas ter que adivinhar uma palavra, adivinhe uma frase.
+Neste caso a visualização deve mostrar os espaços e a pontuação.</span></p>
+
+<p class=MsoNormal><span lang=PT-BR>Sugestão: Relembra-se a existência do
+método </span><span lang=PT><a
+href="https://www.w3schools.com/python/ref_string_isalpha.asp"><span
+lang=PT-BR>isalpha</span></a></span><span lang=PT-BR> das cadeias de caracteres
+para verificar se um caracter é uma letra.</span></p>
+
+<p class=MsoNormal><span lang=PT-BR>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 1"
+  src="t8a_adivinha_palavra.fld/image004.jpg" alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Partilhe
+  o <b>seu</b> jogo!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

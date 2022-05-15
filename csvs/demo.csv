@@ -1,0 +1,13 @@
+"codigo","capitulo","recurso","botao","alt"
+"M1","1","Tese.jsx","Minijogo Tese","Minijogo Tese"
+"V1","1","https://www.youtube.com/embed/RnQ68p_HtEs","Video tutorial registo","Video tutorial registo"
+"C1","1","example.py.jsx","Codigo exemplo","Codigo exemplo"
+"R1","1","<p>Capítulo com elementos demonstrativos</p>","Resumo","Resumo do capítulo"
+"K1","1","Palvra1, Palavra2","Palavras-chave","Palavras chave do capítulo"
+"E1","1","<iframe height='265' style='width: 100%;' scrolling='no' title='An Exciting HTML Game' src='https://codepen.io/allanpooley/embed/qrrmoR?height=265&theme-id=light&default-tab=result' frameborder='no' loading='lazy' allowtransparency='true' allowfullscreen='true'>
+  See the Pen <a href='https://codepen.io/allanpooley/pen/qrrmoR'>An Exciting HTML Game</a> by Allan Pooley
+  (<a href='https://codepen.io/allanpooley'>@allanpooley</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>","Narrativa interativa","Narrativa interativa"
+"T1","1","https://trinket.io/embed/python/82bbccfee0", "Tutorial", "Tutorial"
+"U1","1","https://livropython.herokuapp.com","URL","URL"
+"P1","1","https://www.python.org/","Python URL","Python URL"

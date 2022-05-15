@@ -1,0 +1,515 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Courier;
+	panose-1:0 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.codigo, li.codigo, div.codigo
+	{mso-style-name:codigo;
+	mso-style-link:"codigo Char";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:17.85pt;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+span.codigoChar
+	{mso-style-name:"codigo Char";
+	mso-style-link:codigo;
+	font-family:"Courier New";
+	font-weight:normal;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=PT style='color:black'>O jogo da moeda</span></h1>
+
+</div>
+
+<h1><span lang=PT>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Uma primeira versão</span></h1>
+
+<p class=MsoNormal><span lang=PT>A primeira versão do jogo escreverá no ecrã
+&quot;moeda&quot; ou &quot;coroa&quot; de forma aleatória.</span></p>
+
+<p class=MsoNormal><span lang=PT>Assim, o jogador deverá pensar numa opção
+(cara ou coroa) e depois executar o programa, verificando se acertou ou não.</span></p>
+
+<p class=MsoNormal><span lang=PT>Em Python, o código que implementa este jogo é
+o seguinte:</span></p>
+
+<p class=codigo><span lang=PT>import random</span></p>
+
+<p class=codigo><span lang=PT>moeda = random.choice([&quot;cara&quot;, &quot;coroa&quot;])</span></p>
+
+<p class=codigo><span lang=PT>print (moeda)</span></p>
+
+<p class=MsoNormal><span lang=PT>Os valores aleatórios são gerados por uma
+biblioteca específica de Python chamada <a
+href="https://docs.python.org/3/library/random.html">random</a>, pelo que em
+primeiro lugar é necessário importar essa biblioteca na primeira instrução.</span></p>
+
+<p class=MsoNormal><span lang=PT>De seguida o programa cria uma primeira
+variável, chamada </span><span lang=PT style='font-family:"Courier New"'>moeda</span><span
+lang=PT>, à qual atribui o valor de &quot;cara&quot; ou ou o valor de &quot;coroa&quot;,
+de forma aleatória.</span></p>
+
+<p class=MsoNormal><span lang=PT>A função <a
+href="https://docs.python.org/3/library/random.html#functions-for-sequences">random.choice</a><span
+class=MsoHyperlink>()</span> seleciona um valor de uma sequência de valores. As
+<a href="https://www.w3schools.com/python/python_lists.asp">listas</a> em
+Python são delimitadas por parêntesis retos </span><span lang=PT
+style='font-family:"Courier New"'>[]</span><span lang=PT>. Neste caso, a nossa
+lista tem apenas 2 valores: &quot;cara&quot; ou &quot;coroa&quot;. Cada uma
+destas palavras está delimitada por aspas </span><span lang=PT
+style='font-family:"Courier New"'>&quot;&quot;</span><span lang=PT>. Esta é a
+forma de definir texto, que em linguagem de programação se denomina de <a
+href="https://www.w3schools.com/python/python_strings.asp">cadeia de caracteres
+(<i>string</i>)</a>. Iremos abordar esta estrutura mais à frente...</span></p>
+
+<p class=MsoNormal><span lang=PT>Finalmente, para que se visualize o resultado
+da escolha do computador utiliza-se a função <a
+href="https://www.w3schools.com/python/ref_func_print.asp">print</a>.</span></p>
+
+<p class=MsoNormal><span lang=PT>Agora experimente o jogo que acabou de
+programar! </span></p>
+
+<h1><span lang=PT>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Uma versão mais interativa</span></h1>
+
+<p class=MsoNormal><span lang=PT>A primeira versão do jogo funciona, mas não é
+muito interativa.... Vamos agora acrescentar mais algum código de forma que
+esta nova versão consiga apresentar como resultado se o jogador acertou ou
+falhou.</span></p>
+
+<p class=MsoNormal style='page-break-after:avoid'><span lang=PT>Em Python, o
+código que implementa esta nova versão do jogo é o seguinte:</span></p>
+
+<p class=codigo><span lang=PT>import random<br>
+<br>
+</span></p>
+
+<p class=codigo><span lang=PT># 1. selecionar &quot;cara&quot; ou &quot;coroa&quot;
+(jogada do computador)</span></p>
+
+<p class=codigo><span lang=PT>moeda = random.choice([&quot;cara&quot;, &quot;coroa&quot;])</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># 2. Ler jogada do jogador </span></p>
+
+<p class=codigo><span lang=PT>jogada = input(&quot;Cara ou coroa? &quot;)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># 3. Mostrar a jogada do computador </span></p>
+
+<p class=codigo><span lang=PT>print (&quot;Eu joguei&quot;, moeda, &quot;. E
+você?&quot;)</span></p>
+
+<p class=codigo><span lang=PT>&nbsp;</span></p>
+
+<p class=codigo><span lang=PT># 4. Verificar quem venceu</span></p>
+
+<p class=codigo><span lang=PT>if moeda == jogada:</span></p>
+
+<p class=codigo><span lang=PT>    print (&quot;ganhou! &quot;)</span></p>
+
+<p class=codigo><span lang=PT>else:</span></p>
+
+<p class=codigo><span lang=PT>    print (&quot;perdeu...&quot;)</span></p>
+
+<p class=MsoNormal align=left style='margin-top:0cm;text-align:left'><span
+lang=PT>&nbsp;</span></p>
+
+<p class=MsoNormal style='page-break-after:avoid'><span lang=PT>Jogue esta nova
+versão do jogo!</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='height:18.35pt'>
+  <td width=49 valign=top style='width:36.95pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=PT style='font-size:16.0pt'><img border=0
+  width=36 height=36 id="Graphic 3" src="t5a_moeda.fld/image001.jpg"
+  alt="Head with gears"></span></p>
+  </td>
+  <td width=526 valign=top style='width:394.55pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><i><span lang=PT>Experimente escrever as suas jogadas com
+  caracteres maiúsculos. O que acontece?</span></i></p>
+  <p class=MsoNormal><i><span lang=PT>Uma pista: </span></i><span lang=PT><a
+  href="https://pt.wikipedia.org/wiki/ASCII"><i>código ASCII</i></a></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='page-break-after:avoid'><span lang=PT
+style='color:white'>O algoritmo desta nova versão é o seguinte:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span lang=PT>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Selecionar &quot;cara&quot; ou &quot;coroa&quot; aleatoriamente (jogada
+do computador)</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Ler jogada do jogador</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Mostrar a jogada do computador</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Verificar quem venceu</span></p>
+
+<p class=MsoNormal><span lang=PT>O primeiro passo do algoritmo é codificado de
+forma idêntica ao que foi realizado na versão anterior para selecionar o valor
+aleatório da jogada do computador.</span></p>
+
+<p class=MsoNormal><span lang=PT>O segundo passo do algoritmo torna o programa
+interativo ao pedir ao jogador a sua jogada. Chama-se a este passo <b>Input</b>.
+A variável </span><span lang=PT style='font-family:"Courier New"'>jogada</span><span
+lang=PT> guarda a jogada do jogador, que é lida através da função <a
+href="https://docs.python.org/3/library/functions.html#input">input</a><span
+class=MsoHyperlink>()</span></span><span lang=PT style='font-family:"Courier New"'>.</span><span
+lang=PT>  É possível colocar na chamada da função input um texto que sirva de
+contexto à leitura da jogada. Neste caso, foi colocado o texto: &quot;Cara ou
+coroa? &quot;.</span></p>
+
+<p class=MsoNormal><span lang=PT>O terceiro passo do algoritmo mostra a jogada
+do computador no ecrã. Aqui começa o <b>Output</b>.</span></p>
+
+<p class=MsoNormal><span lang=PT>O quarto e último passo do algoritmo verifica
+quem venceu. Para tal precisámos de uma estrutura de controlo condicional – um <a
+href="https://docs.python.org/3/reference/compound_stmts.html#the-if-statement">if</a>.
+Esta estrutura avalia uma expressão condicional ou predicado (uma expressão que
+devolve verdadeiro ou falso). Repare que para comparar duas expressões (neste
+caso as variáveis </span><span lang=PT style='font-family:"Courier New"'>jogada</span><span
+lang=PT> e </span><span lang=PT style='font-family:"Courier New"'>moeda</span><span
+lang=PT>) utiliza-se o operador </span><span lang=PT style='font-family:Courier'>==</span><span
+lang=PT> (dois sinais </span><span lang=PT style='font-family:Courier'>=</span><span
+lang=PT> seguidos para distinguir do operador de atribuição que é o </span><span
+lang=PT style='font-family:Courier'>=</span><span lang=PT>). É com base nesta
+expressão condicional que apenas um dos blocos de código (definidos por
+indentação) é executado, visualizando se ganhou o jogador ou o computador. </span></p>
+
+<p class=MsoNormal><span lang=PT>Finalmente, repare que há três linhas que se
+iniciam com o carácter cardinal </span><span lang=PT style='font-family:"Courier New"'>#</span><span
+lang=PT>. Tratam-se de comentários escritos em língua portuguesa. Servem para
+tornar o programa mais legível e são completamente ignoradas pelo interpretador
+de Python.</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='height:18.35pt'>
+  <td width=49 valign=top style='width:36.95pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=PT><img border=0 width=36 height=36
+  id="Graphic 4" src="t5a_moeda.fld/image002.jpg" alt=Eye></span></p>
+  </td>
+  <td width=526 valign=top style='width:394.55pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=PT>Repare que os comentários contêm os passos
+  do algoritmo.</span></p>
+  <p class=MsoNormal><span lang=PT>É sempre importante colocar comentários que
+  descrevam o algoritmo que foi delineado!</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='height:18.35pt'>
+  <td width=49 valign=top style='width:36.95pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=PT><img border=0 width=36 height=36
+  id="Graphic 2" src="t5a_moeda.fld/image002.jpg" alt=Eye></span></p>
+  </td>
+  <td width=526 valign=top style='width:394.55pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.35pt'>
+  <p class=MsoNormal><span lang=PT>Apesar de se tratar de um programa muito
+  simples, observe como ficaria muito limitada a sua legibilidade quando se
+  retiram os comentários e não se escolhem nomes adequados para as variáveis:</span></p>
+  <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+  margin-left:17.85pt;margin-right:0cm'>
+  <p class=codigo style='margin-left:0cm;border:none;padding:0cm'><span
+  lang=PT>import random</span></p>
+  <p class=codigo style='margin-left:0cm;border:none;padding:0cm'><span
+  lang=PT>x = random.choice([&quot;cara&quot;, &quot;coroa&quot;])</span></p>
+  <p class=codigo style='margin-left:0cm;border:none;padding:0cm'><span
+  lang=PT>y = input(&quot;cara ou coroa? &quot;)</span></p>
+  <p class=codigo style='margin-left:0cm;border:none;padding:0cm'><span
+  lang=PT>print (&quot;Eu joguei&quot;, moeda)</span></p>
+  <p class=codigo style='margin-left:0cm;border:none;padding:0cm'><span
+  lang=PT>if x == y:</span></p>
+  <p class=codigo style='margin-left:0cm;border:none;padding:0cm'><span
+  lang=PT>    print (&quot;ganhou! &quot;)</span></p>
+  <p class=codigo style='margin-left:0cm;border:none;padding:0cm'><span
+  lang=PT>else:</span></p>
+  <p class=codigo style='margin-left:0cm;border:none;padding:0cm'><span
+  lang=PT>    print (&quot;perdeu...&quot;)</span></p>
+  </div>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='font-size:1.0pt'>&nbsp;</span></p>
+
+<h1><span lang=PT style='color:black'>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='color:black'>Desafio final</span></h1>
+
+<p class=MsoNormal><span lang=PT>Tente agora adaptar o seu jogo ao lançamento
+de um dado (6 faces com números de 1 a 6).</span></p>
+
+<p class=MsoNormal><b><span lang=PT>Qual será a condição de vitória?</span></b></p>
+
+<p class=MsoNormal><span lang=PT>A condição de vitória é um dos componentes
+nucleares de um jogo e define-se através de uma (ou mais) expressão condicional
+que indica o vencedor de um jogo. </span></p>
+
+<p class=MsoNormal><span lang=PT>Com 6 valores distintos terá que decidir como
+se vence esta nova versão do jogo.</span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 1" src="t5a_moeda.fld/image003.jpg"
+  alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Partilhe
+  o <b>seu</b> jogo!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

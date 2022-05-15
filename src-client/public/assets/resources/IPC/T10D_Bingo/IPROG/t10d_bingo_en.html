@@ -1,0 +1,559 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;
+	font-weight:normal;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=EN-GB style='color:black'>The Game of Bingo</span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=EN-GB>In this tutorial, we will develop a
+simplified version of an internationally well known game - the </span><span
+lang=PT><a href="https://en.wikipedia.org/wiki/Bingo_(British_version)"><span
+lang=EN-GB>Game of Bingo</span></a></span><span lang=EN-GB> - that was created
+in the USA in 1929.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The game consists of a bowl of balls
+numbered from 1 to 99, which will be drawn sequentially.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Each player has one or more tickets with 15
+numbers. These tickets have numbers in 3 rows and 9 columns.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-GB><img
+border=0 width=208 height=73 id="Picture 2" src="t10d_bingo_en.fld/image001.png"
+alt="A red and white sign&#10;&#10;Description automatically generated"></span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span lang=EN-GB>Each row
+has 5 numbers, and each column will have one or two numbers, with the columns
+having the numbers for each of the 9 tens (1-9, 10-19, 20-29, 30-39, 40-49,
+50-59, 60-69, 70-79, 80-90).</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>In this game we will only determine the
+winner who completes the card - Bingo! - ignoring the first to finish a line.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Given its simplicity, a text interface was
+chosen, which also simplifies the program's structure:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-GB>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>A function that creates the game tickets;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-GB>And another function that encapsulates the entire game.</span></p>
+
+<h1><span lang=EN-GB>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Generating the tickets</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>This function creates a set of 15
+unrepeated numbers. For this, the Set abstraction is used, as it avoids the
+occurrence of repeated numbers. </span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>import
+random</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+número de números em cada cartão</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>NUMEROS
+= 15</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+preenche um cartao com 15 números diferentes</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+preenche_cartao():</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+cartao = set()</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>while
+len(cartao) &lt; NUMEROS:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+cartao.add(random.randint(1,90))</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+return cartao</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 4"
+  src="t10d_bingo_en.fld/image002.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB>Note that this function uses a conditional
+  loop (</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>while</span><span
+  lang=EN-GB>) instead of a counted loop (</span><span lang=EN-GB
+  style='font-size:9.0pt;font-family:"Courier New"'>for</span><span lang=EN-GB>)...
+  <br>
+  Why was this option made?</span></p>
+  <p class=MsoNormal><span lang=EN-GB>Hint: Study the function </span><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>add</span><span
+  lang=EN-GB> in Sets...</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1 style='margin-left:0cm;text-indent:0cm'><span lang=EN-GB>&nbsp;</span></h1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 7"
+  src="t10d_bingo_en.fld/image003.png" alt=Eye></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='text-align:left'><span lang=PT>Repare
+  que, para simplificação, esta função não respeita uma das regras de criação
+  dos cartões:<br>
+  - Cada linha tem 5 números e cada coluna terá um ou dois números, sendo que
+  as colunas têm os números de cada uma das 9 dezenas (1-9, 10-19, 20-29,
+  30-39, 40-49, 50-59, 60-69, 70-79, 80-90).</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>Considere como desafio incluir esta regra...</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='color:white'>The game setup</span></h1>
+
+<p class=MsoNormal><span lang=EN-US>The game of bingo is implemented with the
+function </span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>jogo()</span><span
+lang=EN-US>, that starts with the creation of the numbered balls from 1 a 90:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+jogo():</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# cria o conjunto inicial de bolas a sortear</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>bolas
+= list(range(1,91))</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Then a ticket is created for the human
+player and another ticket for the computer.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+# cartão de cada jogador</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>cartaoHumano
+= preenche_cartao()</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+cartaoComputador = preenche_cartao()</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>numeros_ja_saidos
+= set()</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>And the print version of each ticket, which
+is an ordered list. </span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'># versão
+de impressão</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+bilheteHumano = list(cartaoHumano)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+bilheteHumano.sort()</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+bilheteComputador = list(cartaoComputador)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>bilheteComputador.sort()</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 8"
+  src="t10d_bingo_en.fld/image002.png" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB>Why it will be necessary to create a list
+  to sort the numbers?</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='color:white'>The game loop</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>The game cycle is repeated until the
+numbered balls are exhausted. </span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+# inicialização</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+while len(bolas) &gt; 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>A number is drawn at each turn ... which is
+then added to the list of numbers that came out.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>      
+# retira número</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>if
+input(&quot;E roda a esfera...&quot;) </span><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>== &quot;end&quot;:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+return</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>numero_sorteado
+= bolas.pop(random.randint(0, len(bolas)-1))</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+print (numero_sorteado)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+numeros_ja_saidos.add(numero_sorteado)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>Then it is calculated how many numbers are
+left on each player's card.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+# mostra bilhete do jogador humano</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>nH =
+NUMEROS - len(cartaoHumano.intersection(numeros_ja_saidos))</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+print(bilheteHumano, &quot;- faltam&quot;, nH)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+nC = NUMEROS - len(cartaoComputador.intersection(numeros_ja_saidos))</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>print(bilheteComputador,
+&quot;- faltam&quot;, nC)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 10"
+  src="t10d_bingo_en.fld/image003.png" alt=Eye></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB>To calculate the numbers that have
+  already come out on each card, use the length of the set returned by the
+  method </span><span lang=PT><a
+  href="https://www.w3schools.com/python/ref_set_intersection.asp#:~:text=The%20intersection()%20method%20returns,with%20more%20than%20two%20sets."><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>intersection()</span></a></span><span
+  lang=EN-GB> of the Sets.</span></p>
+  <p class=MsoNormal><span lang=EN-GB>This method calculates the number of
+  numbers that are simultaneously on the player's card and the set of values
+  that have already left.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB style='color:white'>Finally, it is checked
+whether there is a winner</span><span lang=EN-GB>... Bingo!</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+if nC == 0 and nH == 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+print(&quot;Empate...&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+break</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+elif nC == 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>print(&quot;Bingo!
+Ganhou o computador.&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+break</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+elif nH == 0:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+print(&quot;Bingo! Ganhou o jogador humano.&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>break</span></p>
+
+<h1><span lang=EN-GB>4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Final challenge</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>Evolve this version of the game to
+incorporate the card creation rules and the possibility of having multiple
+players, with multiple cards.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>You can also develop a graphical version
+using the p5 module...</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 1"
+  src="t10d_bingo_en.fld/image004.png" alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><b><span
+  lang=EN-GB>Share</span></b><span lang=EN-GB> your game!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=EN-GB>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

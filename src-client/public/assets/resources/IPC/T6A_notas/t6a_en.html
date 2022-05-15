@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style>
+        .botao {
+          background-color: rgb(51, 101, 192);
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>        
+</head>
+<body>
+
+<h2>The game of banknotes</h2>
+<p><button type="button" onclick="jogo()">Play</button></p>
+
+<p><br>After playing the game, you can proceed to the tutorial.</p>
+
+<a href = "t6a_notes.html" class="botao" title='Tutorial'>Tutorial</a>
+<script>
+    function notas(valor, nota)
+    {
+        return Math.floor(valor / nota);
+    }
+
+    function jogo() {
+        var quantia = (Math.ceil(Math.random()*80)+20)*5;
+        var jogada = window.prompt("How many banknotes are necessary for " + quantia + "€?","1");
+        var resposta = conta(quantia)
+        if (resposta == jogada)
+            window.alert("You won!");
+        else
+            window.alert("You lose... You required " + resposta + " notes.");
+    }
+
+    function conta(montante)
+    {
+        var notas_50 = notas(montante, 50);
+        montante -= 50 * notas_50;
+        
+        var notas_20 = notas(montante, 20);
+        montante -= 20 * notas_20;
+        
+        var notas_10 = notas(montante, 10);
+        montante -= 10 * notas_10;
+        
+        var notas_5 = notas(montante, 5);
+        montante -= 5 * notas_5;
+        
+        return notas_50 + notas_20 + notas_10 + notas_5;
+    }
+</script>
+    
+</body>
+</html> 

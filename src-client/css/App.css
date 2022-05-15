@@ -1,0 +1,255 @@
+:root {
+  --main-bg-basic-color: #fafafa;
+  --main-bg-highlight-color: #0056B3;
+  --main-bg-faded-color: #798fa8;
+}
+
+
+.App {
+  text-align: center;
+  background-color: var(--main-bg-basic-color);
+  height: 100%;
+  min-height: 100vh;
+}
+
+.App > .container{
+  margin-top:5vh;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 44px;
+}
+
+.App-header {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid #dbdbdb;
+  padding: 5px;
+  color: black;
+  -webkit-transition: height .2s ease-in-out;
+  transition: height .2s ease-in-out;
+  height: auto;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.App-header a, .App-header button{
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  background: transparent;
+  cursor: pointer;
+  display: inline-grid;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  color: black;
+
+  /**/
+  font-family: 'press-start';
+  font-weight: lighter!important;
+  font-variant-caps: all-petite-caps!important;
+  /**/
+
+  margin: 0em;
+  padding: 1px 6px;
+
+}
+
+@media (max-width: 767.98px){
+  .App-header a, .App-header button{
+    font-family: apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-weight: normal!important;
+  }
+}
+
+.App-header .dropdown{
+  height: 100%;
+}
+
+.App-header .dropdown-toggle::after {
+  display:none;
+}
+
+.App-header :active,
+ .App-header :focus {
+    background-color: unset!important;
+    border: none!important;
+    border-color: unset!important;
+    box-shadow:none!important;
+}
+
+.App-header a:hover {
+  text-decoration: none;
+  border-color: none;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.user-photo{
+  height: 44px;
+  border-radius: 50%;
+}
+
+.App-header .dropdown-toggle {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  padding: 0;
+}
+
+.App-header 
+  .btn-info:not(:disabled):not(.disabled).active:focus,
+  .btn-info:not(:disabled):not(.disabled):active:focus,
+  .show>.btn-info.dropdown-toggle:focus,
+  .btn-info:focus {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  box-shadow: none;
+}
+
+.align-me {
+  display: flex;
+  align-items: center;
+}
+
+#layout{
+  padding-top: 16px;
+}
+#layout .container{
+  background-color: var(--main-bg-basic-color);
+  height: 100%;
+}
+
+#layout .fullscreen{
+  position: absolute;
+  width: 100vw;
+  max-width: unset;
+  height: 100vh;
+  max-height: unset;
+  top: 0;
+  left: 0;
+}
+
+#layout .fullscreen #resource{ 
+  height: 100vh;
+  max-height: unset;
+}
+
+#resource{
+  word-break: break-word;
+  max-height: 80vh;
+  text-align: -webkit-center;
+  /*border: 1px solid #dbdbdb;*/
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 5vh;
+}
+
+.prev-next-controls-resource{
+  color: red;
+}
+
+.resource-header{
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 3.5vh;
+}
+
+.resource-header h6, label{
+  margin:0;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  background-color: #e9eceff2;
+}
+
+@font-face {
+  font-family: 'press-start';
+  src:  url("../webfonts/press-start.woff2") format('woff2');
+}
+
+.gamming-btn{
+  background-color: lightgray!important;
+  text-shadow: -1px -1px black, 1px 1px white!important;
+  box-shadow: 0 .2em gray!important;
+  font-family: 'press-start';
+  font-weight: lighter!important;
+  font-variant-caps: all-petite-caps!important;
+}
+  
+.gamming-btn-nav{
+  color:black!important;
+  margin: auto;
+}
+
+.gamming-btn:active {
+  box-shadow: none;
+  position: relative;
+  top: .2em;
+}
+
+.undrawIlustrations > img {
+  width: 244px;
+  height: 125px;
+  display:block;
+  margin: 12px auto;
+}
+
+.btn-light-custom {
+  color:  var(--main-bg-highlight-color);
+  border-color: var(--main-bg-highlight-color);
+  margin-bottom: .75rem;
+}
+
+.headerPageActive{
+  background-color: aliceblue!important;
+}
+
+#joinClass{
+  width: 17rem;
+  margin: auto;
+}
+
+.MuiPagination-root{
+  margin: auto;
+}
+
+.tableFixHead {
+  overflow-y: auto;
+  max-height: 75vh;
+}
+.tableFixHead thead th {
+  position: sticky;
+  top: 0;
+  background-color: white;
+}

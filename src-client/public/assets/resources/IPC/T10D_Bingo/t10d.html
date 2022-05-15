@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style>
+        .botao {
+          background-color: rgb(51, 101, 192);
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        .cartao {
+          background-color: rgb(249, 250, 174);
+          border: none;
+          color: black;
+          padding: 4px 2px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Jogo do Bingo</h2>
+<h3 id = "jogada" class = "botao">?</h3>
+<p><button id="botao_jogar" type="button" onclick="jogo()">Tirar bola</button></p>
+<h3 id = "final"></h3>
+<p>Cartão do Jogador</p>
+<p id = "cartao1" class = "cartao">.</p>
+<p>Cartão do Computador</p>
+<p id = "cartao2" class = "cartao">.</p>
+
+<p><br><br></vr><br>Após jogar o jogo, pode passar ao tutorial.<br><br>
+<a href = "t10d_bingo.html" class="botao" title='Tutorial'>Tutorial</a><br><br></p>
+<script>
+// número de números em cada cartão
+const NUMEROS = 15;
+
+// variáveis de jogo
+var cartao1 = preenche_cartao();
+var cartao2 = preenche_cartao();
+var faltam_cartao1 = NUMEROS;
+var faltam_cartao2 = NUMEROS;
+
+// mostra inicial dos cartões
+document.getElementById("cartao1").innerHTML = mostra_cartao(cartao1);
+document.getElementById("cartao2").innerHTML = mostra_cartao(cartao2);
+
+// tombola das bolas
+var bolas = [];
+for (let i=1; i<=90; i++)
+  bolas.push(i);
+
+// preenche um cartao com números diferentes
+function preenche_cartao(){
+    cartao = [];
+    while (cartao.length < NUMEROS){
+        let numero = Math.floor(Math.random()*90)+1;
+        if (cartao.indexOf(numero)<0)
+          cartao.push(numero);
+    }
+
+    return cartao.sort(function(a, b){return a-b;});
+}
+
+function cria_cartao(cartao){
+  cartao = [];
+  for (let numero of cartao)
+    cartao.push(numero);
+  cartao.sort(compara);
+
+  return cartao;
+}
+
+// retorna um array com os valores do cartao
+function mostra_cartao(cartao){
+  let txt = "";
+  for (let numero of cartao){
+    if (txt != "")
+      txt += " | ";
+    if (numero <10)
+      txt += "0";
+    txt += numero.toString();
+  }
+  return txt;
+}
+
+// atualiza o cartao com o numero saido
+function atualiza_cartao(cartao, numero){
+  let pos = cartao.indexOf(numero);
+  if (pos >=0){
+    cartao[pos] = "--";
+    return 1;
+  }else
+    return 0;
+}
+
+// ciclo de jogo
+function jogo(){
+  if (bolas.length > 0){
+    // numero sorteado
+    let pos = Math.floor(Math.random() * bolas.length);
+    let numero_sorteado = bolas[pos];
+    bolas.splice(pos , 1);
+    document.getElementById("jogada").innerHTML = numero_sorteado;
+
+    // atualiza os cartoes
+    faltam_cartao1 -= atualiza_cartao(cartao1, numero_sorteado);
+    faltam_cartao2 -= atualiza_cartao(cartao2, numero_sorteado);
+
+    // mostra cartoes
+    document.getElementById("cartao1").innerHTML = mostra_cartao(cartao1);
+    document.getElementById("cartao2").innerHTML = mostra_cartao(cartao2);
+
+    if (faltam_cartao1 == 0 && faltam_cartao2 == 0){
+      document.getElementById("final").innerHTML = "Empate!";
+      document.getElementById("botao_jogar").hidden = true;
+    }else if (faltam_cartao2 == 0){
+      document.getElementById("final").innerHTML = "Bingo! Ganhou o computador.";
+      document.getElementById("botao_jogar").hidden = true;
+    }else if (faltam_cartao1 == 0){
+      document.getElementById("final").innerHTML = "Bingo! Ganhou o jogador humano.";
+      document.getElementById("botao_jogar").hidden = true;
+    }
+  }
+}
+</script>
+</body>
+</html> 

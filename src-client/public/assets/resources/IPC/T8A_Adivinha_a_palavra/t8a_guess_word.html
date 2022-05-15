@@ -1,0 +1,542 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.codigo, li.codigo, div.codigo
+	{mso-style-name:codigo;
+	mso-style-link:"codigo Char";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:17.85pt;
+	page-break-after:avoid;
+	font-size:9.0pt;
+	font-family:"Courier New";}
+span.codigoChar
+	{mso-style-name:"codigo Char";
+	mso-style-link:codigo;
+	font-family:"Courier New";
+	font-weight:normal;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=EN-GB style='color:black'>Game &quot;Guess
+the Word&quot;</span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=EN-GB>The game &quot;Guess the word&quot;
+consists of unraveling a word (or phrase) letter by letter. It is commonly
+known as the &quot;hangman game&quot;. In this tutorial we will only consider
+one word, for simplicity.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The game starts by visualizing a word,
+chosen at random. This word will be displayed by a sequence of characters
+&quot;*&quot;, of length equal to the length of the word.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>For example, if the chosen word was
+&quot;car&quot;, the computer would display &quot;***&quot;.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>With each move, the player indicates a
+letter and, if that letter exists in the word, the word with that letter is
+displayed in the right position (or positions). If not, the player loses an
+attempt and the letter is indicated in the list of “wrong” letters.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>If the letter “a” was indicated, the
+sequence &quot;*a*&quot; would be displayed.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>If the player can guess all the letters
+that make up the word within the number of defined attempts, s/he wins,
+otherwise s/he loses. </span></p>
+
+<h1><span lang=EN-GB>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB>Game setup</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>The game will be started by randomly
+selecting a word from a list of words.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The game will be implemented by the </span><span
+lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>jogo</span><span
+lang=EN-GB> function that receives two parameters</span><span lang=EN-US>:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=EN-US style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>palavras</span><span
+lang=EN-US>, a list of strings with the words of the game;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=EN-GB
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>tentativas</span><span
+lang=EN-GB>, the maximum number of attempts.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>After randomly selecting the word, which we
+will call </span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>chave</span><span
+lang=EN-GB>, it is necessary to create another word to be deciphered (with the
+same number of letters but filled with “*”), in order to be visualized by the
+player.</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Function </span><span lang=EN-US
+style='font-size:9.0pt;font-family:"Courier New"'>jogo()</span><span
+lang=EN-US> ias as follows:</span></p>
+
+<p class=codigo><span lang=EN-GB>import random</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB>def jogo(palavras, tentativas):</span></p>
+
+<p class=codigo><span lang=EN-GB>    # seleção da chave da lista de palavras</span></p>
+
+<p class=codigo><span lang=EN-GB>    chave = random.choice(palavras)</span></p>
+
+<p class=codigo><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=codigo><span lang=EN-GB>    # palavra escondida</span></p>
+
+<p class=codigo><span lang=EN-GB>    palavra = &quot;&quot;</span></p>
+
+<p class=codigo><span lang=EN-GB>    for c in chave:</span></p>
+
+<p class=codigo><span lang=EN-GB>        palavra = palavra + &quot;*&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Notice that the </span><span lang=EN-GB><a
+href="https://www.w3schools.com/python/python_for_loops.asp"><span lang=EN-US>for</span></a></span><span
+lang=EN-GB> </span><span lang=EN-US>loop traverses with great simplicity the
+word </span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>chave</span><span
+lang=EN-US>, character by character.</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 5"
+  src="t8a_guess_word.fld/image001.jpg" alt="Head with gears"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>It is important to note that strings are immutable, that is, they
+  cannot be changed. In this way, the variable </span><span lang=EN-GB
+  style='font-size:9.0pt;font-family:"Courier New"'>palavra</span><span
+  lang=EN-GB> is constructed by creating copies and concatenating (joining)
+  character strings, with the “+” operator.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>At each iteration, the memory space that the identifier </span><span
+  lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>palavra</span><span
+  lang=EN-GB> references is distinct.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB style='color:white'>Then, the variables
+indicating the number of the</span><span lang=EN-GB> move and the wrong letters
+(a string of characters) are initialized, preceding the game cycle.</span></p>
+
+<p class=codigo><span lang=EN-GB>    # inicialização das variáveis</span></p>
+
+<p class=codigo><span lang=EN-GB>    jogada = 1</span></p>
+
+<p class=codigo><span lang=EN-GB>    letras_erradas = &quot;&quot;</span></p>
+
+<h1><span lang=EN-US>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US>Iterating through moves – the game loop</span></h1>
+
+<p class=MsoNormal><span lang=EN-US>The game loop is executed through a </span><span
+lang=EN-GB><a href="https://www.w3schools.com/python/python_while_loops.asp"><span
+lang=EN-US>while</span></a></span><span lang=EN-GB> </span><span lang=EN-US>conditional
+loop whose condition evaluates whether the player has not yet guessed the word
+and whether s/he still has more attempts to play.</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>while
+chave != palavra and tentativas &gt; 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>The algorithm for each move is as follows:</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=EN-GB>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-GB>Print the word to guess and read the player's guess.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Jogada&quot;, jogada, &quot;:&quot;, palavra)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;letras erradas: &quot;, letras_erradas)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+letra = input (&quot;Adivinhe a letra: &quot;)</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=EN-GB>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-GB>Check if the letter exists in the keyword and in that case unveil the
+hidden word. A new string is created (</span><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>npalavra</span><span lang=EN-GB>). The index </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>i</span><span
+lang=EN-GB> goes through both the word to be unveiled and the key, in order to
+verify where the letter exists.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>      
+# desvendar a palavra</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+npalavra = &quot;&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+for i in range(len(chave)):</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+if chave[i].</span><span lang=EN-GB> </span><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>casefold() == letra.</span><span lang=EN-GB> </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>casefold():</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+npalavra += chave[i]</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+else:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>               
+npalavra += palavra[i]</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 8"
+  src="t8a_guess_word.fld/image002.jpg" alt=Eye></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-US>When comparing letters, method </span><span lang=EN-GB><a
+  href="https://www.w3schools.com/python/ref_string_casefold.asp"><span
+  lang=EN-US>casefold</span></a></span><span class=MsoHyperlink><span
+  lang=EN-GB> </span></span><span lang=EN-US>is used on strings to convert both
+  letters to lowercase, avoiding situations where the word to be deciphered has
+  a capital letter and the player inserts a lower case (e.g. the first letter
+  of a name).</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-US>Also note that the string concatenation operation can be
+  simplified with the + = operator</span><span lang=EN-GB>.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=EN-GB>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-GB style='color:white'>If the player does not </span><span lang=EN-GB>guesses
+the letter (in which case the new word remains the same as the previous one)
+the number of attempts is reduced and the letter is added to the wrong letters.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+if palavra == npalavra:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+letras_erradas += letra</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>           
+tentativas -= 1</span></p>
+
+<p class=MsoListParagraph style='text-indent:-18.0pt'><span lang=EN-GB>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=EN-GB>Finally, the variables  </span><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>jogada</span><span lang=EN-GB> and </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>palavra</span><span
+lang=EN-GB> are updated.</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+jogada += 1</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+palavra = npalavra</span></p>
+
+<p class=MsoNormal><span lang=EN-GB>After the game is over, it is checked
+whether the player won or lost... </span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+if tentativas == 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Perdeu. Já não tem mais tentativas... Era a palavra: &quot;, chave)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>   
+elif chave == palavra:</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>       
+print (&quot;Parabéns&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:55.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 10"
+  src="t8a_guess_word.fld/image003.jpg" alt="Balloon animal"></span></b></p>
+  </td>
+  <td width=501 valign=top style='width:375.6pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB>Test the game with the following list:</span></p>
+  <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+  margin-left:9.35pt;margin-right:0cm'>
+  <p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-GB
+  style='font-size:9.0pt;font-family:"Courier New"'>cidades =
+  [&quot;Porto&quot;, &quot;Lisboa&quot;, &quot;Braga&quot;, &quot;Faro&quot;,
+  &quot;Bragança&quot;]</span></p>
+  <p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-GB
+  style='font-size:9.0pt;font-family:"Courier New"'>jogo(cidades,5).</span></p>
+  </div>
+  <p class=MsoNormal><span lang=EN-GB>Experiment later with multiple word lists
+  for different topics.</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=EN-GB>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-GB style='color:white'>Final challenge</span></h1>
+
+<p class=MsoNormal><span lang=EN-GB>Make a variation of this game in which the
+player, instead of just having to guess a word, has to guess a sentence. In
+this case the visualization should show the spaces and the punctuation.</span></p>
+
+<p class=MsoNormal><span lang=EN-US>Suggestion: Remember the existence of the
+method </span><span lang=EN-GB><a
+href="https://www.w3schools.com/python/ref_string_isalpha.asp"><span
+lang=EN-US>isalpha</span></a></span><span lang=EN-GB> </span><span lang=EN-US>of
+strings to check if a character is a letter.</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span
+  lang=EN-GB><img border=0 width=36 height=36 id="Graphic 1"
+  src="t8a_guess_word.fld/image004.jpg" alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span
+  lang=EN-GB>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><b><span
+  lang=EN-GB>Share</span></b><span lang=EN-GB> your game!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=EN-GB>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

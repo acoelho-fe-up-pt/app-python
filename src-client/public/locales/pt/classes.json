@@ -1,0 +1,14 @@
+{
+    "Results" : "Resultados",
+    "NoResults": "Sem resultados",
+    "ViewBooks": "Ver livros.",
+    "StudentsTag": "estudantes",
+    "Resources": "Recursos",
+    "Leaderboard": "Leaderboard",
+    "ChaptersTag": "Capítulos",
+    "InvalidCodeToJoinClassTag": "Código inválido",
+    "JoinClassWithCodeLabel": "Código de registo",
+    "JoinClassWithCodePlaceholder": "Insire código",
+    "JoinClassWithCodeBtn": "Registar"
+
+}

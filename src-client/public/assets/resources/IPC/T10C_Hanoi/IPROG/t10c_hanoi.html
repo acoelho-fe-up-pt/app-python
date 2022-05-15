@@ -1,0 +1,1028 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>Os Números são dados simples disponibilizados pela linguagem Scheme, que
+representam o próprio valor na base 10</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:21.6pt;
+	text-align:justify;
+	text-indent:-21.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri Light",sans-serif;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:28.8pt;
+	text-align:justify;
+	text-indent:-28.8pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;
+	font-weight:normal;}
+h3
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-36.0pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;
+	font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	text-align:justify;
+	text-indent:-43.2pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Garamond",serif;}
+h5
+	{mso-style-link:"Heading 5 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:50.4pt;
+	text-align:justify;
+	text-indent:-50.4pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2F5496;
+	font-weight:normal;}
+h6
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:57.6pt;
+	text-align:justify;
+	text-indent:-57.6pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Garamond",serif;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Heading 7 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.8pt;
+	text-align:justify;
+	text-indent:-64.8pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#1F3763;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Heading 8 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-72.0pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Heading 9 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:79.2pt;
+	text-align:justify;
+	text-indent:-79.2pt;
+	page-break-after:avoid;
+	font-size:10.5pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#272727;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=en-PT link=blue vlink=purple style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#B4C6E7'>
+
+<h1 align=center style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;
+margin-left:0cm;text-align:center;text-indent:0cm;background:#B4C6E7;
+border:none;padding:0cm'><span lang=PT style='color:black'>Torre de Hanói</span></h1>
+
+</div>
+
+<p class=MsoNormal><span lang=PT><a
+href="https://pt.wikipedia.org/wiki/Torre_de_Hanói"><span lang=PT-BR>Torre de
+Hanói</span></a></span><span lang=PT-BR> não é exatamente um jogo, mas um &quot;quebra-cabeças&quot;
+que desafia a memória de trabalho do jogador para solucionar um problema que
+parece simples, mas que é relativamente trabalhoso...</span></p>
+
+<p class=MsoNormal><span lang=PT-BR>A estrutura do jogo possui 3 pinos, um dos
+quais com vários discos posicionados em ordem decrescente de diâmetro (o maior
+na base do jogo e o menor no topo da pilha de discos (ver figura). O problema
+consiste em passar todos os discos de um pino para um outro, com as seguintes
+restrições: </span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+lang=PT-BR>1-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT-BR>apenas se pode movimentar um disco de cada vez; </span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT-BR>2-<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT-BR>um disco nunca pode ser posicionado em cima de um outro menor. </span></p>
+
+<p class=MsoNormal><span lang=PT-BR>O número de discos pode variar...
+Proporcionalmente, o grau de dificuldade irá aumentar com o número de discos.</span></p>
+
+<p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+lang=PT style='font-size:12.0pt;font-family:"Times New Roman",serif'><img
+border=0 width=185 height=81 id="Picture 5" src="t10c_hanoi.fld/image001.jpg"
+alt="A picture containing object, indoor, table, wooden&#10;&#10;Description automatically generated"></span></p>
+
+<p class=MsoNormal align=center style='margin-top:0cm;text-align:center'><span
+lang=PT-BR>Torre de Hanói - </span><span lang=PT><a
+href="https://pt.wikipedia.org/wiki/Torre_de_Han%C3%B3i"><span lang=PT-BR>wikipedia</span></a></span></p>
+
+<p class=MsoNormal><span lang=PT>Este é também um exemplo típico e muito
+interessante da utilização de pilhas, uma vez que apenas se pode retirar o
+último disco colocado em cada pino e, ao inserir um disco num determinado pino,
+este fica sempre por cima. Ou seja, o último disco a ser colocado num pino será
+sempre o primeiro a poder ser retirado desse pino (LIFO - Last IN First Out).</span></p>
+
+<h1><span lang=PT>1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Exemplificação do jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>Este jogo será desenvolvido num ambiente
+gráfico, utilizando o módulo p5. Na figura que se segue, vemos o ecrã inicial,
+em que o pino da esquerda aparece com 5 discos de vários tons de azul. Neste
+caso, quanto maior for o diâmetro de um disco mais claro será o azul com que é
+pintado.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=PT><img
+border=0 width=150 height=106 id="Picture 15" src="t10c_hanoi.fld/image002.png"></span></p>
+
+<p class=MsoNormal><span lang=PT>O jogo é controlado com as teclas 1, 2 e 3. </span></p>
+
+<p class=MsoNormal><span lang=PT>As duas figuras que se seguem, mostram o que
+aconteceu quando o jogador começa por atuar a tecla 1 e depois tecla 2,
+indicando que o disco no topo do pino 1 (pino agora pintado a verde), vai
+passar para o topo do pino 2.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=PT><img
+border=0 width=149 height=106 id="Picture 3" src="t10c_hanoi.fld/image003.png"></span><span
+lang=PT>             </span><span lang=PT><img border=0 width=149 height=107
+id="Picture 2" src="t10c_hanoi.fld/image004.png"
+alt="A screenshot of a cell phone&#10;&#10;Description automatically generated"></span></p>
+
+<p class=MsoNormal><span lang=PT>Continuando a jogar. Agora, se o jogador
+voltar à tecla 1, o pino 1 volta à cor verde, como mostra a figura que segue,
+mais à esquerda. A figura da direita mostra o que aconteceria se, por engano, a
+seguir à tecla 1, o jogador escolher a tecla 2. Trata-se de uma jogada não
+permitida, pois não é possível colocar um disco sobre outro mais pequeno.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=PT><img
+border=0 width=152 height=107 id="Picture 11" src="t10c_hanoi.fld/image005.png"
+alt="A screenshot of a cell phone&#10;&#10;Description automatically generated"></span><span
+lang=PT>             </span><span lang=PT><img border=0 width=146 height=104
+id="Picture 12" src="t10c_hanoi.fld/image004.png"></span></p>
+
+<p class=MsoNormal><span lang=PT>Nesta situação de falha, voltaria a ter que
+escolher o pino 1, através da tecla 1, seguindo-se a escolha do pino 3, através
+da tecla 3. O resultado é mostrado nas duas figuras que se seguem.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=PT><img
+border=0 width=152 height=107 id="Picture 14" src="t10c_hanoi.fld/image005.png"
+alt="A screenshot of a cell phone&#10;&#10;Description automatically generated"></span><span
+lang=PT>             </span><span lang=PT><img border=0 width=146 height=104
+id="Picture 13" src="t10c_hanoi.fld/image006.png"></span></p>
+
+<p class=MsoNormal><span lang=PT>Depois de algumas movimentações, acabámos por
+alcançar o objetivo, ou seja, colocar todos os discos num outro pino, como se
+mostra na sequência das três figuras que se seguem, pela escolha da tecla 3
+(figura central), seguida da tecla 2 (figura à direita). Nesta figura, a bola
+amarela indica que o jogo terminou com sucesso.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=PT><img
+border=0 width=157 height=112 id="Picture 18" src="t10c_hanoi.fld/image007.png"></span><span
+lang=PT>             </span><span lang=PT><img border=0 width=159 height=114
+id="Picture 17" src="t10c_hanoi.fld/image008.png"></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=PT><img
+border=0 width=157 height=112 id="Picture 23" src="t10c_hanoi.fld/image009.png"
+alt="A picture containing screenshot&#10;&#10;Description automatically generated"></span></p>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 src="t10c_hanoi.fld/image010.png" alt=Eye></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Não
+  está previsto, mas seria muito interessante ter, num canto da janela do jogo,
+  a visualização do número de movimentações de discos, realizadas até ao
+  momento. Assim, no final do jogo, teríamos acesso ao número de movimentações
+  necessárias para alcançar o objetivo.</span><i><span lang=PT> </span></i></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Fica
+  como desafio (opcional)...</span></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=PT>2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='color:white'>Preparação do jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>Iremos definir as seguintes constantes:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>LARGURA</span><span
+lang=PT> - largura da janela gráfica;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>ALTURA</span><span
+lang=PT> - altura da janela gráfica;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>DISCOS</span><span
+lang=PT> - lista com os discos a ser utilizados (definidos pelo diâmetro);</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>ESPESSURA_DISCO
+</span><span lang=PT>- espessura de cada disco;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>ALT_PINO
+</span><span lang=PT>- Altura dos pinos que formam a torre.</span></p>
+
+<p class=MsoNormal><span lang=PT>E também necessitaremos de duas variáveis
+globais:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>torres</span><span
+lang=PT> - uma lista que irá ter as 3 torres do jogo;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogada</span><span
+lang=PT> - pino selecionado pelo jogador.</span></p>
+
+<p class=MsoNormal><span lang=PT>Comece o seu ficheiro com o código fonte com
+as seguintes instruções:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>from
+p5 import *</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+definicoes globais</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>LARGURA
+= 600</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>ALTURA
+= 400</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>DISCOS
+= [120, 100, 80, 60, 40]</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>ESPESSURA_DISCO
+= 20</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>ALT_PINO
+= 150</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+variáveis globais</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>torres
+= []</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogada
+= 0</span></p>
+
+<h1><span lang=PT>3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>A abstração Pilha</span></h1>
+
+<p class=MsoNormal><span lang=PT>Cada pino funciona como uma pilha, como foi
+referido inicialmente. Assim, precisamos da abstração Pilha.</span></p>
+
+<p class=MsoNormal><span lang=PT>Não existe uma abstração de dados em Python
+que implemente na totalidade o conceito de Pilha, pelo que iremos utilizar a
+abstração Pilha definida na secção 10.3:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>###################</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+ABSTRAÇÃO PILHA #</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>###################</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+construtor</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+cria_pilha():</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+return []</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+seletores</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+pilha_vazia(pilha):</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>if
+len (pilha) == 0:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+return True</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+else:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>return
+False</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+topo_da_pilha(pilha):</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>if
+not pilha_vazia(pilha):</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+return pilha[-1]</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+else:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+return False</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+modificadores</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+poe_na_pilha(pilha, elem):</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+pilha.append(elem)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+tira_da_pilha(pilha):</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>if
+not pilha_vazia(pilha):</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+return pilha.pop()</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+else:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>return
+False</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>###################</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 src="t10c_hanoi.fld/image010.png" alt=Eye></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Analise
+  as funções topo_da_pilha() e tira_da_pilha(), ambas com o mesmo parâmetro, e
+  indique em que diferem. Serão necessárias as duas funções? Justifique.</span><i><span
+  lang=PT> </span></i></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=PT>4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='color:white'>Estruturação do jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>O jogo, relativamente simples, terá apenas as
+funções associadas ao módulo p5:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>setup()</span><span
+lang=PT> - configuração do jogo;</span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>draw()
+</span><span lang=PT>- ciclo de jogo.</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>key_pressed()
+</span><span lang=PT>-  responde aos eventos de premir as teclas.</span></p>
+
+<h1><span lang=PT>5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Configuração do jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>A configuração do jogo segue o seguinte
+algoritmo:</span></p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span lang=PT>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>cria janela gráfica;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>cria as 3 torres através de uma lista de 3 pilhas e preenche a primeira
+torre com os discos.</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+inicialização do jogo</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+setup():</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+global torres</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# cria janela</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+title(&quot;Torres de Hanoi&quot;)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+size(LARGURA, ALTURA)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# cria as 3 torres e preenche primeira torre</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+torres = [cria_pilha(), cria_pilha(), cria_pilha()]</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+for disco in DISCOS:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+poe_na_pilha(torres[0], disco)</span></p>
+
+<h1><span lang=PT>6<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>O ciclo de jogo</span></h1>
+
+<p class=MsoNormal><span lang=PT>O ciclo de jogo faz apenas o desenho de todo o
+nível de jogo, tanto os pinos como os discos, e verifica se o jogador conseguiu
+colocar todos os discos num outro pino:</span></p>
+
+<p class=MsoListParagraphCxSpFirst align=left style='text-align:left;
+text-indent:-18.0pt'><span lang=PT>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>desenha os pinos do jogo e os seus discos. <br>
+Caso o pino tenha sido selecionado pelo jogador para a sua jogada, é desenhado
+a verde. Caso contrário a branco;</span></p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span lang=PT>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+lang=PT>Verifica se o jogador conseguiu mover todos os discos para um outro
+pino;</span></p>
+
+<p class=MsoNormal><span lang=PT>Insira o seguinte código ,que implementa o
+ciclo de jogo,  desenhando o ecrã de jogo:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=PT><img
+border=0 width=178 height=126 id="Picture 25" src="t10c_hanoi.fld/image002.png"
+alt="A picture containing screenshot&#10;&#10;Description automatically generated"></span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+ciclo de jogo</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+draw():</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+global torres, jogada</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# posiciona as torres</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+ox = [0,0,0]</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+ox[0] = LARGURA//4</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+ox[1] = LARGURA//2</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+ox[2] = 3 * LARGURA//4</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+oy_base = ALTURA//2 + ALT_PINO//2</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# desenha as torres e respetivos discos</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>background(&quot;gray&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+rect_mode(&quot;CENTER&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+for i in range(len(torres)):</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>if
+jogada == i+1:                # inicialmente, jodaga = 0</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>fill(&quot;green&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+else:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>           
+fill(&quot;white&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>rect((ox[i],
+oy_base-ALT_PINO//2), ESPESSURA_DISCO, -ALT_PINO)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>alt =
+oy_base</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+for disco in torres[i]:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>fill(0,
+0, disco*2)   # B, de RGB, proporcional ao diâmetro do disco</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+rect((ox[i], alt), disco, ESPESSURA_DISCO)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+alt -= ESPESSURA_DISCO</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# verifica se ganhou</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+if torres[1] == DISCOS or torres[2] == DISCOS:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>fill(&quot;gold&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+if torres[2] == DISCOS:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>circle((ox[2],
+oy_base), ESPESSURA_DISCO*2)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+else:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+circle((ox[1], oy_base), ESPESSURA_DISCO*2)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+no_loop() # termina jogo</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 6" src="t10c_hanoi.fld/image010.png"
+  alt=Eye></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>A
+  função <a href="https://p5.readthedocs.io/en/latest/reference/structure.html"><span
+  style='font-size:9.0pt;font-family:"Courier New"'>no_loop()</span></a></span><span
+  lang=PT style='font-size:9.0pt;font-family:"Courier New"'>,</span><span
+  lang=PT> elimina a repetição da chamada à função </span><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>draw()</span><span lang=PT>,
+  pelo que ao jogador apenas é possível sair do jogo.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Analise
+  o código com cuidado para perceber como é feito o desenho do ecrã de jogo.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<h1><span lang=PT>7<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT style='color:white'>O input do jogador</span></h1>
+
+<p class=MsoNormal><span lang=PT>O jogador interage com o jogo através das
+teclas &quot;1&quot;, &quot;2&quot; e &quot;3&quot;, que lhe permitem selecionar
+o pino de origem e, de seguida, o pino de destino. Após o que é feita a
+deslocação do disco do topo, caso o pino de destino tenha como topo um pino de
+maior diâmetro, ou esteja vazio.</span></p>
+
+<p class=MsoNormal><span lang=PT>O código é o seguinte, que se baseia numa estrutura
+condicional de seleção múltipla:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+controla a interação com o utilizador através do teclado</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+key_pressed():</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+global jogada, torres</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+# converte tecla em inteiro (1 a 3)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>tecla
+= ord(str(key)) - ord(&quot;0&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 7" src="t10c_hanoi.fld/image010.png"
+  alt=Eye></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>A
+  função</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>
+  </span><span lang=PT><a
+  href="https://www.w3schools.com/python/ref_func_ord.asp"><span
+  style='font-size:9.0pt;font-family:"Courier New"'>ord()</span></a>retorna um
+  valor inteiro relacionado com o código do caracter que lhe for fornecido como
+  argumento. Neste caso é o código ASCII.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Assim,
+  a tecla premida (&quot;1&quot;, &quot;2&quot; ou &quot;3&quot;) será
+  convertida nos inteiros 1, 2 ou 3, ao subtrair o código do caracter
+  &quot;0&quot;.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 9" src="t10c_hanoi.fld/image010.png"
+  alt=Eye></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>A
+  variável </span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogada
+  </span><span lang=PT>representa uma máquina de estados, que permite saber se
+  o jogador vai selecionar o pino de origem (estado 0) ou se vai selecionar o
+  de destino (estado 1).</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Neste
+  último caso faz a deslocação do disco entre os dois pinos.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>A
+  seguinte estrutura de decisão alternativa faz ações distintas consoante o
+  valor do estado.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New";
+color:white'># verifica teclas premidas</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+if jogada == 0:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>#
+seleciona torre</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>       
+if tecla &gt;= 1 and tecla &lt;=3:</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogada =
+tecla</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+else:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+# move disco do topo</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+if tecla &gt;= 1 and tecla &lt;=3:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+# so pode colocar sobre discos maiores</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+if not pilha_vazia(torres[jogada-1]) \</span></p>
+
+<p class=MsoNormal style='margin-right:-35.8pt'><span lang=PT style='font-size:
+9.0pt;font-family:"Courier New"'>                and
+(topo_da_pilha(torres[tecla-1]) &gt; topo_da_pilha(torres[jogada-1]) \</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>                   
+or pilha_vazia(torres[tecla-1])):</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>               
+poe_na_pilha(torres[tecla-1], tira_da_pilha(torres[jogada-1]))</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>           
+</span><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>jogada
+= 0</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>if
+__name__ == '__main__':</span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:"Courier New"'>   
+</span><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>run()</span></p>
+
+<h1><span lang=PT>8<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span lang=PT>Desafio final</span></h1>
+
+<p class=MsoNormal><span lang=PT-BR>Sendo um &quot;quebra-cabeças&quot;, seria
+interessante que o computador fosse capaz de determinar a solução de forma
+automática</span><span lang=PT>. Na realidade, o algoritmo que resolve este
+problema é relativamente simples.</span></p>
+
+<p class=MsoNormal><span lang=PT>Leia com atenção esta explicação muito
+interessante da <a
+href="https://pt.khanacademy.org/computing/computer-science/algorithms/towers-of-hanoi/a/towers-of-hanoi">Khan
+Academy</a>...  </span></p>
+
+<p class=MsoNormal><span lang=PT>O algoritmo seguinte resolve o problema,
+criando uma lista de jogadas (tuplos com a origem e o destino dos movimentos)...</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>jogadas
+= []</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>#
+Algoritmo recursivo da torre de Hanoi</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>def
+hanoi(torre, origem, destino):</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+global jogadas</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+if len(torre) == 1:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+jogadas.append((origem, destino))</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+else:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+livre = 6 - (origem + destino)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+hanoi(torre[1::], origem, livre)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+jogadas.append((origem, destino))</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>       
+hanoi(torre[1::], livre, destino)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 10" src="t10c_hanoi.fld/image010.png"
+  alt=Eye></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Repare
+  numa característica interessante deste algoritmo. O problema </span><span
+  lang=PT style='font-size:9.0pt;font-family:"Courier New"'>hanoi()</span><span
+  lang=PT> faz duas chamadas ao subproblema </span><span lang=PT
+  style='font-size:9.0pt;font-family:"Courier New"'>hanoi()</span><span
+  lang=PT>... Ou seja, esta função chama-se a si mesma.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>É
+  uma <b>função recursiva</b>.</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT style='color:white'>Para aprender a jogar b</span><span
+lang=PT>asta imprimir a lista de jogadas:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>hanoi(DISCOS,
+1, 3)</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>for
+(o, d) in jogadas:</span></p>
+
+<p class=MsoNormal><span lang=PT style='font-size:9.0pt;font-family:"Courier New"'>   
+print(&quot;Move disco da torre&quot;, o, &quot;para a torre&quot;, d)</span></p>
+
+<p class=MsoNormal><span lang=PT>Adapte este algoritmo para animar a resolução
+do </span><span lang=PT-BR>&quot;quebra-cabeças&quot; de forma automática,
+animando a sua resolução &quot;passo a passo&quot; premindo uma tecla (por
+exemplo a tecla &quot;espaço&quot;).</span></p>
+
+<p class=MsoNormal><span lang=PT-BR>&nbsp;</span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=75 valign=top style='width:56.45pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b><span lang=PT><img
+  border=0 width=36 height=36 id="Graphic 1" src="t10c_hanoi.fld/image011.png"
+  alt="Share with person"></span></b></p>
+  </td>
+  <td width=525 valign=top style='width:394.05pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>&nbsp;</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><span lang=PT>Partilhe
+  a <b>sua</b> aplicação interativa!</span></p>
+  <p class=MsoNormal style='margin-top:0cm;text-autospace:none'><i><span
+  lang=PT>&nbsp;</span></i></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=PT>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
